@@ -1,1 +1,2 @@
-Aplicação NextJs com tailwind e Next-Auth, para gerenciamento de tarefas no modelo GTD (Get things done), usando prisma e banco de dados postgresql
+Aplicação NextJs com tailwind, Next-Auth, react-query, para controle de uma ONG de assistência psicosocial denominada Chega Junto.
+O sistema em desenvolvimento vai controlar todos os pacientes, suas informações pessoais, disponibilidades de horários, documentos (intergração com o google drive) e prontuário, a lista de espera, os profissionais, suas disponiblidade, seus compromissos marcados e os atendimentos realizados.
