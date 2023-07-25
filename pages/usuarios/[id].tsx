@@ -3,7 +3,7 @@ import Menu from '../../components/parts/Menu';
 import PageHeader from '../../components/parts/PageHeader';
 import UserDisplay from '../../components/sections/UserDisplay';
 import { useQuery } from 'react-query';
-import UserServices from '../../Services/UserServices';
+import UserServices from '../../services/UserServices';
 import User from '../../entities/User';
 
 export default function Usuarios<NextPage>() {

@@ -3,7 +3,7 @@ import FormPageHeader from '../../../components/parts/FromPageHeader';
 import Menu from '../../../components/parts/Menu';
 import UserForm from '../../../components/sections/UserForm';
 import { useQuery } from 'react-query';
-import UserServices from '../../../Services/UserServices';
+import UserServices from '../../../services/UserServices';
 import User from '../../../entities/User';
 
 export default function Editar() {

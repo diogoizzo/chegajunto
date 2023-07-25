@@ -9,6 +9,7 @@ export default async function handler(
    if (req.method === 'GET') {
       const token = await getToken({ req });
       const id = req.query.id;
+      console.log(JSON.stringify(req.query));
       if (token) {
          const user = await prisma.user.findUnique({
             where: { id: String(id) },

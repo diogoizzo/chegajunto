@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Menu from '../../components/parts/Menu';
 import PageHeader from '../../components/parts/PageHeader';
 import UserTable from '../../components/sections/UserTable';
-import UserServices from '../../Services/UserServices';
+import UserServices from '../../services/UserServices';
 import User from '../../entities/User';
 
 export default function Usuarios<NextPage>() {
