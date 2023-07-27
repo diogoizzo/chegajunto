@@ -2,6 +2,7 @@ import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import User from '../entities/User';
 import { useState } from 'react';
+import { UserFromData } from '../components/sections/UserForm';
 
 export default class UserServices {
    static async register(form: any) {
@@ -32,6 +33,29 @@ export default class UserServices {
       try {
          const res = await axios.get(`/api/usuarios/${id}`);
          return res.data;
+      } catch (e) {
+         console.log(e);
+      }
+   }
+   static async updateById(formData: UserFromData) {
+      try {
+         console.log('Executei update');
+         const res = await axios.patch(
+            `/api/usuarios/${formData.id}`,
+            formData
+         );
+         return res.data;
+      } catch (e) {
+         console.log(e);
+      }
+   }
+   static async delete(id?: string) {
+      try {
+         console.log('Executei delete');
+         if (id) {
+            const rest = await axios.delete(`/api/usuarios/${id}`);
+            return rest.data;
+         }
       } catch (e) {
          console.log(e);
       }

@@ -41,33 +41,30 @@ export default class User implements IUser {
          );
       });
    }
-   static createFormObject(user: any) {
-      if (user) {
-         const {
-            id,
-            name,
-            email,
-            phone,
-            address,
-            cpf,
-            type,
-            crp,
-            institution,
-            period
-         } = user;
-         return new User(
-            name,
-            email,
-            phone,
-            address,
-            cpf,
-            type,
-            institution,
-            period,
-            crp,
-            id
-         );
-      }
+   static createFormObject({
+      id,
+      name,
+      email,
+      phone,
+      address,
+      cpf,
+      type,
+      crp,
+      institution,
+      period
+   }: User) {
+      return new User(
+         name,
+         email,
+         phone,
+         address,
+         cpf,
+         type,
+         institution,
+         period,
+         crp,
+         id
+      );
    }
 
    get userLink() {

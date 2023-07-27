@@ -13,7 +13,9 @@ export default function Editar() {
 
    const query = useQuery(['user', userId], () => UserServices.getById(userId));
 
-   const user = User.createFormObject(query.data);
+   const user = query.data && User.createFormObject(query.data);
+   console.log(user);
+
    return (
       <Menu>
          <FormPageHeader

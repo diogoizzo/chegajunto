@@ -13,9 +13,7 @@ export default function Menu({ children }: any) {
                      passHref
                      className="inline-flex items-center h-8 dashboardMobile"
                      href="#"
-                  >
-                     <img src="/trizzle-assets/logos/trizzle-logo.svg" alt="" />
-                  </Link>
+                  ></Link>
                   <div className="xl:hidden">
                      <button className="navbar-burger text-gray-400 hover:text-gray-300 focus:outline-none">
                         <svg
@@ -58,9 +56,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/compromissos'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`calendar flex items-center justify-center calendar w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/compromissos')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/compromissos"
@@ -90,9 +88,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/pacientes'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`patienties flex items-center justify-center  w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/pacientes')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/pacientes"
@@ -122,9 +120,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/documentos'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`docs flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/documentos')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/documentos"
@@ -154,9 +152,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/listadeespera'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`flex wait items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/listadeespera')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/listadeespera"
@@ -186,9 +184,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/tags'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`tags flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/tags')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/tags"
@@ -217,9 +215,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/atendimentos'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`due flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/atendimentos')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/atendimentos"
@@ -245,9 +243,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/eventos'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`events flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/eventos')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/eventos"
@@ -276,9 +274,9 @@ export default function Menu({ children }: any) {
                      <li>
                         <Link
                            passHref
-                           className={`flex items-center justify-center calendar w-12 h-12 rounded-xl ${
-                              router.pathname === '/usuarios'
-                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-yinmn-blue-200'
+                           className={`users flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/usuarios')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
                            href="/usuarios"

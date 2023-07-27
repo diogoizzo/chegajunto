@@ -22,10 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
    const queryClient = new QueryClient();
 
    return (
-      //essa configuração faz com que basta colocar nomedocomponente.auth = true para fazer com que a página seja restrita
       <SessionProvider session={pageProps.session}>
          <QueryClientProvider client={queryClient}>
             <GlobalContext>
+               {/* essa configuração faz com que basta colocar
+                  nomedocomponente.auth = true para fazer com que a página seja
+                  restrita */}
                {Component.auth ? (
                   <Auth>
                      <Component {...pageProps} />

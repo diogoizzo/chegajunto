@@ -37,6 +37,45 @@ export default async function handler(
       } else {
          res.status(401).send({ message: 'Acesso negado' });
       }
+   } else if (req.method === 'PATCH') {
+      const token = await getToken({ req });
+      console.log('Entrei no patch');
+      const id = req.query.id;
+      if (token) {
+         const user = await prisma.user.update({
+            where: {
+               id: String(req.query.id)
+            },
+            data: {
+               ...req.body
+            }
+         });
+         if (user) {
+            res.status(200).json(user);
+         } else {
+            res.status(404).json({ error: 'Usuário não encontrado' });
+         }
+      } else {
+         res.status(404).json({ message: 'Acesso Negado' });
+      }
+   } else if (req.method === 'DELETE') {
+      console.log('Entrrei no delete');
+      const token = await getToken({ req });
+      const id = req.query.id;
+      if (token) {
+         const deletedUser = await prisma.user.delete({
+            where: {
+               id: String(id)
+            }
+         });
+         if (deletedUser) {
+            res.status(200).json(deletedUser);
+         } else {
+            res.status(404).json({ error: 'Not Found' });
+         }
+      } else {
+         res.status(401).send({ message: 'Unauthorized' });
+      }
    } else {
       return res
          .status(405)
