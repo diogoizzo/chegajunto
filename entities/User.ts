@@ -52,7 +52,7 @@ export default class User implements IUser {
       crp,
       institution,
       period
-   }: User) {
+   }: IUser): User {
       return new User(
          name,
          email,

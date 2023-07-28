@@ -4,6 +4,7 @@ import User from '../../entities/User';
 interface UserTableProps {
    small?: boolean;
    data: User[];
+   //todo alterar para depender de uma interface, porém precios alterar a interface usuário para ter os métodos
 }
 
 function UserTable({ small, data }: UserTableProps) {

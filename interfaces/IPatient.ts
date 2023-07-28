@@ -3,6 +3,7 @@ import IUser from './IUser';
 export default interface IPatient {
    id: string;
    name: string;
+   status: string;
    email?: string;
    birthday?: Date;
    birthplace?: string;
@@ -20,5 +21,5 @@ export default interface IPatient {
    phone?: string;
    observation?: string;
    underResponsibilityOf?: IUser;
-   underResponsibilityOfUserId?: string;
+   getLink: string;
 }

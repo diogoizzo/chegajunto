@@ -19,7 +19,7 @@ function UserDisplay({ user }: UserDisplayProps) {
                </div>
                <DisplayLine label="Nome" content={user?.name} />
                <DisplayLine label="Email" content={user?.email} />
-               <DisplayLine label="Tefefone" content={user?.phone} />
+               <DisplayLine label="Telefone" content={user?.phone} />
                <DisplayLine label="Endereço" content={user?.address} />
                <DisplayLine label="CPF" content={user?.cpf} />
                <DisplayLine label="Tipo de Usuário" content={user?.type} />

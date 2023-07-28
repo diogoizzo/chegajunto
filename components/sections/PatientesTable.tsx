@@ -1,8 +1,12 @@
+import Link from 'next/link';
+import IPatient from '../../interfaces/IPatient';
 interface PatientesTableProps {
    small?: boolean;
+   data: IPatient[];
 }
 
-function PatientesTable({ small }: PatientesTableProps) {
+function PatientesTable({ small, data }: PatientesTableProps) {
+   console.log(data);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
@@ -73,435 +77,95 @@ function PatientesTable({ small }: PatientesTableProps) {
                            </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Carlos Agusto Sampaio
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
-                                       COMPLETOS
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Ativo
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          (24) 99237-5544
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Daniel Iunes
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-l-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Maria Claudia Correa
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-red-300 rounded-full">
-                                       INCOMPLETOS
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Espera
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          (21) 9858-6789
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-r-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Marcos Vinicus
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Marcos Vinicus
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-l-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-r-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-l-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-r-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-l-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-r-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-l-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 bg-raisin-black-light">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6 rounded-r-xl bg-raisin-black-light">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       Banner design
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="inline-block px-2 py-1 text-xs text-blue-100 font-medium bg-blue-500 rounded-full">
-                                       KICKOFF
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       $16,000
-                                    </span>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <div className="flex h-full items-center">
-                                       <span className="text-sm font-medium text-cool-gray-200">
-                                          John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td className="p-0">
-                                 <div className="flex items-center h-16 px-6">
-                                    <span className="text-sm text-cool-gray-200 font-medium">
-                                       June 06, 2022
-                                    </span>
-                                 </div>
-                              </td>
-                           </tr>
+                           {data.map((patient, idx) => {
+                              return (
+                                 <tr key={patient.id}>
+                                    <td className="p-0">
+                                       <Link href={patient.getLink} passHref>
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light rounded-l-xl'
+                                                   : null
+                                             }`}
+                                          >
+                                             <span className="text-sm text-cool-gray-200 font-medium">
+                                                {patient.name}
+                                             </span>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link href={patient.getLink} passHref>
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light'
+                                                   : null
+                                             }`}
+                                          >
+                                             <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
+                                                COMPLETOS
+                                             </span>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link href={patient.getLink} passHref>
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light'
+                                                   : null
+                                             }`}
+                                          >
+                                             <span className="text-sm text-cool-gray-200 font-medium">
+                                                {patient.status}
+                                             </span>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link href={patient.getLink} passHref>
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light'
+                                                   : null
+                                             }`}
+                                          >
+                                             <div className="flex h-full items-center">
+                                                <span className="text-sm font-medium text-cool-gray-200">
+                                                   {patient.phone}
+                                                </span>
+                                             </div>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link href={patient.getLink} passHref>
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light rounded-r-xl'
+                                                   : null
+                                             }`}
+                                          >
+                                             <div className="flex h-full items-center">
+                                                <span className="text-sm font-medium text-cool-gray-200">
+                                                   {
+                                                      patient
+                                                         .underResponsibilityOf
+                                                         ?.name
+                                                   }
+                                                </span>
+                                             </div>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                 </tr>
+                              );
+                           })}
                         </tbody>
                      </table>
                   </div>

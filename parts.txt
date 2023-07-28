@@ -1,0 +1,16 @@
+
+tag da tabela status azul:
+
+<div className="flex items-center h-16 px-6">
+                                    <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
+                                       COMPLETOS
+                                    </span>
+                                 </div>
+
+
+tag da tabela status vermelho:
+<div className="flex items-center h-16 px-6 bg-raisin-black-light">
+                                    <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-red-300 rounded-full">
+                                       INCOMPLETOS
+                                    </span>
+                                 </div>

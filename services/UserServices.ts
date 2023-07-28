@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import User from '../entities/User';
-import { useState } from 'react';
 import { UserFromData } from '../components/sections/UserForm';
 
 export default class UserServices {
