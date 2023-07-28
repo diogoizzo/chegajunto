@@ -11,19 +11,107 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(cuid())
-  password    String
-  name        String
-  email       String?  @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  type        String
-  crp         String?
-  cpf         String
-  address     String?
-  phone       String
-  institution String?
-  period      Int?
+  id             String         @id @default(cuid())
+  password       String
+  name           String
+  email          String?        @unique
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  type           String
+  crp            String?
+  cpf            String
+  address        String?
+  phone          String
+  institution    String?
+  period         Int?
+  interviews     Patient[]      @relation("interview")
+  patients       Patient[]      @relation("responsibility")
+  availabilities Availability[]
+  uploads        Document[]     @relation("upload")
+  appointments   Appointment[]  @relation("appointment")
+  consultations  Consultation[] @relation("consultation")
 
   @@index([name, cpf, crp])
+}
+
+model Patient {
+  id                          String         @id @default(cuid())
+  name                        String
+  email                       String?        @unique
+  birthday                    DateTime?
+  birthplace                  String?
+  education                   String?
+  school                      String?
+  scholarship                 Boolean?
+  isMedicated                 Boolean?
+  medication                  String?
+  interviewedBy               User           @relation("interview", fields: [interviewedByUserId], references: [id])
+  interviewedByUserId         String
+  complaint                   String?
+  createdAt                   DateTime       @default(now())
+  updatedAt                   DateTime       @updatedAt
+  cpf                         String?
+  address                     String?
+  phone                       String
+  observation                 String?
+  underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id])
+  underResponsibilityOfUserId String?
+  tags                        Tag[]
+  availabilities              Availability[]
+  documents                   Document[]     @relation("belongs")
+  appointments                Appointment[]  @relation("attended")
+  consultations               Consultation[] @relation("consultationOf")
+}
+
+model Tag {
+  id            String         @id @default(cuid())
+  name          String
+  patients      Patient[]
+  consultations Consultation[]
+  documents     Document[]
+}
+
+model Availability {
+  id            String    @id @default(cuid())
+  dayOfWeek     String
+  time          Int
+  professionals User[]
+  patients      Patient[]
+}
+
+model Document {
+  id                 String   @id @default(cuid())
+  type               String
+  description        String?
+  url                String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  uploadedBy         User     @relation("upload", fields: [uploadedByUserId], references: [id])
+  uploadedByUserId   String
+  belongsTo          Patient  @relation("belongs", fields: [belongsToPatientId], references: [id])
+  belongsToPatientId String
+  tags               Tag[]
+}
+
+model Appointment {
+  id                 String  @id @default(cuid())
+  dayOfWeek          String
+  time               Int
+  professional       User    @relation("appointment", fields: [professionalUserId], references: [id])
+  professionalUserId String
+  patient            Patient @relation("attended", fields: [patientId], references: [id])
+  patientId          String
+}
+
+model Consultation {
+  id                 String   @id @default(cuid())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  patientAbsent      Boolean
+  observation        String?
+  professional       User     @relation("consultation", fields: [professionalUserId], references: [id])
+  professionalUserId String
+  patient            Patient  @relation("consultationOf", fields: [patientId], references: [id])
+  patientId          String
+  tags               Tag[]
 }
