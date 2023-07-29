@@ -19,28 +19,39 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   </div>
                </div>
                <DisplayLine label="Nome" content={patient?.name} />
-               <DisplayLine label="Email" content={patient?.email} />
                <DisplayLine label="Telefone" content={patient?.phone} />
-               <DisplayLine label="Status" content={patient?.status} />
+               <DisplayLine label="Email" content={patient?.email} />
                <DisplayLine label="Endereço" content={patient?.address} />
                <DisplayLine
                   label="Data de Nascimento"
                   content={String(patient?.birthday)}
                />
+               <DisplayLine label="Status" content={patient?.status} />
+
                <DisplayLine
                   label="Naturalidade"
                   content={patient?.birthplace}
                />
+               <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+                  <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
+                     <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
+                        Informações Institucionais
+                     </h4>
+                  </div>
+               </div>
                <DisplayLine label="Escolaridade" content={patient?.education} />
                <DisplayLine label="Nome da Escola" content={patient?.school} />
                <DisplayLine
                   label="É Bolsista?"
                   content={patient?.scholarship ? 'Sim' : 'Não'}
                />
-               <DisplayLine
-                  label="Entrevistado por"
-                  content={patient?.interviewedBy?.name}
-               />
+               <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+                  <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
+                     <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
+                        Informações Médicas
+                     </h4>
+                  </div>
+               </div>
                <DisplayLine
                   label="Faz uso de medicação?"
                   content={patient?.isMedicated ? 'Sim' : 'Não'}
@@ -52,16 +63,20 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   />
                ) : null}
                <DisplayLine
-                  label="Responsável"
-                  content={patient?.underResponsibilityOf?.name}
-               />
-               <DisplayLine
                   label="Reclamação do Paciente"
                   content={patient?.complaint}
                />
                <DisplayLine
                   label="Observações sobre o Paciente"
                   content={patient?.observation}
+               />
+               <DisplayLine
+                  label="Entrevistado por"
+                  content={patient?.interviewedBy?.name}
+               />
+               <DisplayLine
+                  label="Responsável"
+                  content={patient?.underResponsibilityOf?.name}
                />
             </div>
          </div>

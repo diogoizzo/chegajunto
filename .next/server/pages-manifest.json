@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/pacientes": "pages/pacientes.js",
-  "/": "pages/index.js",
-  "/api/pacientes": "pages/api/pacientes.js"
+  "/compromissos": "pages/compromissos.js",
+  "/pacientes": "pages/pacientes.js"
 }
