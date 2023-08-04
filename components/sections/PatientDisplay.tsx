@@ -27,12 +27,12 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   content={String(patient?.birthday)}
                />
                <DisplayLine label="Status" content={patient?.status} />
-
+               <DisplayLine label="CPF" content={patient?.cpf} />
                <DisplayLine
                   label="Naturalidade"
                   content={patient?.birthplace}
                />
-               <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+               <div className="flex flex-wrap items-center justify-between -mx-4 mt-12 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                      <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
                         Informações Institucionais
@@ -45,7 +45,8 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   label="É Bolsista?"
                   content={patient?.scholarship ? 'Sim' : 'Não'}
                />
-               <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+
+               <div className="flex flex-wrap items-center justify-between mt-12 -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                      <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
                         Informações Médicas
@@ -62,6 +63,13 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                      content={patient?.medication}
                   />
                ) : null}
+               <div className="flex flex-wrap items-center justify-between mt-12 -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+                  <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
+                     <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
+                        Outras Infromações
+                     </h4>
+                  </div>
+               </div>
                <DisplayLine
                   label="Reclamação do Paciente"
                   content={patient?.complaint}

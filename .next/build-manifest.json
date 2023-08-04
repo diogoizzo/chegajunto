@@ -22,10 +22,40 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/pacientes": [
+    "/atendimentos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/pacientes.js"
+      "static/chunks/pages/atendimentos.js"
+    ],
+    "/documentos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/documentos.js"
+    ],
+    "/eventos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/eventos.js"
+    ],
+    "/listadeespera": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/listadeespera.js"
+    ],
+    "/pacientes/editar/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pacientes/editar/[id].js"
+    ],
+    "/tags": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/tags.js"
+    ],
+    "/usuarios": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios.js"
     ]
   },
   "ampFirstPages": []

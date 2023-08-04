@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FormInputLine from '../atoms/FormInputLine';
 import SelectInput from '../atoms/SelectInput';
 import IUser from '../../interfaces/IUser';
@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import PrimaryBtn from '../atoms/PrimaryBtn';
-import SecundaryBtn from '../atoms/SecundaryBtn';
 import DangerBtn from '../atoms/DangerBtn';
 
 interface UserFormProps {
@@ -24,7 +23,6 @@ function UserForm({ user }: UserFormProps) {
    const router = useRouter();
 
    const [isOpen, setIsOpen] = useState(false);
-   const [confirmation, setConfirmation] = useState(false);
 
    const [form, setForm] = useState<UserFromData>({
       id: user?.id || undefined,
@@ -94,6 +92,8 @@ function UserForm({ user }: UserFormProps) {
             closeModal={closeModal}
             deleteAction={deleteAction}
          />
+         {/* TODO verificar se os subtitulos estao se ajustando para o caso de
+         novo usuário e edição de usuário */}
          <section className="py-3 mt-3">
             <div className="container px-4 mx-auto">
                <div className="p-10 bg-raisin-black rounded-lg">
@@ -102,9 +102,16 @@ function UserForm({ user }: UserFormProps) {
                         <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
                            Informações Pessoais
                         </h4>
-                        <p className="text-sm text-cool-gray-500">
-                           Preencha as informaçõs pessoais do novo usuário.
-                        </p>
+
+                        {user ? (
+                           <p className="text-sm text-cool-gray-500">
+                              Edite as informaçõs pessoais do usuário acima.
+                           </p>
+                        ) : (
+                           <p className="text-sm text-cool-gray-500">
+                              Preencha as informaçõs pessoais do novo usuário.
+                           </p>
+                        )}
                      </div>
                   </div>
                   <form>

@@ -29,6 +29,10 @@ export default class Patient implements IPatient {
       return `/pacientes/${this.id}`;
    }
 
+   get patientEditLink() {
+      return `/pacientes/editar/${this.id}`;
+   }
+
    static createFromObject({
       id,
       name,

@@ -22,4 +22,5 @@ export default interface IPatient {
    observation?: string;
    underResponsibilityOf?: IUser;
    getLink: string;
+   patientEditLink: string;
 }

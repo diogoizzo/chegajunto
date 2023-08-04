@@ -38,7 +38,6 @@ export default class UserServices {
    }
    static async updateById(formData: UserFromData) {
       try {
-         console.log('Executei update');
          const res = await axios.patch(
             `/api/usuarios/${formData.id}`,
             formData
@@ -50,7 +49,6 @@ export default class UserServices {
    }
    static async delete(id?: string) {
       try {
-         console.log('Executei delete');
          if (id) {
             const rest = await axios.delete(`/api/usuarios/${id}`);
             return rest.data;

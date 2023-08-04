@@ -39,7 +39,6 @@ export default async function handler(
       }
    } else if (req.method === 'PATCH') {
       const token = await getToken({ req });
-      console.log('Entrei no patch');
       const id = req.query.id;
       if (token) {
          const user = await prisma.user.update({
@@ -59,7 +58,6 @@ export default async function handler(
          res.status(404).json({ message: 'Acesso Negado' });
       }
    } else if (req.method === 'DELETE') {
-      console.log('Entrrei no delete');
       const token = await getToken({ req });
       const id = req.query.id;
       if (token) {
@@ -71,10 +69,10 @@ export default async function handler(
          if (deletedUser) {
             res.status(200).json(deletedUser);
          } else {
-            res.status(404).json({ error: 'Not Found' });
+            res.status(404).json({ error: 'Usuário não encontrado' });
          }
       } else {
-         res.status(401).send({ message: 'Unauthorized' });
+         res.status(401).send({ message: 'Acesso negado' });
       }
    } else {
       return res
