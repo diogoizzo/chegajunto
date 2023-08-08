@@ -1,6 +1,7 @@
 import DisplayLine from '../atoms/DisplayLine';
 
 import IPatient from '../../interfaces/IPatient';
+import dayjs from 'dayjs';
 
 interface PatientDisplayProps {
    patient?: IPatient;
@@ -24,7 +25,7 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                <DisplayLine label="Endereço" content={patient?.address} />
                <DisplayLine
                   label="Data de Nascimento"
-                  content={String(patient?.birthday)}
+                  content={dayjs(patient?.birthday).format('DD/MM/YYYY')}
                />
                <DisplayLine label="Status" content={patient?.status} />
                <DisplayLine label="CPF" content={patient?.cpf} />

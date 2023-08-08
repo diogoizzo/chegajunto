@@ -13,6 +13,7 @@ export default interface IPatient {
    isMedicated?: boolean;
    medication?: string;
    interviewedBy?: IUser;
+   interviewedByUserId?: string;
    complaint?: string;
    createdAt?: Date;
    updatedAt?: Date;
@@ -21,6 +22,7 @@ export default interface IPatient {
    phone?: string;
    observation?: string;
    underResponsibilityOf?: IUser;
+   underResponsibilityOfUserId?: string;
    getLink: string;
    patientEditLink: string;
 }

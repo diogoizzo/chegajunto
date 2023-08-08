@@ -1,4 +1,5 @@
 import axios from 'axios';
+import IPatient from '../interfaces/IPatient';
 
 export default class PatientServices {
    static async getAll() {
@@ -18,24 +19,25 @@ export default class PatientServices {
       }
    }
    static async updateById(formData: any) {
-      try {
+      if (formData) {
          const res = await axios.patch(
             `/api/pacientes/${formData.id}`,
             formData
          );
          return res.data;
-      } catch (e) {
-         console.log(e);
       }
    }
    static async delete(id?: string) {
-      try {
-         if (id) {
-            const rest = await axios.delete(`/api/pacientes/${id}`);
-            return rest.data;
-         }
-      } catch (e) {
-         console.log(e);
+      if (id) {
+         const rest = await axios.delete(`/api/pacientes/${id}`);
+         return rest.data;
+      }
+   }
+
+   static async create(formData: IPatient) {
+      if (formData) {
+         const rest = await axios.post(`/api/pacientes/`, formData);
+         return rest.data;
       }
    }
 }

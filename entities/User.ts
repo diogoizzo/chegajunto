@@ -7,7 +7,7 @@ export default class User implements IUser {
       public phone: string,
       public address: string,
       public cpf: string,
-      public type: 'Pscicólogo' | 'Estagiário',
+      public type: 'Psicólogo' | 'Estagiário',
       public institution?: string,
       public period?: number,
       public crp?: string,

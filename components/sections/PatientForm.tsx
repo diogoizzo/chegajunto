@@ -3,12 +3,17 @@ import FormInputLine from '../atoms/FormInputLine';
 import SelectInput from '../atoms/SelectInput';
 import IPatient from '../../interfaces/IPatient';
 import { useRouter } from 'next/router';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import PrimaryBtn from '../atoms/PrimaryBtn';
 import DangerBtn from '../atoms/DangerBtn';
 import PatientServices from '../../services/PatientServices';
 import FormTextareaLine from '../atoms/FormTextareaLine';
+import useErrorToast from '../../hooks/useErrorToast';
+import FormSwitchLine from '../atoms/FormSwitchLine';
+import UserServices from '../../services/UserServices';
+import User from '../../entities/User';
+import FormInputDateLine from '../atoms/FormInputDateLine';
 
 interface PatientFormProps {
    patient?: IPatient;
@@ -16,6 +21,8 @@ interface PatientFormProps {
 
 function PatientForm({ patient }: PatientFormProps) {
    const router = useRouter();
+
+   const errorToast = useErrorToast();
 
    const [isOpen, setIsOpen] = useState(false);
 
@@ -35,32 +42,54 @@ function PatientForm({ patient }: PatientFormProps) {
       isMedicated: patient?.isMedicated || undefined,
       medication: patient?.medication || undefined,
       interviewedBy: patient?.interviewedBy || undefined,
+      interviewedByUserId: patient?.interviewedByUserId || undefined,
       complaint: patient?.complaint || undefined,
       observation: patient?.observation || undefined,
       underResponsibilityOf: patient?.underResponsibilityOf || undefined,
+      underResponsibilityOfUserId:
+         patient?.underResponsibilityOfUserId || undefined,
       getLink: patient?.getLink || '',
       patientEditLink: patient?.patientEditLink || ''
    });
 
+   const query = useQuery(['user'], () => UserServices.getAll());
+
+   const users = query.data && User.createMany(query.data);
+
    const patientUpdateMutation = useMutation({
       mutationFn: PatientServices.updateById,
       onSuccess: () => {
-         router.push(`/pacientes/${patient?.id}`);
+         router.push(`/pacientes?updated=true`);
+      },
+      onError: () => {
+         errorToast('Não foi possível atualizar o paciente.');
       }
    });
 
    const patientDeleteMutation = useMutation({
       mutationFn: PatientServices.delete,
       onSuccess: () => {
-         console.log('entrei no onsucesso do delete');
-         router.push('/pacientes');
+         router.push('/pacientes?deleted=true');
+      },
+      onError: () => {
+         errorToast('Não foi possível arquivar o paciente,');
+      }
+   });
+   const patientCreateMutation = useMutation({
+      mutationFn: PatientServices.create,
+      onSuccess: () => {
+         router.push('/pacientes?saved=true');
+      },
+      onError: () => {
+         errorToast('Não foi possível criar o novo paciente.');
       }
    });
 
-   async function register(e: any) {
+   async function salvar(e: any) {
       e.preventDefault();
+      console.log(form);
       if (!patient) {
-         //    await PatientServices.register(form);
+         patientCreateMutation.mutate(form);
       } else {
          patientUpdateMutation.mutate(form);
       }
@@ -140,14 +169,12 @@ function PatientForm({ patient }: PatientFormProps) {
                         type="text"
                         placeHolder="Digite o endereço do novo paciente..."
                      />
-                     <FormInputLine
+                     <FormInputDateLine
                         //todo aqui vou precisa ajusar para usar o daysjs e formatar a data corretamente
-                        state={String(form.birthday)}
+                        state={form.birthday}
                         setState={setForm}
                         name="birthday"
                         label="Data de Nascimento"
-                        type="date"
-                        placeHolder="Digite a data de nascimento do paciente..."
                      />
                      <FormInputLine
                         state={form.cpf}
@@ -198,14 +225,12 @@ function PatientForm({ patient }: PatientFormProps) {
                         type="text"
                         placeHolder="Digite o nome da escola do paciente..."
                      />
-                     {/* TODO transformar em um toogle - scholarship - abaixo */}
-                     <FormInputLine
-                        state={form.school}
+
+                     <FormSwitchLine
+                        label="É bolsista?"
                         setState={setForm}
-                        name="school"
-                        label="Nome da Escola"
-                        type="text"
-                        placeHolder="Digite o nome da escola do paciente..."
+                        name="scholarship"
+                        state={form.scholarship}
                      />
 
                      <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
@@ -225,21 +250,18 @@ function PatientForm({ patient }: PatientFormProps) {
                         </div>
                      </div>
 
-                     {/* TODO transformar em um toogle - ismedicated - abaixo */}
-                     <FormInputLine
-                        state={form.school}
+                     <FormSwitchLine
+                        label="Faz uso de medicação?"
                         setState={setForm}
-                        name="school"
-                        label="Nome da Escola"
-                        type="text"
-                        placeHolder="Digite o nome da escola do paciente..."
+                        name="isMedicated"
+                        state={form.isMedicated}
                      />
                      {form.isMedicated ? (
                         <FormInputLine
                            state={form.medication}
                            setState={setForm}
                            name="medicamentos"
-                           label="Medicamentos"
+                           label="Quais medicamentos"
                            type="text"
                            placeHolder="Digite o nome dos medicamentos utilzados pelo paciente..."
                         />
@@ -275,27 +297,32 @@ function PatientForm({ patient }: PatientFormProps) {
                         label="Observações sobre o Paciente"
                         placeHolder="Digite as obervações relevantes sobre o paciente..."
                      />
-                     {/* TODO criar funcionlaidade para buscar todos os usuários e apresentar seus nomes na lista abaixo */}
+
                      <SelectInput
-                        name="interviewedBy.name"
+                        name="interviewedByUserId"
                         title="Responsável pela Entrevista"
                         setState={setForm}
-                        options={['teste1', 'teste2']}
-                        state={form.interviewedBy?.name}
+                        options={users}
+                        placeholder="Selecione o responsável pela entrevista"
+                        state={form.interviewedBy?.id}
                      />
                      <SelectInput
-                        name="underResponsibilityOf.name"
+                        name="underResponsibilityOfUserId"
                         title="Responsável pelo Paciente"
                         setState={setForm}
-                        options={['teste1', 'teste2']}
-                        state={form.underResponsibilityOf?.name}
+                        options={users}
+                        placeholder="Selecione o responsável pela entrevista"
+                        state={form.underResponsibilityOf?.id}
                      />
+
                      <div className="text-right space-x-6">
-                        <PrimaryBtn text={'Salvar'} clickHandle={register} />
-                        <DangerBtn
-                           text={'Arquivar paciente'}
-                           openConfirmation={openConfirmationModal}
-                        />
+                        <PrimaryBtn text={'Salvar'} clickHandle={salvar} />
+                        {patient ? (
+                           <DangerBtn
+                              text={'Arquivar paciente'}
+                              openConfirmation={openConfirmationModal}
+                           />
+                        ) : null}
                      </div>
                   </form>
                </div>

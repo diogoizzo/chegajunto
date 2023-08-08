@@ -4,7 +4,7 @@ export default interface IUser {
    phone: string;
    address: string;
    cpf: string;
-   type: 'Pscicólogo' | 'Estagiário';
+   type: 'Psicólogo' | 'Estagiário';
    institution?: string;
    period?: number;
    crp?: string;

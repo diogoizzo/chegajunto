@@ -15,6 +15,7 @@ export default class Patient implements IPatient {
       public isMedicated?: boolean,
       public medication?: string,
       public interviewedBy?: IUser,
+      public interviewedByUserId?: string,
       public complaint?: string,
       public createdAt?: Date,
       public updatedAt?: Date,
@@ -22,7 +23,8 @@ export default class Patient implements IPatient {
       public address?: string,
       public phone?: string,
       public observation?: string,
-      public underResponsibilityOf?: IUser
+      public underResponsibilityOf?: IUser,
+      public underResponsibilityOfUserId?: string
    ) {}
 
    get getLink() {
@@ -46,6 +48,7 @@ export default class Patient implements IPatient {
       isMedicated,
       medication,
       interviewedBy,
+      interviewedByUserId,
       complaint,
       createdAt,
       updatedAt,
@@ -53,7 +56,8 @@ export default class Patient implements IPatient {
       address,
       phone,
       observation,
-      underResponsibilityOf
+      underResponsibilityOf,
+      underResponsibilityOfUserId
    }: IPatient): IPatient {
       return new Patient(
          id,
@@ -68,6 +72,7 @@ export default class Patient implements IPatient {
          isMedicated,
          medication,
          interviewedBy,
+         interviewedByUserId,
          complaint,
          createdAt,
          updatedAt,
@@ -75,7 +80,8 @@ export default class Patient implements IPatient {
          address,
          phone,
          observation,
-         underResponsibilityOf
+         underResponsibilityOf,
+         underResponsibilityOfUserId
       );
    }
    static createMany(patients: IPatient[]): Patient[] {
@@ -93,6 +99,7 @@ export default class Patient implements IPatient {
             isMedicated,
             medication,
             interviewedBy,
+            interviewedByUserId,
             complaint,
             createdAt,
             updatedAt,
@@ -100,7 +107,8 @@ export default class Patient implements IPatient {
             address,
             phone,
             observation,
-            underResponsibilityOf
+            underResponsibilityOf,
+            underResponsibilityOfUserId
          } = patient;
          return new Patient(
             id,
@@ -115,6 +123,7 @@ export default class Patient implements IPatient {
             isMedicated,
             medication,
             interviewedBy,
+            interviewedByUserId,
             complaint,
             createdAt,
             updatedAt,
@@ -122,7 +131,8 @@ export default class Patient implements IPatient {
             address,
             phone,
             observation,
-            underResponsibilityOf
+            underResponsibilityOf,
+            underResponsibilityOfUserId
          );
       });
    }

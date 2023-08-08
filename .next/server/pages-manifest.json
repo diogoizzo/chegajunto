@@ -2,11 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/usuarios": "pages/usuarios.js",
+  "/": "pages/index.js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/auth/signin": "pages/auth/signin.js",
-  "/auth/signup": "pages/auth/signup.js",
-  "/api/register": "pages/api/register.js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/": "pages/index.js"
+  "/api/pacientes": "pages/api/pacientes.js",
+  "/pacientes": "pages/pacientes.js",
+  "/usuarios": "pages/usuarios.js",
+  "/api/usuarios": "pages/api/usuarios.js"
 }

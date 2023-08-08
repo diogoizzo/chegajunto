@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-   html,
-   body {
-      height: 100vh;
+   input[type='date']::-webkit-calendar-picker-indicator {
+      filter: invert(30%);
    }
 }

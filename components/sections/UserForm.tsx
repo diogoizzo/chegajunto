@@ -9,6 +9,8 @@ import { useMutation } from 'react-query';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import PrimaryBtn from '../atoms/PrimaryBtn';
 import DangerBtn from '../atoms/DangerBtn';
+import useErrorToast from '../../hooks/useErrorToast';
+import StringSelectInput from '../atoms/StringSelectInput';
 
 interface UserFormProps {
    user?: User;
@@ -22,6 +24,8 @@ export interface UserFromData extends IUser {
 function UserForm({ user }: UserFormProps) {
    const router = useRouter();
 
+   const errorToast = useErrorToast();
+
    const [isOpen, setIsOpen] = useState(false);
 
    const [form, setForm] = useState<UserFromData>({
@@ -31,7 +35,7 @@ function UserForm({ user }: UserFormProps) {
       phone: user?.phone || '',
       address: user?.address || '',
       cpf: user?.cpf || '',
-      type: user?.type || 'Pscicólogo',
+      type: user?.type || 'Psicólogo',
       crp: user?.crp || '',
       institution: user?.institution || '',
       period: user?.period || 0,
@@ -42,26 +46,31 @@ function UserForm({ user }: UserFormProps) {
    const userUpdateMutation = useMutation({
       mutationFn: UserServices.updateById,
       onSuccess: () => {
-         router.push(`/usuarios/${user?.id}`);
+         router.push(`/usuarios?updated=true`);
       }
    });
 
    const userDeleteMutation = useMutation({
       mutationFn: UserServices.delete,
       onSuccess: () => {
-         console.log('entrei no onsucesso do delete');
-         router.push('/usuarios');
+         router.push('/usuarios?deleted=true');
       }
    });
 
    async function register(e: any) {
       e.preventDefault();
       if (!user) {
-         if (form.password !== form.confirmPassword) {
-            //TODO editar para fazer aparecer uma notificação
-            console.log('As senhas precisam ser iguais');
+         if (!form.name) {
+            errorToast('É preciso informar ao menos o nome do paciente');
+         } else if (!form.password) {
+            errorToast('É necessário informar uma senha');
+         } else if (form.password !== form.confirmPassword) {
+            errorToast('As senhas precisam ser iguais');
          } else {
-            await UserServices.register(form);
+            const isRegistred = await UserServices.register(form);
+            if (isRegistred) {
+               router.push('/usuarios?saved=true');
+            }
          }
       } else {
          delete form?.password;
@@ -156,14 +165,15 @@ function UserForm({ user }: UserFormProps) {
                         type="text"
                         placeHolder="Digite o CPF do novo usuário..."
                      />
-                     <SelectInput
+                     <StringSelectInput
                         name="type"
+                        placeholder="Selecione o tipo de usuário"
                         title="Tipo de usuário"
-                        options={['Pscicólogo', 'Estagiário']}
+                        options={['Psicólogo', 'Estagiário']}
                         state={form.type}
                         setState={setForm}
                      />
-                     {form.type === 'Pscicólogo' ? (
+                     {form.type === 'Psicólogo' ? (
                         <>
                            <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 mt-12 border-b border-gray-400 border-opacity-20">
                               <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
@@ -246,10 +256,12 @@ function UserForm({ user }: UserFormProps) {
 
                      <div className="text-right space-x-6">
                         <PrimaryBtn text={'Salvar'} clickHandle={register} />
-                        <DangerBtn
-                           text={'Apagar Usuário'}
-                           openConfirmation={openConfirmationModal}
-                        />
+                        {user ? (
+                           <DangerBtn
+                              text={'Apagar Usuário'}
+                              openConfirmation={openConfirmationModal}
+                           />
+                        ) : null}
                      </div>
                   </form>
                </div>

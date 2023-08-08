@@ -37,7 +37,7 @@ model User {
 model Patient {
   id                          String         @id @default(cuid())
   name                        String
-  email                       String?        @unique
+  email                       String?
   birthday                    DateTime?
   birthplace                  String?
   education                   String?
@@ -45,17 +45,17 @@ model Patient {
   scholarship                 Boolean?
   isMedicated                 Boolean?
   medication                  String?
-  interviewedBy               User           @relation("interview", fields: [interviewedByUserId], references: [id])
-  interviewedByUserId         String
+  interviewedBy               User?          @relation("interview", fields: [interviewedByUserId], references: [id], onDelete: SetNull)
+  interviewedByUserId         String?
   complaint                   String?
   createdAt                   DateTime       @default(now())
   updatedAt                   DateTime       @updatedAt
   cpf                         String?
-  status                      String
+  status                      String         @default("Espera")
   address                     String?
   phone                       String
   observation                 String?
-  underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id])
+  underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id], onDelete: SetNull)
   underResponsibilityOfUserId String?
   tags                        Tag[]
   availabilities              Availability[]
@@ -87,8 +87,8 @@ model Document {
   url                String
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-  uploadedBy         User     @relation("upload", fields: [uploadedByUserId], references: [id])
-  uploadedByUserId   String
+  uploadedBy         User?    @relation("upload", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  uploadedByUserId   String?
   belongsTo          Patient  @relation("belongs", fields: [belongsToPatientId], references: [id])
   belongsToPatientId String
   tags               Tag[]
@@ -98,9 +98,9 @@ model Appointment {
   id                 String  @id @default(cuid())
   dayOfWeek          String
   time               Int
-  professional       User    @relation("appointment", fields: [professionalUserId], references: [id])
+  professional       User    @relation("appointment", fields: [professionalUserId], references: [id], onDelete: Cascade)
   professionalUserId String
-  patient            Patient @relation("attended", fields: [patientId], references: [id])
+  patient            Patient @relation("attended", fields: [patientId], references: [id], onDelete: Cascade)
   patientId          String
 }
 
@@ -110,8 +110,8 @@ model Consultation {
   updatedAt          DateTime @updatedAt
   patientAbsent      Boolean
   observation        String?
-  professional       User     @relation("consultation", fields: [professionalUserId], references: [id])
-  professionalUserId String
+  professional       User?    @relation("consultation", fields: [professionalUserId], references: [id], onDelete: SetNull)
+  professionalUserId String?
   patient            Patient  @relation("consultationOf", fields: [patientId], references: [id])
   patientId          String
   tags               Tag[]

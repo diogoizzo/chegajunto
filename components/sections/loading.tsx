@@ -1,11 +1,17 @@
+import ReactLoading from 'react-loading';
+import Menu from '../parts/Menu';
+
 export default function Loading() {
    return (
-      <div className="w-full h-[100vh] bg-indigo-100 flex justify-center items-center">
-         <img
-            className={'h-44 text-indigo-500 animate-spin-slow '}
-            alt="Loading Spinner"
-            src="/img/spin.svg"
-         ></img>
-      </div>
+      <Menu>
+         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-raisin-black-light ">
+            <ReactLoading
+               type={'spinningBubbles'}
+               color={'#16161F'}
+               height={160}
+               width={160}
+            />
+         </div>
+      </Menu>
    );
 }

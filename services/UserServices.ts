@@ -5,19 +5,11 @@ import { UserFromData } from '../components/sections/UserForm';
 
 export default class UserServices {
    static async register(form: any) {
-      try {
-         const res = await axios.post('/api/register', form);
-         const { email, password } = form;
-         if (res.status === 200) {
-            signIn('credentials', {
-               email,
-               password,
-               callbackUrl: '/usuarios',
-               redirect: true
-            });
-         }
-      } catch (e) {
-         console.log(e);
+      const res = await axios.post('/api/register', form);
+      if (res.status === 200) {
+         return true;
+      } else {
+         return false;
       }
    }
    static async getAll() {

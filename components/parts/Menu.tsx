@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Tooltip } from 'react-tooltip';
+import { Toaster } from '../ui/toaster';
+import { signOut } from 'next-auth/react';
 
 export default function Menu({ children }: any) {
    const router = useRouter();
    return (
       <>
+         <Toaster />
          <nav className="lg:hidden flex items-center justify-between p-8 bg-gray-700">
             <div className="w-full xl:w-auto px-2 xl:mr-12">
                <div className="flex items-center justify-between">
@@ -275,7 +278,8 @@ export default function Menu({ children }: any) {
                         <Link
                            passHref
                            className={`users flex items-center justify-center w-12 h-12 rounded-xl ${
-                              router.pathname.includes('/usuarios')
+                              router.pathname.includes('/usuarios') ||
+                              router.pathname.includes('/auth')
                                  ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
                                  : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
                            }  `}
@@ -330,10 +334,9 @@ export default function Menu({ children }: any) {
                      content="Editar Perfil"
                      place="right-end"
                   />
-                  <Link
-                     passHref
+                  <button
+                     onClick={() => signOut()}
                      className="flex items-center justify-center w-12 h-12 rounded-xl out  text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800"
-                     href="#"
                   >
                      <svg
                         width="20"
@@ -347,7 +350,7 @@ export default function Menu({ children }: any) {
                            fill="currentColor"
                         ></path>
                      </svg>
-                  </Link>
+                  </button>
                   <Tooltip
                      className="relative z-50"
                      delayShow={600}
@@ -358,7 +361,7 @@ export default function Menu({ children }: any) {
                </div>
             </nav>
          </div>
-         <main className="mx-auto  bg-raisin-black-light min-h-[100vh] w-full">
+         <main className="mx-auto  bg-raisin-black-light min-h-[100vh]  w-full">
             <div className="container mx-auto">{children}</div>
          </main>
       </>

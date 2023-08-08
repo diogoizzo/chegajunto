@@ -11,7 +11,11 @@ export default async function handler(
       const id = req.query.id;
       if (token) {
          const patient = await prisma.patient.findUnique({
-            where: { id: String(id) }
+            where: { id: String(id) },
+            include: {
+               underResponsibilityOf: true,
+               interviewedBy: true
+            }
          });
          if (patient) {
             res.status(200).json(patient);
@@ -24,12 +28,19 @@ export default async function handler(
    } else if (req.method === 'PATCH') {
       const token = await getToken({ req });
       const id = req.query.id;
+      delete req.body.getLink;
+      delete req.body.id;
+      delete req.body.patientEditLink;
+      delete req.body.status;
+      const birth = new Date(req.body.birthday);
+      delete req.body.birthday;
       if (token) {
          const patient = await prisma.patient.update({
             where: {
-               id: String(req.query.id)
+               id: String(id)
             },
             data: {
+               birthday: birth,
                ...req.body
             }
          });
@@ -42,17 +53,19 @@ export default async function handler(
          res.status(404).json({ message: 'Acesso Negado' });
       }
    } else if (req.method === 'DELETE') {
-      //todo aqui eu preciso alterar para não apagar, e sim alterar o status para arquivado
       const token = await getToken({ req });
       const id = req.query.id;
       if (token) {
-         const deletedUser = await prisma.patient.delete({
+         const updatedPatient = await prisma.patient.update({
             where: {
                id: String(id)
+            },
+            data: {
+               status: 'Arquivado'
             }
          });
-         if (deletedUser) {
-            res.status(200).json(deletedUser);
+         if (updatedPatient) {
+            res.status(200).json(updatedPatient);
          } else {
             res.status(404).json({ error: 'Paciente não encontrado' });
          }
