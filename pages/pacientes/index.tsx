@@ -7,7 +7,7 @@ import PatientServices from '../../services/PatientServices';
 import IPatient from '../../interfaces/IPatient';
 import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/use-toast';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SuccessMsg from '../../components/parts/SuccessMsg';
 import Loading from '../../components/sections/loading';
 
@@ -16,11 +16,11 @@ export default function Pacientes<NextPage>() {
 
    const urlQuery = router.query;
 
+   const [search, setSearch] = useState(null);
+
    const { toast } = useToast();
 
-   console.log(urlQuery);
-
-   const query = useQuery(['patient'], () => PatientServices.getAll());
+   const query = useQuery(['patients'], () => PatientServices.getAll());
 
    const allPatients = query.data && Patient.createMany(query.data);
 
@@ -69,11 +69,13 @@ export default function Pacientes<NextPage>() {
             title="Pacientes"
             subtitle="Veja a lista completa de pacientes cadastrados no sistema."
             btnHref="/pacientes/novo"
+            data={activePatients}
+            setData={setSearch}
          />
          {query.isLoading ? (
             <Loading />
          ) : (
-            <PatientesTable data={activePatients} />
+            <PatientesTable data={search ?? activePatients} />
          )}
       </Menu>
    );

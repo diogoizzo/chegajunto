@@ -1,1 +1,0 @@
-{"c":["webpack"],"r":["pages/usuarios"],"m":["./components/sections/UserTable.tsx","./entities/User.ts","./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=%2Fhome%2Fdizzo%2FDev%2Fchegajunto%2Fpages%2Fusuarios%2Findex.tsx&page=%2Fusuarios!","./pages/usuarios/index.tsx","./services/UserServices.ts"]}

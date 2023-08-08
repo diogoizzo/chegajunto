@@ -9,4 +9,5 @@ export default interface IUser {
    period?: number;
    crp?: string;
    id?: string;
+   userLink: string;
 }

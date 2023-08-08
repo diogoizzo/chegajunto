@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import User from '../../entities/User';
+import IUser from '../../interfaces/IUser';
 
 interface UserTableProps {
    small?: boolean;
-   data: User[];
+   data: IUser[];
    //todo alterar para depender de uma interface, porém precios alterar a interface usuário para ter os métodos
 }
 

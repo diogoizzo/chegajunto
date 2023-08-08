@@ -1,10 +1,14 @@
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
+import IUser from '../../interfaces/IUser';
+import IPatient from '../../interfaces/IPatient';
 
 interface PageHeaderProps {
    title?: string;
    subtitle?: string;
    btnHref: string;
    btnText?: string;
+   data?: IUser[] | IPatient[];
+   setData?: any;
    search?: boolean;
 }
 
@@ -13,7 +17,9 @@ export default function PageHeader({
    subtitle,
    btnText,
    btnHref,
-   search
+   search,
+   data,
+   setData
 }: PageHeaderProps) {
    return (
       <div className="px-8 pt-8 pb-2">
@@ -30,7 +36,7 @@ export default function PageHeader({
                <div className="w-full md:w-1/2 lg:w-auto px-4">
                   <div className="md:flex items-center">
                      {search !== false ? (
-                        <div className="flex px-4 h-8 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
+                        <div className="realtive flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
                            <span className="flex-shrink-0">
                               <svg
                                  width="14"
@@ -46,10 +52,18 @@ export default function PageHeader({
                               </svg>
                            </span>
                            <input
-                              className="block pl-2 text-sm font-medium text-gray-300 placeholder-gray-400 bg-transparent outline-none"
+                              className="block w-full pl-2 text-sm font-medium text-gray-300 placeholder-gray-400 bg-transparent outline-none"
                               id="pageHeaderInput8-1"
                               type="search"
                               placeholder="Pesquisar..."
+                              onChange={(e) => {
+                                 setData &&
+                                    setData(() => {
+                                       return data?.filter((item: any) =>
+                                          item.name.includes(e.target.value)
+                                       );
+                                    });
+                              }}
                            />
                         </div>
                      ) : null}

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import User from '../entities/User';
 import { UserFromData } from '../components/sections/UserForm';
+import IUser from '../interfaces/IUser';
 
 export default class UserServices {
    static async register(form: any) {

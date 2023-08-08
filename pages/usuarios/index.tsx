@@ -3,22 +3,25 @@ import Menu from '../../components/parts/Menu';
 import PageHeader from '../../components/parts/PageHeader';
 import UserTable from '../../components/sections/UserTable';
 import UserServices from '../../services/UserServices';
-import User from '../../entities/User';
 import { useToast } from '../../components/ui/use-toast';
 import { useRouter } from 'next/router';
 import SuccessMsg from '../../components/parts/SuccessMsg';
+import { useQuery } from 'react-query';
+import Loading from '../../components/sections/loading';
 
 export default function Usuarios<NextPage>() {
-   const [users, setUsers] = useState<User[]>([]);
    const router = useRouter();
+
+   const [search, setSearch] = useState(null);
 
    const urlQuery = router.query;
 
+   const usersQuery = useQuery(['users'], () => UserServices.getAll());
+
+   const users = usersQuery.data || [];
+
    const { toast } = useToast();
 
-   useEffect(() => {
-      UserServices.getAll().then((data) => data && setUsers(data));
-   }, []);
    useEffect(() => {
       if (urlQuery.saved) {
          toast({
@@ -58,8 +61,14 @@ export default function Usuarios<NextPage>() {
             title="Usuários"
             subtitle="Veja todos os usuários cadastrados no sistema."
             btnHref="/auth/signup"
+            data={users}
+            setData={setSearch}
          />
-         <UserTable data={users} />
+         {usersQuery.isLoading ? (
+            <Loading />
+         ) : (
+            <UserTable data={search ?? users} />
+         )}
       </Menu>
    );
 }
