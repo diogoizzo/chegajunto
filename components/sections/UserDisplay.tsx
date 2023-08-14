@@ -23,7 +23,7 @@ function UserDisplay({ user }: UserDisplayProps) {
                <DisplayLine label="Endereço" content={user?.address} />
                <DisplayLine label="CPF" content={user?.cpf} />
                <DisplayLine label="Tipo de Usuário" content={user?.type} />
-               {user?.type === 'Pscicólogo' ? (
+               {user?.type === 'Psicólogo' ? (
                   <>
                      <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 mt-12 border-b border-gray-400 border-opacity-20">
                         <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">

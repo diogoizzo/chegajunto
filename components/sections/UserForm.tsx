@@ -40,7 +40,8 @@ function UserForm({ user }: UserFormProps) {
       institution: user?.institution || '',
       period: user?.period || 0,
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      userLink: user?.userLink || ''
    });
 
    const userUpdateMutation = useMutation({

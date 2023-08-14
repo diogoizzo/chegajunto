@@ -7,7 +7,7 @@ interface PageHeaderProps {
    subtitle?: string;
    btnHref: string;
    btnText?: string;
-   data?: IUser[] | IPatient[];
+   data?: any;
    setData?: any;
    search?: boolean;
 }

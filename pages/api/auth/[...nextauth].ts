@@ -57,6 +57,7 @@ export default NextAuth({
       session: ({ session, token }) => {
          //essa callback inclui a informação desejada na seção do usuário e fica acessível pela useSession()
          if (token) {
+            // @ts-ignore
             session.id = token.id; // eslint-disable-line
          }
          return session;

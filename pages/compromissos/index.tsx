@@ -1,21 +1,39 @@
+import { useState } from 'react';
 import Menu from '../../components/parts/Menu';
+import axios from 'axios';
 
 export default function Compromissos<NextPage>() {
+   const [selectedFile, setSelectedFile] = useState<File>();
+
+   async function handleUpload() {
+      try {
+         if (!selectedFile) return;
+         const formData = new FormData();
+         formData.append('image', selectedFile);
+         const { data } = await axios.post('/api/documentos/upload', formData);
+         console.log(data);
+      } catch (error: any) {
+         console.log(error.response?.data);
+      }
+   }
    return (
       <Menu>
-         <div>
-            <svg
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24"
-               fill="currentColor"
-               className="w-10 h-10 text-yellow-500"
-            >
-               <path
-                  fillRule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                  clipRule="evenodd"
+         <div className="w-full h-full flex items-center justify-center">
+            <label>
+               <input
+                  type="file"
+                  name=""
+                  id=""
+                  onChange={({ target }) => {
+                     if (target.files) {
+                        setSelectedFile(target.files[0]);
+                     }
+                  }}
                />
-            </svg>
+            </label>
+            <button className="px-4 py-2 bg-slate-500" onClick={handleUpload}>
+               Enviar
+            </button>
          </div>
       </Menu>
    );

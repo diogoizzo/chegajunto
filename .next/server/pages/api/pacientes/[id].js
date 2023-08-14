@@ -1,55 +1,145 @@
 "use strict";
-/*
- * ATTENTION: An "eval-source-map" devtool has been used.
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 (() => {
 var exports = {};
-exports.id = "pages/api/pacientes/[id]";
-exports.ids = ["pages/api/pacientes/[id]"];
+exports.id = 546;
+exports.ids = [546];
 exports.modules = {
 
-/***/ "@prisma/client":
-/*!*********************************!*\
-  !*** external "@prisma/client" ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = require("@prisma/client");
-
-/***/ }),
-
-/***/ "next-auth/jwt":
-/*!********************************!*\
-  !*** external "next-auth/jwt" ***!
-  \********************************/
+/***/ 614:
 /***/ ((module) => {
 
 module.exports = require("next-auth/jwt");
 
 /***/ }),
 
-/***/ "(api)/./lib/prisma.ts":
-/*!***********************!*\
-  !*** ./lib/prisma.ts ***!
-  \***********************/
+/***/ 8869:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _prisma_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @prisma/client */ \"@prisma/client\");\n/* harmony import */ var _prisma_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_prisma_client__WEBPACK_IMPORTED_MODULE_0__);\n\nlet prisma;\nif (false) {} else {\n    if (!global.prisma) {\n        global.prisma = new _prisma_client__WEBPACK_IMPORTED_MODULE_0__.PrismaClient();\n    }\n    prisma = global.prisma;\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (prisma);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9saWIvcHJpc21hLnRzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUE4QztBQUU5QyxJQUFJQztBQU1KLElBQUlDLEtBQXlCLEVBQWMsRUFFMUMsTUFBTTtJQUNKLElBQUksQ0FBQ0MsT0FBT0YsTUFBTSxFQUFFO1FBQ2pCRSxPQUFPRixNQUFNLEdBQUcsSUFBSUQsd0RBQVlBO0lBQ25DO0lBQ0FDLFNBQVNFLE9BQU9GLE1BQU07QUFDekI7QUFFQSxpRUFBZUEsTUFBTUEsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL2NoZWdhanVudG8vLi9saWIvcHJpc21hLnRzPzk4MjIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUHJpc21hQ2xpZW50IH0gZnJvbSAnQHByaXNtYS9jbGllbnQnO1xuXG5sZXQgcHJpc21hOiBQcmlzbWFDbGllbnQ7XG5cbmRlY2xhcmUgZ2xvYmFsIHtcbiAgIHZhciBwcmlzbWE6IFByaXNtYUNsaWVudDtcbn1cblxuaWYgKHByb2Nlc3MuZW52Lk5PREVfRU5WID09PSAncHJvZHVjdGlvbicpIHtcbiAgIHByaXNtYSA9IG5ldyBQcmlzbWFDbGllbnQoKTtcbn0gZWxzZSB7XG4gICBpZiAoIWdsb2JhbC5wcmlzbWEpIHtcbiAgICAgIGdsb2JhbC5wcmlzbWEgPSBuZXcgUHJpc21hQ2xpZW50KCk7XG4gICB9XG4gICBwcmlzbWEgPSBnbG9iYWwucHJpc21hO1xufVxuXG5leHBvcnQgZGVmYXVsdCBwcmlzbWE7XG4iXSwibmFtZXMiOlsiUHJpc21hQ2xpZW50IiwicHJpc21hIiwicHJvY2VzcyIsImdsb2JhbCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./lib/prisma.ts\n");
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Z: () => (/* binding */ lib_prisma)
+});
+
+;// CONCATENATED MODULE: external "@prisma/client"
+const client_namespaceObject = require("@prisma/client");
+;// CONCATENATED MODULE: ./lib/prisma.ts
+
+let prisma;
+if (true) {
+    prisma = new client_namespaceObject.PrismaClient();
+} else {}
+/* harmony default export */ const lib_prisma = (prisma);
+
 
 /***/ }),
 
-/***/ "(api)/./pages/api/pacientes/[id].ts":
-/*!*************************************!*\
-  !*** ./pages/api/pacientes/[id].ts ***!
-  \*************************************/
+/***/ 1458:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next-auth/jwt */ \"next-auth/jwt\");\n/* harmony import */ var next_auth_jwt__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _lib_prisma__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../lib/prisma */ \"(api)/./lib/prisma.ts\");\n\n\nasync function handler(req, res) {\n    if (req.method === \"GET\") {\n        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({\n            req\n        });\n        const id = req.query.id;\n        if (token) {\n            const patient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__[\"default\"].patient.findUnique({\n                where: {\n                    id: String(id)\n                },\n                include: {\n                    underResponsibilityOf: true,\n                    interviewedBy: true\n                }\n            });\n            if (patient) {\n                res.status(200).json(patient);\n            } else {\n                res.status(404).json({\n                    error: \"Usu\\xe1rio n\\xe3o encontrado\"\n                });\n            }\n        } else {\n            res.status(401).send({\n                message: \"Acesso negado\"\n            });\n        }\n    } else if (req.method === \"PATCH\") {\n        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({\n            req\n        });\n        const id = req.query.id;\n        delete req.body.getLink;\n        delete req.body.id;\n        delete req.body.patientEditLink;\n        delete req.body.status;\n        const birth = new Date(req.body.birthday);\n        delete req.body.birthday;\n        if (token) {\n            const patient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__[\"default\"].patient.update({\n                where: {\n                    id: String(id)\n                },\n                data: {\n                    birthday: birth,\n                    ...req.body\n                }\n            });\n            if (patient) {\n                res.status(200).json(patient);\n            } else {\n                res.status(404).json({\n                    error: \"Usu\\xe1rio n\\xe3o encontrado\"\n                });\n            }\n        } else {\n            res.status(404).json({\n                message: \"Acesso Negado\"\n            });\n        }\n    } else if (req.method === \"DELETE\") {\n        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({\n            req\n        });\n        const id = req.query.id;\n        if (token) {\n            const updatedPatient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__[\"default\"].patient.update({\n                where: {\n                    id: String(id)\n                },\n                data: {\n                    status: \"Arquivado\"\n                }\n            });\n            if (updatedPatient) {\n                res.status(200).json(updatedPatient);\n            } else {\n                res.status(404).json({\n                    error: \"Paciente n\\xe3o encontrado\"\n                });\n            }\n        } else {\n            res.status(401).send({\n                message: \"Acesso Negado\"\n            });\n        }\n    } else {\n        return res.status(405).json({\n            error: \"Esse tipo de requisi\\xe7\\xe3o n\\xe3o \\xe9 suportada nesta rota\"\n        });\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvcGFjaWVudGVzL1tpZF0udHMiLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUN5QztBQUNBO0FBRTFCLGVBQWVFLFFBQzNCQyxHQUFtQixFQUNuQkMsR0FBb0I7SUFFcEIsSUFBSUQsSUFBSUUsTUFBTSxLQUFLLE9BQU87UUFDdkIsTUFBTUMsUUFBUSxNQUFNTix1REFBUUEsQ0FBQztZQUFFRztRQUFJO1FBQ25DLE1BQU1JLEtBQUtKLElBQUlLLEtBQUssQ0FBQ0QsRUFBRTtRQUN2QixJQUFJRCxPQUFPO1lBQ1IsTUFBTUcsVUFBVSxNQUFNUiwyREFBYyxDQUFDUyxVQUFVLENBQUM7Z0JBQzdDQyxPQUFPO29CQUFFSixJQUFJSyxPQUFPTDtnQkFBSTtnQkFDeEJNLFNBQVM7b0JBQ05DLHVCQUF1QjtvQkFDdkJDLGVBQWU7Z0JBQ2xCO1lBQ0g7WUFDQSxJQUFJTixTQUFTO2dCQUNWTCxJQUFJWSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDUjtZQUN4QixPQUFPO2dCQUNKTCxJQUFJWSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDO29CQUFFQyxPQUFPO2dCQUF5QjtZQUMxRDtRQUNILE9BQU87WUFDSmQsSUFBSVksTUFBTSxDQUFDLEtBQUtHLElBQUksQ0FBQztnQkFBRUMsU0FBUztZQUFnQjtRQUNuRDtJQUNILE9BQU8sSUFBSWpCLElBQUlFLE1BQU0sS0FBSyxTQUFTO1FBQ2hDLE1BQU1DLFFBQVEsTUFBTU4sdURBQVFBLENBQUM7WUFBRUc7UUFBSTtRQUNuQyxNQUFNSSxLQUFLSixJQUFJSyxLQUFLLENBQUNELEVBQUU7UUFDdkIsT0FBT0osSUFBSWtCLElBQUksQ0FBQ0MsT0FBTztRQUN2QixPQUFPbkIsSUFBSWtCLElBQUksQ0FBQ2QsRUFBRTtRQUNsQixPQUFPSixJQUFJa0IsSUFBSSxDQUFDRSxlQUFlO1FBQy9CLE9BQU9wQixJQUFJa0IsSUFBSSxDQUFDTCxNQUFNO1FBQ3RCLE1BQU1RLFFBQVEsSUFBSUMsS0FBS3RCLElBQUlrQixJQUFJLENBQUNLLFFBQVE7UUFDeEMsT0FBT3ZCLElBQUlrQixJQUFJLENBQUNLLFFBQVE7UUFDeEIsSUFBSXBCLE9BQU87WUFDUixNQUFNRyxVQUFVLE1BQU1SLDJEQUFjLENBQUMwQixNQUFNLENBQUM7Z0JBQ3pDaEIsT0FBTztvQkFDSkosSUFBSUssT0FBT0w7Z0JBQ2Q7Z0JBQ0FxQixNQUFNO29CQUNIRixVQUFVRjtvQkFDVixHQUFHckIsSUFBSWtCLElBQUk7Z0JBQ2Q7WUFDSDtZQUNBLElBQUlaLFNBQVM7Z0JBQ1ZMLElBQUlZLE1BQU0sQ0FBQyxLQUFLQyxJQUFJLENBQUNSO1lBQ3hCLE9BQU87Z0JBQ0pMLElBQUlZLE1BQU0sQ0FBQyxLQUFLQyxJQUFJLENBQUM7b0JBQUVDLE9BQU87Z0JBQXlCO1lBQzFEO1FBQ0gsT0FBTztZQUNKZCxJQUFJWSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDO2dCQUFFRyxTQUFTO1lBQWdCO1FBQ25EO0lBQ0gsT0FBTyxJQUFJakIsSUFBSUUsTUFBTSxLQUFLLFVBQVU7UUFDakMsTUFBTUMsUUFBUSxNQUFNTix1REFBUUEsQ0FBQztZQUFFRztRQUFJO1FBQ25DLE1BQU1JLEtBQUtKLElBQUlLLEtBQUssQ0FBQ0QsRUFBRTtRQUN2QixJQUFJRCxPQUFPO1lBQ1IsTUFBTXVCLGlCQUFpQixNQUFNNUIsMkRBQWMsQ0FBQzBCLE1BQU0sQ0FBQztnQkFDaERoQixPQUFPO29CQUNKSixJQUFJSyxPQUFPTDtnQkFDZDtnQkFDQXFCLE1BQU07b0JBQ0haLFFBQVE7Z0JBQ1g7WUFDSDtZQUNBLElBQUlhLGdCQUFnQjtnQkFDakJ6QixJQUFJWSxNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDWTtZQUN4QixPQUFPO2dCQUNKekIsSUFBSVksTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQztvQkFBRUMsT0FBTztnQkFBMEI7WUFDM0Q7UUFDSCxPQUFPO1lBQ0pkLElBQUlZLE1BQU0sQ0FBQyxLQUFLRyxJQUFJLENBQUM7Z0JBQUVDLFNBQVM7WUFBZ0I7UUFDbkQ7SUFDSCxPQUFPO1FBQ0osT0FBT2hCLElBQ0hZLE1BQU0sQ0FBQyxLQUNQQyxJQUFJLENBQUM7WUFBRUMsT0FBTztRQUFxRDtJQUMxRTtBQUNIIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY2hlZ2FqdW50by8uL3BhZ2VzL2FwaS9wYWNpZW50ZXMvW2lkXS50cz84ODRhIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0eXBlIHsgTmV4dEFwaVJlcXVlc3QsIE5leHRBcGlSZXNwb25zZSB9IGZyb20gJ25leHQnO1xuaW1wb3J0IHsgZ2V0VG9rZW4gfSBmcm9tICduZXh0LWF1dGgvand0JztcbmltcG9ydCBwcmlzbWEgZnJvbSAnLi4vLi4vLi4vbGliL3ByaXNtYSc7XG5cbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIGhhbmRsZXIoXG4gICByZXE6IE5leHRBcGlSZXF1ZXN0LFxuICAgcmVzOiBOZXh0QXBpUmVzcG9uc2Vcbikge1xuICAgaWYgKHJlcS5tZXRob2QgPT09ICdHRVQnKSB7XG4gICAgICBjb25zdCB0b2tlbiA9IGF3YWl0IGdldFRva2VuKHsgcmVxIH0pO1xuICAgICAgY29uc3QgaWQgPSByZXEucXVlcnkuaWQ7XG4gICAgICBpZiAodG9rZW4pIHtcbiAgICAgICAgIGNvbnN0IHBhdGllbnQgPSBhd2FpdCBwcmlzbWEucGF0aWVudC5maW5kVW5pcXVlKHtcbiAgICAgICAgICAgIHdoZXJlOiB7IGlkOiBTdHJpbmcoaWQpIH0sXG4gICAgICAgICAgICBpbmNsdWRlOiB7XG4gICAgICAgICAgICAgICB1bmRlclJlc3BvbnNpYmlsaXR5T2Y6IHRydWUsXG4gICAgICAgICAgICAgICBpbnRlcnZpZXdlZEJ5OiB0cnVlXG4gICAgICAgICAgICB9XG4gICAgICAgICB9KTtcbiAgICAgICAgIGlmIChwYXRpZW50KSB7XG4gICAgICAgICAgICByZXMuc3RhdHVzKDIwMCkuanNvbihwYXRpZW50KTtcbiAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICByZXMuc3RhdHVzKDQwNCkuanNvbih7IGVycm9yOiAnVXN1w6FyaW8gbsOjbyBlbmNvbnRyYWRvJyB9KTtcbiAgICAgICAgIH1cbiAgICAgIH0gZWxzZSB7XG4gICAgICAgICByZXMuc3RhdHVzKDQwMSkuc2VuZCh7IG1lc3NhZ2U6ICdBY2Vzc28gbmVnYWRvJyB9KTtcbiAgICAgIH1cbiAgIH0gZWxzZSBpZiAocmVxLm1ldGhvZCA9PT0gJ1BBVENIJykge1xuICAgICAgY29uc3QgdG9rZW4gPSBhd2FpdCBnZXRUb2tlbih7IHJlcSB9KTtcbiAgICAgIGNvbnN0IGlkID0gcmVxLnF1ZXJ5LmlkO1xuICAgICAgZGVsZXRlIHJlcS5ib2R5LmdldExpbms7XG4gICAgICBkZWxldGUgcmVxLmJvZHkuaWQ7XG4gICAgICBkZWxldGUgcmVxLmJvZHkucGF0aWVudEVkaXRMaW5rO1xuICAgICAgZGVsZXRlIHJlcS5ib2R5LnN0YXR1cztcbiAgICAgIGNvbnN0IGJpcnRoID0gbmV3IERhdGUocmVxLmJvZHkuYmlydGhkYXkpO1xuICAgICAgZGVsZXRlIHJlcS5ib2R5LmJpcnRoZGF5O1xuICAgICAgaWYgKHRva2VuKSB7XG4gICAgICAgICBjb25zdCBwYXRpZW50ID0gYXdhaXQgcHJpc21hLnBhdGllbnQudXBkYXRlKHtcbiAgICAgICAgICAgIHdoZXJlOiB7XG4gICAgICAgICAgICAgICBpZDogU3RyaW5nKGlkKVxuICAgICAgICAgICAgfSxcbiAgICAgICAgICAgIGRhdGE6IHtcbiAgICAgICAgICAgICAgIGJpcnRoZGF5OiBiaXJ0aCxcbiAgICAgICAgICAgICAgIC4uLnJlcS5ib2R5XG4gICAgICAgICAgICB9XG4gICAgICAgICB9KTtcbiAgICAgICAgIGlmIChwYXRpZW50KSB7XG4gICAgICAgICAgICByZXMuc3RhdHVzKDIwMCkuanNvbihwYXRpZW50KTtcbiAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICByZXMuc3RhdHVzKDQwNCkuanNvbih7IGVycm9yOiAnVXN1w6FyaW8gbsOjbyBlbmNvbnRyYWRvJyB9KTtcbiAgICAgICAgIH1cbiAgICAgIH0gZWxzZSB7XG4gICAgICAgICByZXMuc3RhdHVzKDQwNCkuanNvbih7IG1lc3NhZ2U6ICdBY2Vzc28gTmVnYWRvJyB9KTtcbiAgICAgIH1cbiAgIH0gZWxzZSBpZiAocmVxLm1ldGhvZCA9PT0gJ0RFTEVURScpIHtcbiAgICAgIGNvbnN0IHRva2VuID0gYXdhaXQgZ2V0VG9rZW4oeyByZXEgfSk7XG4gICAgICBjb25zdCBpZCA9IHJlcS5xdWVyeS5pZDtcbiAgICAgIGlmICh0b2tlbikge1xuICAgICAgICAgY29uc3QgdXBkYXRlZFBhdGllbnQgPSBhd2FpdCBwcmlzbWEucGF0aWVudC51cGRhdGUoe1xuICAgICAgICAgICAgd2hlcmU6IHtcbiAgICAgICAgICAgICAgIGlkOiBTdHJpbmcoaWQpXG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgZGF0YToge1xuICAgICAgICAgICAgICAgc3RhdHVzOiAnQXJxdWl2YWRvJ1xuICAgICAgICAgICAgfVxuICAgICAgICAgfSk7XG4gICAgICAgICBpZiAodXBkYXRlZFBhdGllbnQpIHtcbiAgICAgICAgICAgIHJlcy5zdGF0dXMoMjAwKS5qc29uKHVwZGF0ZWRQYXRpZW50KTtcbiAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICByZXMuc3RhdHVzKDQwNCkuanNvbih7IGVycm9yOiAnUGFjaWVudGUgbsOjbyBlbmNvbnRyYWRvJyB9KTtcbiAgICAgICAgIH1cbiAgICAgIH0gZWxzZSB7XG4gICAgICAgICByZXMuc3RhdHVzKDQwMSkuc2VuZCh7IG1lc3NhZ2U6ICdBY2Vzc28gTmVnYWRvJyB9KTtcbiAgICAgIH1cbiAgIH0gZWxzZSB7XG4gICAgICByZXR1cm4gcmVzXG4gICAgICAgICAuc3RhdHVzKDQwNSlcbiAgICAgICAgIC5qc29uKHsgZXJyb3I6ICdFc3NlIHRpcG8gZGUgcmVxdWlzacOnw6NvIG7Do28gw6kgc3Vwb3J0YWRhIG5lc3RhIHJvdGEnIH0pO1xuICAgfVxufVxuIl0sIm5hbWVzIjpbImdldFRva2VuIiwicHJpc21hIiwiaGFuZGxlciIsInJlcSIsInJlcyIsIm1ldGhvZCIsInRva2VuIiwiaWQiLCJxdWVyeSIsInBhdGllbnQiLCJmaW5kVW5pcXVlIiwid2hlcmUiLCJTdHJpbmciLCJpbmNsdWRlIiwidW5kZXJSZXNwb25zaWJpbGl0eU9mIiwiaW50ZXJ2aWV3ZWRCeSIsInN0YXR1cyIsImpzb24iLCJlcnJvciIsInNlbmQiLCJtZXNzYWdlIiwiYm9keSIsImdldExpbmsiLCJwYXRpZW50RWRpdExpbmsiLCJiaXJ0aCIsIkRhdGUiLCJiaXJ0aGRheSIsInVwZGF0ZSIsImRhdGEiLCJ1cGRhdGVkUGF0aWVudCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./pages/api/pacientes/[id].ts\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ handler)
+/* harmony export */ });
+/* harmony import */ var next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(614);
+/* harmony import */ var next_auth_jwt__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_prisma__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8869);
+
+
+async function handler(req, res) {
+    if (req.method === "GET") {
+        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({
+            req
+        });
+        const id = req.query.id;
+        if (token) {
+            const patient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.patient.findUnique({
+                where: {
+                    id: String(id)
+                },
+                include: {
+                    underResponsibilityOf: true,
+                    interviewedBy: true
+                }
+            });
+            if (patient) {
+                res.status(200).json(patient);
+            } else {
+                res.status(404).json({
+                    error: "Usu\xe1rio n\xe3o encontrado"
+                });
+            }
+        } else {
+            res.status(401).send({
+                message: "Acesso negado"
+            });
+        }
+    } else if (req.method === "PATCH") {
+        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({
+            req
+        });
+        const id = req.query.id;
+        delete req.body.getLink;
+        delete req.body.id;
+        delete req.body.patientEditLink;
+        delete req.body.status;
+        const birth = new Date(req.body.birthday);
+        delete req.body.birthday;
+        if (token) {
+            const patient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.patient.update({
+                where: {
+                    id: String(id)
+                },
+                data: {
+                    birthday: birth,
+                    ...req.body
+                }
+            });
+            if (patient) {
+                res.status(200).json(patient);
+            } else {
+                res.status(404).json({
+                    error: "Usu\xe1rio n\xe3o encontrado"
+                });
+            }
+        } else {
+            res.status(404).json({
+                message: "Acesso Negado"
+            });
+        }
+    } else if (req.method === "DELETE") {
+        const token = await (0,next_auth_jwt__WEBPACK_IMPORTED_MODULE_0__.getToken)({
+            req
+        });
+        const id = req.query.id;
+        if (token) {
+            const updatedPatient = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.patient.update({
+                where: {
+                    id: String(id)
+                },
+                data: {
+                    status: "Arquivado"
+                }
+            });
+            if (updatedPatient) {
+                res.status(200).json(updatedPatient);
+            } else {
+                res.status(404).json({
+                    error: "Paciente n\xe3o encontrado"
+                });
+            }
+        } else {
+            res.status(401).send({
+                message: "Acesso Negado"
+            });
+        }
+    } else {
+        return res.status(405).json({
+            error: "Esse tipo de requisi\xe7\xe3o n\xe3o \xe9 suportada nesta rota"
+        });
+    }
+}
+
 
 /***/ })
 
@@ -60,7 +150,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 var __webpack_require__ = require("../../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__("(api)/./pages/api/pacientes/[id].ts"));
+var __webpack_exports__ = (__webpack_exec__(1458));
 module.exports = __webpack_exports__;
 
 })();
