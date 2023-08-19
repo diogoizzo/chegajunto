@@ -82,15 +82,17 @@ model Availability {
 
 model Document {
   id                 String   @id @default(cuid())
+  name               String
   type               String
   description        String?
-  url                String
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-  uploadedBy         User?    @relation("upload", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
-  uploadedByUserId   String?
+  uploadedBy         User     @relation("upload", fields: [uploadedByUserId], references: [id], onDelete: NoAction)
+  uploadedByUserId   String
   belongsTo          Patient  @relation("belongs", fields: [belongsToPatientId], references: [id])
+  mimeType           String
   belongsToPatientId String
+  googleDriveId      String
   tags               Tag[]
 }
 

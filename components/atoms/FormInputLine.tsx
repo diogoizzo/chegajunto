@@ -15,7 +15,6 @@ export default function FormInputLine({
    state,
    setState
 }: FormInputLineProps) {
-   console.log(state);
    return (
       <div className="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-cool-gray-900 border-opacity-10">
          <div className="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">

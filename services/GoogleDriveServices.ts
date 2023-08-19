@@ -36,9 +36,10 @@ class GoogleDriveServices {
          });
          let result = await this.drive.files.get({
             fileId,
-            fields: 'webContentLink, webViewLink'
+            fields: 'id, webContentLink, webViewLink'
          });
-         return result.data;
+         console.log(result.data);
+         return result.data.id;
       } catch (error) {
          console.log(error);
       }

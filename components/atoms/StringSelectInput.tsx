@@ -44,7 +44,7 @@ function StringSelectInput({
                      }))
                   }
                >
-                  <SelectTrigger className="w-full text-cool-gray-200 border border-raisin-black-lighter">
+                  <SelectTrigger className="w-full text-cool-gray-200 py-6 border border-raisin-black-lighter hover:border-cool-gray-900">
                      <SelectValue className="" placeholder={placeholder} />
                   </SelectTrigger>
                   <SelectContent>

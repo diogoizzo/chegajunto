@@ -7,7 +7,7 @@ import PageHeader from '../../components/parts/PageHeader';
 import PatientDisplay from '../../components/sections/PatientDisplay';
 import PatientServices from '../../services/PatientServices';
 
-export default function VizualizarPaciente() {
+export default function PatientView() {
    const router = useRouter();
 
    const patientId = router.query.id;
@@ -32,4 +32,4 @@ export default function VizualizarPaciente() {
    );
 }
 
-VizualizarPaciente.auth = true;
+PatientView.auth = true;

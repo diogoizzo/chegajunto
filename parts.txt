@@ -14,3 +14,8 @@ tag da tabela status vermelho:
                                        INCOMPLETOS
                                     </span>
                                  </div>
+
+
+links do google drive para modelo de link:
+
+{id: '1HB9tqGUpQEB8pA3SzbDoNIBa76YYkkZN', webContentLink: 'https://drive.google.com/uc?id=1HB9tqGUpQEB8pA3SzbDoNIBa76YYkkZN&export=download', webViewLink: 'https://drive.google.com/file/d/1HB9tqGUpQEB8pA3SzbDoNIBa76YYkkZN/view?usp=drivesdk'}

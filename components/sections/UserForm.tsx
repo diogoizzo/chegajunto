@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import FormInputLine from '../atoms/FormInputLine';
-import SelectInput from '../atoms/SelectInput';
 import IUser from '../../interfaces/IUser';
 import UserServices from '../../services/UserServices';
 import User from '../../entities/User';
