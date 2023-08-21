@@ -2,15 +2,45 @@ import DisplayLine from '../atoms/DisplayLine';
 
 import IPatient from '../../interfaces/IPatient';
 import dayjs from 'dayjs';
+import MissingDocumentAlert from '../parts/MissingDocumentAlert';
+import AvailabilityDisplay from './AvailabilityDisplay';
+import IAvailability from '../../interfaces/IAvailability';
 
 interface PatientDisplayProps {
    patient?: IPatient;
 }
 
 function PatientDisplay({ patient }: PatientDisplayProps) {
+   const availabilities: IAvailability[] = [
+      {
+         id: 'cfasdfasdfaer23442te',
+         dayOfWeek: 'Segunda-feira',
+         time: '18:00',
+         professionals: [],
+         patientes: []
+      },
+      {
+         id: 'cfasdfasddfgdfrergr23442te',
+         dayOfWeek: 'Terça-feira',
+         time: '14:00',
+         professionals: [],
+         patientes: []
+      },
+      {
+         id: 'cfasdfasddfgdfrergr23442te',
+         dayOfWeek: 'Sexta-feira',
+         time: '10:00',
+         professionals: [],
+         patientes: []
+      }
+   ];
    return (
-      <section className="py-3 mt-3">
+      <section className="py-3 ">
          <div className="container px-4 mx-auto">
+            {patient && !patient?.isDocumentsComplete ? (
+               <MissingDocumentAlert patient={patient} />
+            ) : null}
+
             <div className="p-10 bg-raisin-black rounded-lg">
                <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
@@ -25,7 +55,10 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                <DisplayLine label="Endereço" content={patient?.address} />
                <DisplayLine
                   label="Data de Nascimento"
-                  content={dayjs(patient?.birthday).format('DD/MM/YYYY')}
+                  content={
+                     patient?.birthday &&
+                     dayjs(patient.birthday).format('DD/MM/YYYY')
+                  }
                />
                <DisplayLine label="Status" content={patient?.status} />
                <DisplayLine label="CPF" content={patient?.cpf} />
@@ -46,7 +79,6 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   label="É Bolsista?"
                   content={patient?.scholarship ? 'Sim' : 'Não'}
                />
-
                <div className="flex flex-wrap items-center justify-between mt-12 -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                      <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -88,6 +120,7 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   content={patient?.underResponsibilityOf?.name}
                />
             </div>
+            <AvailabilityDisplay availabilities={availabilities} />
          </div>
       </section>
    );

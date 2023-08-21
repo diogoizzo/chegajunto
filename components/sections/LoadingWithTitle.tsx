@@ -9,11 +9,11 @@ function LoadingWithTitle({ title }: { title: string }) {
             <div className="relative  flex flex-col items-center justify-center">
                <ReactLoading
                   type={'spinningBubbles'}
-                  color={'#16161F'}
+                  color={'#334155'}
                   height={160}
                   width={160}
                />
-               <h2 className="mt-16 text-4xl font-semibold text-raisin-black">
+               <h2 className="mt-16 text-4xl font-semibold text-slate-700">
                   {title}
                </h2>
             </div>

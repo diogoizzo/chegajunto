@@ -14,6 +14,8 @@ import FormSwitchLine from '../atoms/FormSwitchLine';
 import UserServices from '../../services/UserServices';
 import User from '../../entities/User';
 import FormInputDateLine from '../atoms/FormInputDateLine';
+import AvailabilityForm from './AvailabilityForm';
+import IAvailability from '../../interfaces/IAvailability';
 
 interface PatientFormProps {
    patient?: IPatient;
@@ -77,8 +79,8 @@ function PatientForm({ patient }: PatientFormProps) {
    });
    const patientCreateMutation = useMutation({
       mutationFn: PatientServices.create,
-      onSuccess: () => {
-         router.push('/pacientes?saved=true');
+      onSuccess: (data) => {
+         router.push(`/pacientes/${data.id}?saved=true`);
       },
       onError: () => {
          errorToast('Não foi possível criar o novo paciente.');
@@ -108,6 +110,31 @@ function PatientForm({ patient }: PatientFormProps) {
       e.preventDefault();
       setIsOpen(true);
    }
+
+   //todo não esquecer de remover a constante abaixo, após buscar do bd
+   const availabilities: IAvailability[] = [
+      {
+         id: 'cfasdfasdfaer23442te',
+         dayOfWeek: 'Segunda-feira',
+         time: '18:00',
+         professionals: [],
+         patientes: []
+      },
+      {
+         id: 'cfasdfasddfgdfrergr23442te',
+         dayOfWeek: 'Terça-feira',
+         time: '14:00',
+         professionals: [],
+         patientes: []
+      },
+      {
+         id: 'cfasdfasddfgdfrergr23442te',
+         dayOfWeek: 'Sexta-feira',
+         time: '10:00',
+         professionals: [],
+         patientes: []
+      }
+   ];
 
    return (
       <>
@@ -326,6 +353,7 @@ function PatientForm({ patient }: PatientFormProps) {
                      </div>
                   </form>
                </div>
+               <AvailabilityForm availabilities={availabilities} />
             </div>
          </section>
       </>

@@ -6,8 +6,8 @@ export default class Document implements IDocument {
    constructor(
       public id: string,
       public name: string,
-      public type: string,
-      public mimeType: string,
+      public type?: string,
+      public mimeType?: string,
       public uploadedBy?: IUser,
       public uploadedByUserId?: string,
       public belongsTo?: IPatient,
@@ -27,9 +27,6 @@ export default class Document implements IDocument {
    }
    get documentEditLink() {
       return `/documentos/editar/${this.id}`;
-   }
-   get documentEmbebedLink() {
-      return `https://drive.google.com/file/d/${this.googleDriveId}/view`;
    }
    static createFromObject({
       id,

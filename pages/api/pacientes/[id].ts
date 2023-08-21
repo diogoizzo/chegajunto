@@ -14,7 +14,8 @@ export default async function handler(
             where: { id: String(id) },
             include: {
                underResponsibilityOf: true,
-               interviewedBy: true
+               interviewedBy: true,
+               documents: true
             }
          });
          if (patient) {
@@ -32,7 +33,7 @@ export default async function handler(
       delete req.body.id;
       delete req.body.patientEditLink;
       delete req.body.status;
-      const birth = new Date(req.body.birthday);
+      const birth = req.body.birthday ? new Date(req.body.birthday) : null;
       delete req.body.birthday;
       if (token) {
          const patient = await prisma.patient.update({

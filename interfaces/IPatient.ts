@@ -1,3 +1,4 @@
+import IDocument from './IDocument';
 import IUser from './IUser';
 
 export default interface IPatient {
@@ -23,6 +24,12 @@ export default interface IPatient {
    observation?: string;
    underResponsibilityOf?: IUser;
    underResponsibilityOfUserId?: string;
+   documents?: IDocument[];
    getLink: string;
    patientEditLink: string;
+   isDocumentsComplete?: boolean;
+   hasAutorization?: boolean;
+   hasSorting?: boolean;
+   uploadAutorizationLink?: string;
+   uploadSortingLink?: string;
 }

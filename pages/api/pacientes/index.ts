@@ -9,7 +9,11 @@ export default async function handler(
    if (req.method === 'GET') {
       const token = await getToken({ req });
       if (token) {
-         const patients = await prisma.patient.findMany();
+         const patients = await prisma.patient.findMany({
+            include: {
+               documents: true
+            }
+         });
          if (patients) {
             res.status(200).json(patients);
          } else {

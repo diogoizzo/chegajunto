@@ -25,7 +25,7 @@ export default function FormInputLine({
                <div className="flex flex-wrap items-center -mx-3">
                   <div className="w-full px-3 mb-3 sm:mb-0">
                      <input
-                        value={dayjs(state).format('YYYY-MM-DD')}
+                        value={state && dayjs(state).format('YYYY-MM-DD')}
                         name={name}
                         className="block text-md placeholder:text-gray-700 py-4 px-3 w-full text-sm text-cool-gray-200 placeholder-cool-gray-200 font-medium outline-none bg-transparent border border-raisin-black-lighter hover:border-cool-gray-900 focus-within:border-carolina-blue rounded-lg"
                         type="date"

@@ -11,7 +11,7 @@ export default function EditPatient() {
 
    const patientId = router.query.id;
 
-   const query = useQuery(['user', patientId], () =>
+   const query = useQuery(['patient', patientId], () =>
       PatientServices.getById(patientId)
    );
 

@@ -6,7 +6,6 @@ interface PatientesTableProps {
 }
 
 function PatientesTable({ small, data }: PatientesTableProps) {
-   console.log(data);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
@@ -104,9 +103,15 @@ function PatientesTable({ small, data }: PatientesTableProps) {
                                                    : null
                                              }`}
                                           >
-                                             <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
-                                                COMPLETOS
-                                             </span>
+                                             {patient.isDocumentsComplete ? (
+                                                <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
+                                                   COMPLETOS
+                                                </span>
+                                             ) : (
+                                                <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-red-300 rounded-full">
+                                                   INCOMPLETOS
+                                                </span>
+                                             )}
                                           </div>
                                        </Link>
                                     </td>

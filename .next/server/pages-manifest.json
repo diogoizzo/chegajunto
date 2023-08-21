@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/documentos/novo": "pages/documentos/novo.js",
+  "/pacientes/[id]": "pages/pacientes/[id].js",
   "/documentos": "pages/documentos.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/api/documentos": "pages/api/documentos.js",
-  "/documentos/[id]": "pages/documentos/[id].js",
-  "/api/documentos/[id]": "pages/api/documentos/[id].js"
+  "/pacientes": "pages/pacientes.js"
 }

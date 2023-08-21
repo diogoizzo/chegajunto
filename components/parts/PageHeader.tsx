@@ -1,6 +1,4 @@
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
-import IUser from '../../interfaces/IUser';
-import IPatient from '../../interfaces/IPatient';
 
 interface PageHeaderProps {
    title?: string;
@@ -60,7 +58,11 @@ export default function PageHeader({
                                  setData &&
                                     setData(() => {
                                        return data?.filter((item: any) =>
-                                          item.name.includes(e.target.value)
+                                          item.name
+                                             .toLowerCase()
+                                             .includes(
+                                                e.target.value.toLowerCase()
+                                             )
                                        );
                                     });
                               }}

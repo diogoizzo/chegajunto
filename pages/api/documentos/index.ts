@@ -1,25 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
-import formidable from 'formidable';
+import readFile from '../../../lib/readFile';
 import GoogleDriveServices from '../../../services/GoogleDriveServices';
 
+//todo falar com o daniel a respeito do limite de upload e o que fazer sobre isso
 export const config = {
    api: {
       bodyParser: false
    }
 };
-
-async function readFile(
-   req: NextApiRequest
-): Promise<{ fields: formidable.Fields; files: formidable.Files }> {
-   const form = formidable();
-   return new Promise((resolve, reject) => {
-      form.parse(req, (err, fields, files) => {
-         if (err) reject(err);
-         resolve({ fields, files });
-      });
-   });
-}
 
 export default async function handler(
    req: NextApiRequest,
@@ -53,6 +42,7 @@ export default async function handler(
          const { fields, files } = await readFile(req);
          console.log(fields);
          console.log(files);
+
          const googleId = await GoogleDriveServices.uploadFile(files.file[0]);
          if (googleId) {
             const doc = await prisma.document.create({
@@ -70,13 +60,13 @@ export default async function handler(
             res.status(200).json(doc);
          } else {
             res.status(503).send({
-               message:
-                  'Não foi possível criar salvar o documento no google drive'
+               message: 'Não foi possível salvar o documento no google drive'
             });
          }
 
-         //  const files = await GoogleDriveServices.readAll();
-         //  await GoogleDriveServices.deleteAll(files);
+         // const files = await GoogleDriveServices.readAll();
+         // console.log(files);
+         // await GoogleDriveServices.deleteAll(files);
       } else {
          res.status(401).send({ message: 'Acesso negado' });
       }

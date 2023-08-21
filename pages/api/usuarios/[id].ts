@@ -9,7 +9,6 @@ export default async function handler(
    if (req.method === 'GET') {
       const token = await getToken({ req });
       const id = req.query.id;
-      console.log(JSON.stringify(req.query));
       if (token) {
          const user = await prisma.user.findUnique({
             where: { id: String(id) },
@@ -39,6 +38,7 @@ export default async function handler(
       }
    } else if (req.method === 'PATCH') {
       const token = await getToken({ req });
+      delete req.body.userLink;
       const id = req.query.id;
       if (token) {
          const user = await prisma.user.update({

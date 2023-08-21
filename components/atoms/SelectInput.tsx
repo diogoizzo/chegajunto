@@ -45,7 +45,7 @@ function SelectInput({
                   }
                >
                   <SelectTrigger className="w-full text-cool-gray-200 border py-6 hover:border-cool-gray-900  border-raisin-black-lighter">
-                     <SelectValue className="" placeholder={placeholder} />
+                     <SelectValue placeholder={placeholder} />
                   </SelectTrigger>
                   <SelectContent>
                      {options &&

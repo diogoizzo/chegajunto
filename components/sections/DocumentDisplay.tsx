@@ -8,7 +8,7 @@ interface DocumentDisplayProps {
 
 function DocumentDisplay({ document }: DocumentDisplayProps) {
    return (
-      <section className="py-3 mt-3">
+      <section className="py-3 ">
          <div className="container px-4 mx-auto">
             <div className="p-10 bg-raisin-black rounded-lg">
                <DisplayLine label="Nome" content={document?.name} />
@@ -22,8 +22,12 @@ function DocumentDisplay({ document }: DocumentDisplayProps) {
                   content={document?.belongsTo?.name}
                />
                <DisplayLine
+                  label="Descrição"
+                  content={document?.belongsTo?.name}
+               />
+               <DisplayLine
                   label="Formato do Arquivo"
-                  content={document?.mimeType.split('/')[1]}
+                  content={document?.mimeType?.split('/')[1]}
                />
             </div>
          </div>

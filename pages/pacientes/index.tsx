@@ -30,17 +30,7 @@ export default function Pacientes<NextPage>() {
    );
 
    useEffect(() => {
-      if (urlQuery.saved) {
-         toast({
-            // @ts-expect-error
-            title: <SuccessMsg msg="Novo Paciente Criado" />,
-            description: (
-               <p className="text-cool-gray-500">
-                  O novo paciente foi salvo no banco de dados com sucesso.
-               </p>
-            )
-         });
-      } else if (urlQuery.deleted) {
+      if (urlQuery.deleted) {
          toast({
             // @ts-expect-error
             title: <SuccessMsg msg="Paciente Arquivado" />,

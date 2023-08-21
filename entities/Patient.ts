@@ -1,5 +1,6 @@
 import IUser from '../interfaces/IUser';
 import IPatient from '../interfaces/IPatient';
+import IDocument from '../interfaces/IDocument';
 
 export default class Patient implements IPatient {
    constructor(
@@ -24,7 +25,8 @@ export default class Patient implements IPatient {
       public phone?: string,
       public observation?: string,
       public underResponsibilityOf?: IUser,
-      public underResponsibilityOfUserId?: string
+      public underResponsibilityOfUserId?: string,
+      public documents?: IDocument[]
    ) {}
 
    get getLink() {
@@ -57,7 +59,8 @@ export default class Patient implements IPatient {
       phone,
       observation,
       underResponsibilityOf,
-      underResponsibilityOfUserId
+      underResponsibilityOfUserId,
+      documents
    }: IPatient): IPatient {
       return new Patient(
          id,
@@ -81,7 +84,8 @@ export default class Patient implements IPatient {
          phone,
          observation,
          underResponsibilityOf,
-         underResponsibilityOfUserId
+         underResponsibilityOfUserId,
+         documents
       );
    }
    static createMany(patients: IPatient[]): Patient[] {
@@ -108,7 +112,8 @@ export default class Patient implements IPatient {
             phone,
             observation,
             underResponsibilityOf,
-            underResponsibilityOfUserId
+            underResponsibilityOfUserId,
+            documents
          } = patient;
          return new Patient(
             id,
@@ -132,8 +137,32 @@ export default class Patient implements IPatient {
             phone,
             observation,
             underResponsibilityOf,
-            underResponsibilityOfUserId
+            underResponsibilityOfUserId,
+            documents
          );
       });
+   }
+   get isDocumentsComplete(): boolean {
+      const autorization = this.documents?.some(
+         (doc) => doc.type === 'Autorização'
+      );
+      const sorting = this.documents?.some((doc) => doc.type === 'Triagem');
+      return autorization && sorting ? true : false;
+   }
+   get hasAutorization(): boolean {
+      const autorization = this.documents?.some(
+         (doc) => doc.type === 'Autorização'
+      );
+      return autorization ? true : false;
+   }
+   get hasSorting(): boolean {
+      const sorting = this.documents?.some((doc) => doc.type === 'Triagem');
+      return sorting ? true : false;
+   }
+   get uploadAutorizationLink(): string {
+      return `/documentos/novo?documentType=Autorização&belongsToPatientId=${this.id}`;
+   }
+   get uploadSortingLink(): string {
+      return `/documentos/novo?documentType=Triagem&belongsToPatientId=${this.id}`;
    }
 }

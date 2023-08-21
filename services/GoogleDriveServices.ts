@@ -38,7 +38,6 @@ class GoogleDriveServices {
             fileId,
             fields: 'id, webContentLink, webViewLink'
          });
-         console.log(result.data);
          return result.data.id;
       } catch (error) {
          console.log(error);
@@ -67,38 +66,49 @@ class GoogleDriveServices {
          console.log(err);
       }
    }
-   // static async deleteAll(files: any) {
-   //    const googleService = new GoogleDriveServices();
-   //    try {
-   //       for (const file of files) {
-   //          if (file.name != 'documentos') {
-   //             const res = await googleService.drive.files.delete({
-   //                fileId: file.id
-   //             });
-   //          }
-   //       }
-   //       return;
-   //    } catch (err) {
-   //       // TODO(developer) - Handle error
-   //       throw err;
-   //    }
-   // }
+   static async deleteById(id: string) {
+      const googleService = new GoogleDriveServices();
+      try {
+         const res = await googleService.drive.files.delete({
+            fileId: id
+         });
+         console.log(res.data);
+         return res;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async deleteAll(files: any) {
+      const googleService = new GoogleDriveServices();
+      try {
+         for (const file of files) {
+            if (file.name != 'documentos') {
+               const res = await googleService.drive.files.delete({
+                  fileId: file.id
+               });
+            }
+         }
+         return;
+      } catch (err) {
+         // TODO(developer) - Handle error
+         throw err;
+      }
+   }
 
-   // static async readAll() {
-   //    const googleService = new GoogleDriveServices();
-   //    try {
-   //       const res = await googleService.drive.files.list({
-   //          q: '',
-   //          fields: 'nextPageToken, files(id, name)',
-   //          spaces: 'drive'
-   //       });
-   //       console.log(res.data.files);
-   //       return res.data.files;
-   //    } catch (err) {
-   //       // TODO(developer) - Handle error
-   //       throw err;
-   //    }
-   // }
+   static async readAll() {
+      const googleService = new GoogleDriveServices();
+      try {
+         const res = await googleService.drive.files.list({
+            q: '',
+            fields: 'nextPageToken, files(id, name)',
+            spaces: 'drive'
+         });
+         return res.data.files;
+      } catch (err) {
+         // TODO(developer) - Handle error
+         throw err;
+      }
+   }
 }
 
 export default GoogleDriveServices;

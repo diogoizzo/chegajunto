@@ -103,7 +103,7 @@ function UserForm({ user }: UserFormProps) {
          />
          {/* TODO verificar se os subtitulos estao se ajustando para o caso de
          novo usuário e edição de usuário */}
-         <section className="py-3 mt-3">
+         <section className="py-3">
             <div className="container px-4 mx-auto">
                <div className="p-10 bg-raisin-black rounded-lg">
                   <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">

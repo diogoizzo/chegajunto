@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import prisma from '../../../lib/prisma';
+import GoogleDriveServices from '../../../services/GoogleDriveServices';
 
 export default async function handler(
    req: NextApiRequest,
@@ -25,44 +26,18 @@ export default async function handler(
       } else {
          res.status(401).send({ message: 'Acesso negado' });
       }
-      //    } else if (req.method === 'PATCH') {
-      //       const token = await getToken({ req });
-      //       const id = req.query.id;
-      //       delete req.body.getLink;
-      //       delete req.body.id;
-      //       delete req.body.patientEditLink;
-      //       delete req.body.status;
-      //       const birth = new Date(req.body.birthday);
-      //       delete req.body.birthday;
-      //       if (token) {
-      //          const patient = await prisma.patient.update({
-      //             where: {
-      //                id: String(id)
-      //             },
-      //             data: {
-      //                birthday: birth,
-      //                ...req.body
-      //             }
-      //          });
-      //          if (patient) {
-      //             res.status(200).json(patient);
-      //          } else {
-      //             res.status(404).json({ error: 'Usuário não encontrado' });
-      //          }
-      //       } else {
-      //          res.status(404).json({ message: 'Acesso Negado' });
-      //       }
    } else if (req.method === 'DELETE') {
       const token = await getToken({ req });
-      const id = req.query.id;
+      const id = String(req.query.id);
       //todo incluir funcionalidade para deletar o arquivo do googledrive
       if (token) {
          const deletedDocument = await prisma.document.delete({
             where: {
-               id: String(id)
+               id: id
             }
          });
          if (deletedDocument) {
+            await GoogleDriveServices.deleteById(deletedDocument.googleDriveId);
             res.status(200).json(deletedDocument);
          } else {
             res.status(404).json({ error: 'Documento não encontrado' });

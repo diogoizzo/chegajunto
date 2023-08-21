@@ -7,7 +7,6 @@ interface DocumentsListProps {
 }
 
 function DocumentsList({ small, documents }: DocumentsListProps) {
-   console.log(small);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
