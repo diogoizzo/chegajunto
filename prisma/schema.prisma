@@ -55,7 +55,7 @@ model Patient {
   address                     String?
   phone                       String
   observation                 String?
-  underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id], onDelete: SetNull)
+  underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   underResponsibilityOfUserId String?
   tags                        Tag[]
   availabilities              Availability[]
@@ -75,9 +75,11 @@ model Tag {
 model Availability {
   id            String    @id @default(cuid())
   dayOfWeek     String
-  time          Int
+  time          String
   professionals User[]
   patients      Patient[]
+
+  @@unique([dayOfWeek, time])
 }
 
 model Document {
@@ -99,10 +101,10 @@ model Document {
 model Appointment {
   id                 String  @id @default(cuid())
   dayOfWeek          String
-  time               Int
-  professional       User    @relation("appointment", fields: [professionalUserId], references: [id], onDelete: Cascade)
+  time               String
+  professional       User    @relation("appointment", fields: [professionalUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   professionalUserId String
-  patient            Patient @relation("attended", fields: [patientId], references: [id], onDelete: Cascade)
+  patient            Patient @relation("attended", fields: [patientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   patientId          String
 }
 

@@ -10,7 +10,7 @@ function DocumentDisplay({ document }: DocumentDisplayProps) {
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">
-            <div className="p-10 bg-raisin-black rounded-lg">
+            <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                <DisplayLine label="Nome" content={document?.name} />
                <DisplayLine label="Tipo" content={document?.type} />
                <DisplayLine

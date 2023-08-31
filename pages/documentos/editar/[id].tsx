@@ -25,7 +25,7 @@ export default function EditDocument() {
             subtitle="Edite as informações do documento acima."
          />
          {query.isLoading ? (
-            <LoadingWithTitle title="Carrgando documento..." />
+            <LoadingWithTitle title="Carregando documento..." />
          ) : (
             <DocumentForm document={document} />
          )}

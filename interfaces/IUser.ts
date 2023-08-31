@@ -1,3 +1,5 @@
+import IAvailability from './IAvailability';
+
 export default interface IUser {
    name: string;
    email: string;
@@ -10,4 +12,5 @@ export default interface IUser {
    crp?: string;
    id?: string;
    userLink: string;
+   availabilities?: IAvailability[];
 }

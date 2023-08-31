@@ -19,7 +19,6 @@ export default function DocumentPageHeader({
    data,
    setData
 }: PageHeaderProps) {
-   console.log(data);
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">

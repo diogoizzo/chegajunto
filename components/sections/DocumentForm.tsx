@@ -100,7 +100,6 @@ function DocumentForm({ document }: DocumentFormProps) {
             selectedFile
          });
       } else {
-         console.log(form);
          try {
             if (!selectedFile) {
                errorToast('Nenhum arquivo selecionado');
@@ -155,7 +154,7 @@ function DocumentForm({ document }: DocumentFormProps) {
          ) : (
             <section className="py-3">
                <div className="container px-4 mx-auto">
-                  <div className="p-10 bg-raisin-black rounded-lg">
+                  <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                      <form>
                         <FormInputLine
                            state={form.name}

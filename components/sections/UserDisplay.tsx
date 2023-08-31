@@ -1,5 +1,6 @@
 import DisplayLine from '../atoms/DisplayLine';
 import IUser from '../../interfaces/IUser';
+import AvailabilityDisplay from './AvailabilityDisplay';
 
 interface UserDisplayProps {
    user?: IUser;
@@ -9,7 +10,7 @@ function UserDisplay({ user }: UserDisplayProps) {
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
-            <div className="p-10 bg-raisin-black rounded-lg">
+            <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                      <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -54,6 +55,7 @@ function UserDisplay({ user }: UserDisplayProps) {
                   </>
                )}
             </div>
+            <AvailabilityDisplay availabilities={user?.availabilities || []} />
          </div>
       </section>
    );

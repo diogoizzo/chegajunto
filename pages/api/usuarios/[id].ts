@@ -25,7 +25,8 @@ export default async function handler(
                period: true,
                password: false,
                crp: true,
-               id: true
+               id: true,
+               availabilities: true
             }
          });
          if (user) {

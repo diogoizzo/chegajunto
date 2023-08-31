@@ -3,7 +3,6 @@ import { getToken } from 'next-auth/jwt';
 import readFile from '../../../lib/readFile';
 import GoogleDriveServices from '../../../services/GoogleDriveServices';
 
-//todo falar com o daniel a respeito do limite de upload e o que fazer sobre isso
 export const config = {
    api: {
       bodyParser: false

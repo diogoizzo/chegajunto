@@ -11,7 +11,8 @@ export default async function handler(
       if (token) {
          const patients = await prisma.patient.findMany({
             include: {
-               documents: true
+               documents: true,
+               availabilities: true
             }
          });
          if (patients) {

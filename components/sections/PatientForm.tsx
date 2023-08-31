@@ -89,7 +89,6 @@ function PatientForm({ patient }: PatientFormProps) {
 
    async function salvar(e: any) {
       e.preventDefault();
-      console.log(form);
       if (!patient) {
          patientCreateMutation.mutate(form);
       } else {
@@ -114,25 +113,25 @@ function PatientForm({ patient }: PatientFormProps) {
    //todo não esquecer de remover a constante abaixo, após buscar do bd
    const availabilities: IAvailability[] = [
       {
-         id: 'cfasdfasdfaer23442te',
+         id: 'cfasdfasdfaer23442teddd',
          dayOfWeek: 'Segunda-feira',
          time: '18:00',
          professionals: [],
-         patientes: []
+         patients: []
       },
       {
-         id: 'cfasdfasddfgdfrergr23442te',
+         id: 'cfasdfasddfgdfrergr23442teddd',
          dayOfWeek: 'Terça-feira',
          time: '14:00',
          professionals: [],
-         patientes: []
+         patients: []
       },
       {
-         id: 'cfasdfasddfgdfrergr23442te',
+         id: 'cfasdfasddfgdfrergr23442tesdfsdf',
          dayOfWeek: 'Sexta-feira',
          time: '10:00',
          professionals: [],
-         patientes: []
+         patients: []
       }
    ];
 
@@ -146,7 +145,7 @@ function PatientForm({ patient }: PatientFormProps) {
          />
          <section className="py-3 mt-3">
             <div className="container px-4 mx-auto">
-               <div className="p-10 bg-raisin-black rounded-lg">
+               <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                   <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                      <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                         <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -154,11 +153,11 @@ function PatientForm({ patient }: PatientFormProps) {
                         </h4>
                         {patient ? (
                            <p className="text-sm text-cool-gray-500">
-                              Edite as informaçõs pessoais do paciente acima.
+                              Edite as informações pessoais do paciente acima.
                            </p>
                         ) : (
                            <p className="text-sm text-cool-gray-500">
-                              Preencha as informaçõs pessoais do novo paciente.
+                              Preencha as informações pessoais do novo paciente.
                            </p>
                         )}
                      </div>
@@ -197,7 +196,7 @@ function PatientForm({ patient }: PatientFormProps) {
                         placeHolder="Digite o endereço do novo paciente..."
                      />
                      <FormInputDateLine
-                        //todo aqui vou precisa ajusar para usar o daysjs e formatar a data corretamente
+                        //todo aqui vou precisa ajustar para usar o daysjs e formatar a data corretamente
                         state={form.birthday}
                         setState={setForm}
                         name="birthday"
@@ -226,7 +225,7 @@ function PatientForm({ patient }: PatientFormProps) {
                            </h4>
                            {patient ? (
                               <p className="text-sm text-cool-gray-500">
-                                 Edite as informaçõs institucionais do paciente
+                                 Edite as informações institucionais do paciente
                                  acima.
                               </p>
                            ) : (
@@ -267,7 +266,7 @@ function PatientForm({ patient }: PatientFormProps) {
                            </h4>
                            {patient ? (
                               <p className="text-sm text-cool-gray-500">
-                                 Edite as informaçõs médicas do paciente acima.
+                                 Edite as informações médicas do paciente acima.
                               </p>
                            ) : (
                               <p className="text-sm text-cool-gray-500">
@@ -290,7 +289,7 @@ function PatientForm({ patient }: PatientFormProps) {
                            name="medicamentos"
                            label="Quais medicamentos"
                            type="text"
-                           placeHolder="Digite o nome dos medicamentos utilzados pelo paciente..."
+                           placeHolder="Digite o nome dos medicamentos utilizados pelo paciente..."
                         />
                      ) : null}
                      <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
@@ -353,7 +352,10 @@ function PatientForm({ patient }: PatientFormProps) {
                      </div>
                   </form>
                </div>
-               <AvailabilityForm availabilities={availabilities} />
+               <AvailabilityForm
+                  availabilities={patient?.availabilities || []}
+                  patientId={patient?.id}
+               />
             </div>
          </section>
       </>

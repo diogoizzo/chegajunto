@@ -17,21 +17,21 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
          dayOfWeek: 'Segunda-feira',
          time: '18:00',
          professionals: [],
-         patientes: []
+         patients: []
       },
       {
          id: 'cfasdfasddfgdfrergr23442te',
          dayOfWeek: 'Terça-feira',
          time: '14:00',
          professionals: [],
-         patientes: []
+         patients: []
       },
       {
          id: 'cfasdfasddfgdfrergr23442te',
          dayOfWeek: 'Sexta-feira',
          time: '10:00',
          professionals: [],
-         patientes: []
+         patients: []
       }
    ];
    return (
@@ -41,7 +41,7 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                <MissingDocumentAlert patient={patient} />
             ) : null}
 
-            <div className="p-10 bg-raisin-black rounded-lg">
+            <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                   <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                      <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -120,7 +120,9 @@ function PatientDisplay({ patient }: PatientDisplayProps) {
                   content={patient?.underResponsibilityOf?.name}
                />
             </div>
-            <AvailabilityDisplay availabilities={availabilities} />
+            <AvailabilityDisplay
+               availabilities={patient?.availabilities || []}
+            />
          </div>
       </section>
    );

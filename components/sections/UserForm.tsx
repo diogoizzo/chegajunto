@@ -10,6 +10,8 @@ import PrimaryBtn from '../atoms/PrimaryBtn';
 import DangerBtn from '../atoms/DangerBtn';
 import useErrorToast from '../../hooks/useErrorToast';
 import StringSelectInput from '../atoms/StringSelectInput';
+import AvailabilityForm from './AvailabilityForm';
+import UserAvailabilityForm from './UserAvailabilityForm';
 
 interface UserFormProps {
    user?: User;
@@ -105,7 +107,7 @@ function UserForm({ user }: UserFormProps) {
          novo usuário e edição de usuário */}
          <section className="py-3">
             <div className="container px-4 mx-auto">
-               <div className="p-10 bg-raisin-black rounded-lg">
+               <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                   <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                      <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                         <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -265,6 +267,10 @@ function UserForm({ user }: UserFormProps) {
                      </div>
                   </form>
                </div>
+               <UserAvailabilityForm
+                  availabilities={user?.availabilities || []}
+                  userId={user?.id}
+               />
             </div>
          </section>
       </>

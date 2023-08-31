@@ -8,7 +8,6 @@ import PatientDisplay from '../../components/sections/PatientDisplay';
 import PatientServices from '../../services/PatientServices';
 import { useEffect } from 'react';
 import { useToast } from '../../components/ui/use-toast';
-import IAvailability from '../../interfaces/IAvailability';
 
 export default function PatientView() {
    const router = useRouter();

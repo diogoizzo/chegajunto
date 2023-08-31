@@ -2,7 +2,7 @@ import FormPageHeader from '../../../components/parts/FromPageHeader';
 import Menu from '../../../components/parts/Menu';
 import DocumentForm from '../../../components/sections/DocumentForm';
 
-export default function NovoDocumento<NextPage>() {
+export default function NewDocument<NextPage>() {
    return (
       <Menu>
          <FormPageHeader
@@ -14,4 +14,4 @@ export default function NovoDocumento<NextPage>() {
    );
 }
 
-NovoDocumento.auth = true;
+NewDocument.auth = true;

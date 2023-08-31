@@ -10,7 +10,7 @@ function DocumentsList({ small, documents }: DocumentsListProps) {
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
-            <div className="p-6 bg-raisin-black rounded-xl">
+            <div className="p-6 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                {small ? (
                   <div className="flex flex-wrap mb-4 items-center justify-between">
                      <div className="w-full sm:w-auto">

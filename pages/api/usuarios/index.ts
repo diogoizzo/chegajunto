@@ -9,7 +9,11 @@ export default async function handler(
    if (req.method === 'GET') {
       const token = await getToken({ req });
       if (token) {
-         const users = await prisma.user.findMany();
+         const users = await prisma.user.findMany({
+            include: {
+               availabilities: true
+            }
+         });
          if (users) {
             res.status(200).json(users);
          } else {

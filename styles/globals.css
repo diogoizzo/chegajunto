@@ -6,4 +6,18 @@
    input[type='date']::-webkit-calendar-picker-indicator {
       filter: invert(30%);
    }
+   input[type='time']::-webkit-calendar-picker-indicator {
+      filter: invert(40%);
+   }
+   ::-webkit-scrollbar {
+      border-left: 1px solid #16161f;
+      background-color: #12121a;
+      width: 10px;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 1px solid #16161f;
+      background-color: #2c3041;
+   }
 }

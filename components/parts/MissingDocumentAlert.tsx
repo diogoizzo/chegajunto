@@ -8,7 +8,6 @@ interface MissingDocumentAlertProps {
 export default function MissingDocumentAlert({
    patient
 }: MissingDocumentAlertProps) {
-   console.log(patient);
    return (
       <div className="w-full bg-red-200  rounded-md shadow-md  p-4  mb-6">
          <div className="flex items-end ">

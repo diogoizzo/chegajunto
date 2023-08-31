@@ -1,3 +1,4 @@
+import IAvailability from '../interfaces/IAvailability';
 import IUser from '../interfaces/IUser';
 
 export default class User implements IUser {
@@ -8,6 +9,7 @@ export default class User implements IUser {
       public address: string,
       public cpf: string,
       public type: 'Psicólogo' | 'Estagiário',
+      public availabilities?: IAvailability[],
       public institution?: string,
       public period?: number,
       public crp?: string,
@@ -23,6 +25,7 @@ export default class User implements IUser {
             address,
             cpf,
             type,
+            availabilities,
             crp,
             institution,
             period
@@ -34,6 +37,7 @@ export default class User implements IUser {
             address,
             cpf,
             type,
+            availabilities,
             institution,
             period,
             crp,
@@ -49,6 +53,7 @@ export default class User implements IUser {
       address,
       cpf,
       type,
+      availabilities,
       crp,
       institution,
       period
@@ -60,6 +65,7 @@ export default class User implements IUser {
          address,
          cpf,
          type,
+         availabilities,
          institution,
          period,
          crp,

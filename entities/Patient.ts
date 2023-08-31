@@ -1,6 +1,7 @@
 import IUser from '../interfaces/IUser';
 import IPatient from '../interfaces/IPatient';
 import IDocument from '../interfaces/IDocument';
+import IAvailability from '../interfaces/IAvailability';
 
 export default class Patient implements IPatient {
    constructor(
@@ -26,7 +27,8 @@ export default class Patient implements IPatient {
       public observation?: string,
       public underResponsibilityOf?: IUser,
       public underResponsibilityOfUserId?: string,
-      public documents?: IDocument[]
+      public documents?: IDocument[],
+      public availabilities?: IAvailability[]
    ) {}
 
    get getLink() {
@@ -60,7 +62,8 @@ export default class Patient implements IPatient {
       observation,
       underResponsibilityOf,
       underResponsibilityOfUserId,
-      documents
+      documents,
+      availabilities
    }: IPatient): IPatient {
       return new Patient(
          id,
@@ -85,7 +88,8 @@ export default class Patient implements IPatient {
          observation,
          underResponsibilityOf,
          underResponsibilityOfUserId,
-         documents
+         documents,
+         availabilities
       );
    }
    static createMany(patients: IPatient[]): Patient[] {
@@ -113,7 +117,8 @@ export default class Patient implements IPatient {
             observation,
             underResponsibilityOf,
             underResponsibilityOfUserId,
-            documents
+            documents,
+            availabilities
          } = patient;
          return new Patient(
             id,
@@ -138,7 +143,8 @@ export default class Patient implements IPatient {
             observation,
             underResponsibilityOf,
             underResponsibilityOfUserId,
-            documents
+            documents,
+            availabilities
          );
       });
    }

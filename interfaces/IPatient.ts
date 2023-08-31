@@ -1,3 +1,4 @@
+import IAvailability from './IAvailability';
 import IDocument from './IDocument';
 import IUser from './IUser';
 
@@ -32,4 +33,5 @@ export default interface IPatient {
    hasSorting?: boolean;
    uploadAutorizationLink?: string;
    uploadSortingLink?: string;
+   availabilities?: IAvailability[];
 }

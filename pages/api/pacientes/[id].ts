@@ -15,7 +15,8 @@ export default async function handler(
             include: {
                underResponsibilityOf: true,
                interviewedBy: true,
-               documents: true
+               documents: true,
+               availabilities: true
             }
          });
          if (patient) {

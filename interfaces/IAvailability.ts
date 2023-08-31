@@ -6,5 +6,5 @@ export default interface IAvailability {
    dayOfWeek: string;
    time: string;
    professionals?: IUser[];
-   patientes?: IPatient[];
+   patients?: IPatient[];
 }

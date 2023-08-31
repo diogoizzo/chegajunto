@@ -6,7 +6,7 @@ function AvailabilityDisplay({
    availabilities: IAvailability[];
 }) {
    return (
-      <div className="p-10 bg-raisin-black rounded-lg mt-4">
+      <div className="p-10 bg-raisin-black rounded-lg mt-4 border border-raisin-black-lighter">
          <div className="flex flex-wrap items-center justify-between -mx-4  pb-6 border-b border-gray-400 border-opacity-20">
             <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -22,9 +22,7 @@ function AvailabilityDisplay({
                >
                   <div className="w-full sm:w-auto px-4  sm:mb-0">
                      <p className="font-medium text-md  text-cool-gray-500 mb-1">
-                        {`${availabilitiy.dayOfWeek} às ${
-                           availabilitiy.time.split(':')[0]
-                        } horas`}
+                        {`${availabilitiy.dayOfWeek} às ${availabilitiy.time}`}
                      </p>
                   </div>
                </div>

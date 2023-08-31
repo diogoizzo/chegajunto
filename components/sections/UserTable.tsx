@@ -11,7 +11,7 @@ function UserTable({ small, data }: UserTableProps) {
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
-            <div className="py-3 bg-raisin-black rounded-lg">
+            <div className="py-3 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                <div className="px-6">
                   <div className="w-full mt-6 pb-6 overflow-x-auto">
                      <table className="w-full min-w-max">

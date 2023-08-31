@@ -1,3 +1,4 @@
+import IPatient from '../../interfaces/IPatient';
 import IUser from '../../interfaces/IUser';
 import {
    Select,
@@ -9,7 +10,7 @@ import {
 
 interface SelectInputProps {
    title: string;
-   options: IUser[] | undefined;
+   options: IUser[] | IPatient[] | undefined;
    name: string;
    placeholder: string;
    state?: string;
