@@ -120,3 +120,5 @@ model Consultation {
   patientId          String
   tags               Tag[]
 }
+
+//todo verificar se não é melhor e como colocar o porfessional como obrigatório
