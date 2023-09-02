@@ -195,8 +195,8 @@ function PatientForm({ patient }: PatientFormProps) {
                         type="text"
                         placeHolder="Digite o endereço do novo paciente..."
                      />
+                     {/* TODO acrescentar informações de parentesco (pai e mãe) */}
                      <FormInputDateLine
-                        //todo aqui vou precisa ajustar para usar o daysjs e formatar a data corretamente
                         state={form.birthday}
                         setState={setForm}
                         name="birthday"
@@ -251,14 +251,12 @@ function PatientForm({ patient }: PatientFormProps) {
                         type="text"
                         placeHolder="Digite o nome da escola do paciente..."
                      />
-
                      <FormSwitchLine
                         label="É bolsista?"
                         setState={setForm}
                         name="scholarship"
                         state={form.scholarship}
                      />
-
                      <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                         <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                            <h4 className="text-2xl font-bold tracking-wide text-cool-gray-200 mb-1">
@@ -275,7 +273,6 @@ function PatientForm({ patient }: PatientFormProps) {
                            )}
                         </div>
                      </div>
-
                      <FormSwitchLine
                         label="Faz uso de medicação?"
                         setState={setForm}
@@ -323,7 +320,6 @@ function PatientForm({ patient }: PatientFormProps) {
                         label="Observações sobre o Paciente"
                         placeHolder="Digite as obervações relevantes sobre o paciente..."
                      />
-
                      <SelectInput
                         name="interviewedByUserId"
                         title="Responsável pela Entrevista"
@@ -340,7 +336,6 @@ function PatientForm({ patient }: PatientFormProps) {
                         placeholder="Selecione o responsável pela entrevista"
                         state={form.underResponsibilityOf?.id}
                      />
-
                      <div className="text-right space-x-6">
                         <PrimaryBtn text={'Salvar'} clickHandle={salvar} />
                         {patient ? (

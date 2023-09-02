@@ -32,9 +32,6 @@ export default async function handler(
    } else if (req.method === 'PUT') {
       const token = await getToken({ req });
       const id = String(req.query.id);
-      console.log('Entrei aqui');
-      console.log(id);
-      console.log(req.body);
       if (token) {
          const updatedAppointment = await prisma.appointment.update({
             where: {
@@ -64,7 +61,28 @@ export default async function handler(
             }
          });
          if (deletedAppointment) {
-            res.status(200).json(deletedAppointment);
+            const recreatedAvailability = await prisma.user.update({
+               where: {
+                  id: deletedAppointment.professionalUserId
+               },
+               data: {
+                  availabilities: {
+                     connectOrCreate: {
+                        where: {
+                           dayOfWeek_time: {
+                              dayOfWeek: deletedAppointment.dayOfWeek,
+                              time: deletedAppointment.time
+                           }
+                        },
+                        create: {
+                           dayOfWeek: deletedAppointment.dayOfWeek,
+                           time: deletedAppointment.time
+                        }
+                     }
+                  }
+               }
+            });
+            res.status(200).json({ deletedAppointment, recreatedAvailability });
          } else {
             res.status(404).json({
                error: 'Não foi possível apagar o compromisso.'

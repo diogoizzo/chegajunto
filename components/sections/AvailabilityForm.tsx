@@ -150,7 +150,7 @@ function AvailabilityForm({
                </div>
             ))
          ) : (
-            <span className="font-medium inline-block text-lg mt-10  text-cool-gray-500/60">
+            <span className="font-medium inline-block text-lg mt-3 mb-3  text-cool-gray-500/60">
                Nenhuma disponibilidade cadastrada
             </span>
          )}

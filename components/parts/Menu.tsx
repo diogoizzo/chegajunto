@@ -184,7 +184,7 @@ export default function Menu({ children }: any) {
                         />
                      </li>
 
-                     <li>
+                     {/* <li>
                         <Link
                            passHref
                            className={`tags flex items-center justify-center w-12 h-12 rounded-xl ${
@@ -214,7 +214,7 @@ export default function Menu({ children }: any) {
                            content="Tags"
                            place="right-end"
                         />
-                     </li>
+                     </li> */}
                      <li>
                         <Link
                            passHref
@@ -243,7 +243,7 @@ export default function Menu({ children }: any) {
                            place="right-end"
                         />
                      </li>
-                     <li>
+                     {/* <li>
                         <Link
                            passHref
                            className={`events flex items-center justify-center w-12 h-12 rounded-xl ${
@@ -273,7 +273,7 @@ export default function Menu({ children }: any) {
                            content="Eventos"
                            place="right-end"
                         />
-                     </li>
+                     </li> */}
                      <li>
                         <Link
                            passHref
@@ -303,6 +303,36 @@ export default function Menu({ children }: any) {
                            delayShow={600}
                            anchorSelect=".users"
                            content="Usuários"
+                           place="right-end"
+                        />
+                     </li>
+                     <li>
+                        <Link
+                           passHref
+                           className={`archive flex items-center justify-center w-12 h-12 rounded-xl ${
+                              router.pathname.includes('/arquivados')
+                                 ? 'bg-cool-gray-900 text-raisin-black border-2 border-raisin-black-lighter'
+                                 : 'bg-none text-cool-gray-500 hover:text-cool-gray-200 hover:bg-gray-800'
+                           }  `}
+                           href="/arquivados"
+                        >
+                           <svg
+                              className="h-6 w-6"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              id="archive"
+                           >
+                              <path
+                                 fill="currentColor"
+                                 d="M10,14h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2ZM19,3H5A3,3,0,0,0,2,6V9a1,1,0,0,0,1,1H4v8a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V10h1a1,1,0,0,0,1-1V6A3,3,0,0,0,19,3ZM18,18a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V10H18ZM20,8H4V6A1,1,0,0,1,5,5H19a1,1,0,0,1,1,1Z"
+                              ></path>
+                           </svg>
+                        </Link>
+                        <Tooltip
+                           className="relative z-50"
+                           delayShow={600}
+                           anchorSelect=".archive"
+                           content="Arquivados"
                            place="right-end"
                         />
                      </li>
