@@ -1,3 +1,4 @@
+import IDocument from '../../interfaces/IDocument';
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 
 interface PageHeaderProps {
@@ -5,8 +6,8 @@ interface PageHeaderProps {
    subtitle?: string;
    btnHref: string;
    btnText?: string;
-   data?: any;
-   setData?: any;
+   data?: IDocument[];
+   setData?: React.Dispatch<React.SetStateAction<IDocument[] | null>>;
    search?: boolean;
 }
 
@@ -57,18 +58,20 @@ export default function DocumentPageHeader({
                               onChange={(e) => {
                                  setData &&
                                     setData(() => {
-                                       return data?.filter(
-                                          (item: any) =>
-                                             item.name
-                                                .toLowerCase()
-                                                .includes(
-                                                   e.target.value.toLowerCase()
-                                                ) ||
-                                             item.belongsTo?.name
-                                                .toLowerCase()
-                                                .includes(
-                                                   e.target.value.toLowerCase()
-                                                )
+                                       return (
+                                          data?.filter(
+                                             (item: any) =>
+                                                item.name
+                                                   .toLowerCase()
+                                                   .includes(
+                                                      e.target.value.toLowerCase()
+                                                   ) ||
+                                                item.belongsTo?.name
+                                                   .toLowerCase()
+                                                   .includes(
+                                                      e.target.value.toLowerCase()
+                                                   )
+                                          ) || null
                                        );
                                     });
                               }}

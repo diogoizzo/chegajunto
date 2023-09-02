@@ -27,10 +27,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/compromissos.js"
     ],
-    "/compromissos/novo": [
+    "/compromissos/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/compromissos/novo.js"
+      "static/chunks/pages/compromissos/[id].js"
+    ],
+    "/documentos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/documentos.js"
     ]
   },
   "ampFirstPages": []

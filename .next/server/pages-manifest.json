@@ -2,10 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/compromissos": "pages/compromissos.js",
-  "/api/compromissos": "pages/api/compromissos.js",
+  "/compromissos/[id]": "pages/compromissos/[id].js",
   "/compromissos/novo": "pages/compromissos/novo.js",
-  "/api/disponibilidades/compatibilidade": "pages/api/disponibilidades/compatibilidade.js",
-  "/api/usuarios": "pages/api/usuarios.js"
+  "/api/compromissos": "pages/api/compromissos.js",
+  "/compromissos": "pages/compromissos.js",
+  "/documentos": "pages/documentos.js",
+  "/api/documentos": "pages/api/documentos.js"
 }

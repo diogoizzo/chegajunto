@@ -1,8 +1,6 @@
 import { useQuery } from 'react-query';
 import Menu from '../../components/parts/Menu';
-import PageHeader from '../../components/parts/PageHeader';
 import Appointment from '../../entities/Appointment';
-import Loading from '../../components/sections/loading';
 import { useEffect, useState } from 'react';
 import AppointmentTable from '../../components/sections/AppointmentTable';
 import AppointmentServices from '../../services/AppointmentServices';
@@ -10,11 +8,13 @@ import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/use-toast';
 import SuccessMsg from '../../components/parts/SuccessMsg';
 import LoadingWithTitle from '../../components/sections/LoadingWithTitle';
+import AppointmentPageHeader from '../../components/parts/AppointmentPageHeader';
+import IAppointment from '../../interfaces/IAppointment';
 
 export default function Compromissos<NextPage>() {
    const query = useQuery(['appointment'], () => AppointmentServices.getAll());
    const allAppointment = query.data && Appointment.createMany(query.data);
-   const [search, setSearch] = useState(null);
+   const [search, setSearch] = useState<IAppointment[] | null>(null);
    const router = useRouter();
    const { toast } = useToast();
    const urlQuery = router.query;
@@ -53,7 +53,7 @@ export default function Compromissos<NextPage>() {
    }, [toast, urlQuery]);
    return (
       <Menu>
-         <PageHeader
+         <AppointmentPageHeader
             title="Compromissos"
             subtitle="Veja a lista completa de compromissos cadastrados no sistema."
             btnHref="/compromissos/novo"

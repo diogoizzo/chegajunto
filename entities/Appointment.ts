@@ -14,7 +14,7 @@ export default class Appointment implements IAppointment {
    ) {}
 
    get editLink() {
-      return `/compromissos/editar/${this.id}`;
+      return `/compromissos/${this.id}`;
    }
    static createFromObject({
       id,

@@ -4,10 +4,10 @@ import IUser from '../../interfaces/IUser';
 interface UserTableProps {
    small?: boolean;
    data: IUser[];
-   //todo alterar para depender de uma interface, porém precios alterar a interface usuário para ter os métodos
 }
 
 function UserTable({ small, data }: UserTableProps) {
+   console.log(data);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
@@ -82,9 +82,16 @@ function UserTable({ small, data }: UserTableProps) {
                                                    : null
                                              }`}
                                           >
-                                             <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
-                                                DISPONÍVEL
-                                             </span>
+                                             {user.availabilities &&
+                                             user.availabilities?.length > 0 ? (
+                                                <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-carolina-blue rounded-full">
+                                                   DISPONÍVEL
+                                                </span>
+                                             ) : (
+                                                <span className="inline-block px-3 py-1 text-xs text-raisin-black font-medium bg-red-300 rounded-full">
+                                                   INDISPONÍVEL
+                                                </span>
+                                             )}
                                           </div>
                                        </Link>
                                     </td>

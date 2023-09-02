@@ -16,14 +16,10 @@ export default class AppointmentServices {
       return res.data;
    }
    static async update({ id, form }: updatedAppointmentParams) {
-      delete form.patient;
-      delete form.professional;
       const res = await axios.put(`/api/compromissos/${id}`, form);
       return res.data;
    }
    static async create(form: IAppointmentForm) {
-      delete form.patient;
-      delete form.professional;
       const res = await axios.post(`/api/compromissos/`, form);
       return res.data;
    }

@@ -28,7 +28,7 @@ function AvailabilityDisplay({
                </div>
             ))
          ) : (
-            <span className="font-medium text-md  text-cool-gray-500">
+            <span className="font-medium text-md mt-6 inline-block  text-cool-gray-500">
                Nenhuma disponibilidade cadastrada
             </span>
          )}

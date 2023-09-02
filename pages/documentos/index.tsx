@@ -9,13 +9,14 @@ import SuccessMsg from '../../components/parts/SuccessMsg';
 import DocumentServices from '../../services/DocumentServices';
 import LoadingWithTitle from '../../components/sections/LoadingWithTitle';
 import DocumentPageHeader from '../../components/parts/DocumentPageHeader';
+import IDocument from '../../interfaces/IDocument';
 
 export default function Documentos<NextPage>() {
    const router = useRouter();
 
    const urlQuery = router.query;
 
-   const [search, setSearch] = useState(null);
+   const [search, setSearch] = useState<IDocument[] | null>(null);
 
    const { toast } = useToast();
 
