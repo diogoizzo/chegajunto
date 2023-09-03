@@ -2,16 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/listadeespera": "pages/listadeespera.js",
-  "/compromissos": "pages/compromissos.js",
-  "/api/pacientes": "pages/api/pacientes.js",
   "/pacientes": "pages/pacientes.js",
-  "/api/compromissos": "pages/api/compromissos.js",
-  "/api/documentos": "pages/api/documentos.js",
-  "/usuarios": "pages/usuarios.js",
-  "/documentos": "pages/documentos.js",
   "/atendimentos": "pages/atendimentos.js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/arquivados": "pages/arquivados.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
+  "/compromissos": "pages/compromissos.js",
+  "/api/atendimentos": "pages/api/atendimentos.js"
 }

@@ -5,33 +5,30 @@ import IUser from '../interfaces/IUser';
 export default class Consultation implements IConsultation {
    constructor(
       public id: string,
-      public createdAt: Date,
-      public updatedAt: Date,
       public patientAbsent: boolean,
       public patient: IPatient,
       public patientId: string,
+      public createdAt: Date,
       public observation?: string,
       public professional?: IUser,
       public professionalUserId?: string
    ) {}
    static createFromObject({
       id,
-      createdAt,
-      updatedAt,
       patientAbsent,
       patient,
       patientId,
+      createdAt,
       observation,
       professional,
       professionalUserId
    }: IConsultation): Consultation {
       return new Consultation(
          String(id),
-         createdAt,
-         updatedAt,
          patientAbsent,
          patient,
          patientId,
+         createdAt,
          observation,
          professional,
          professionalUserId
@@ -41,26 +38,30 @@ export default class Consultation implements IConsultation {
       return consultations.map((consultation) => {
          const {
             id,
-            createdAt,
-            updatedAt,
             patientAbsent,
             patient,
             patientId,
+            createdAt,
             observation,
             professional,
             professionalUserId
          } = consultation;
          return new Consultation(
             String(id),
-            createdAt,
-            updatedAt,
             patientAbsent,
             patient,
             patientId,
+            createdAt,
             observation,
             professional,
             professionalUserId
          );
       });
+   }
+   get consultationLink() {
+      return `/atendimentos/${this.id}`;
+   }
+   get consultationEditLink() {
+      return `/atendimentos/editar/${this.id}`;
    }
 }
