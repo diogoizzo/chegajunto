@@ -44,6 +44,9 @@ function ConsultationForm() {
       mutationFn: ConsultationServices.create,
       onError: () => {
          errorToast('Não foi possível criar o compromisso');
+      },
+      onSuccess: () => {
+         router.push('/atendimentos?saved=true');
       }
    });
 
@@ -148,7 +151,7 @@ function ConsultationForm() {
                      <PrimaryBtn text={'Salvar'} clickHandle={save} />
                      <SecundaryBtn
                         text="Cancelar"
-                        clickHandle={() => router.push('/compromissos')}
+                        clickHandle={() => router.push('/atendimentos')}
                      />
                   </div>
                </form>

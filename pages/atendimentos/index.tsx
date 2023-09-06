@@ -45,6 +45,16 @@ export default function Atendimentos<NextPage>() {
                </p>
             )
          });
+      } else if (urlQuery.saved) {
+         toast({
+            // @ts-expect-error
+            title: <SuccessMsg msg="Atendimento Criado" />,
+            description: (
+               <p className="text-cool-gray-500">
+                  O atendimento foi criado com sucesso.
+               </p>
+            )
+         });
       } else if (urlQuery.updated) {
          toast({
             // @ts-expect-error

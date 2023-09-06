@@ -7,7 +7,7 @@ import AppointmentServices from '../../services/AppointmentServices';
 import Appointment from '../../entities/Appointment';
 import AppointmentDisplay from '../../components/sections/AppointmentDisplay';
 
-export default function EditDocument() {
+export default function VizualizarCompromisso() {
    const router = useRouter();
 
    const appointmentId = String(router.query.id);
@@ -30,4 +30,4 @@ export default function EditDocument() {
    );
 }
 
-EditDocument.auth = true;
+VizualizarCompromisso.auth = true;

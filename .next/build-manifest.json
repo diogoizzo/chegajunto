@@ -27,6 +27,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/atendimentos.js"
     ],
+    "/atendimentos/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/atendimentos/[id].js"
+    ],
+    "/atendimentos/novo": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/atendimentos/novo.js"
+    ],
     "/compromissos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

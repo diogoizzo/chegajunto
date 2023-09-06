@@ -4,36 +4,12 @@ import IPatient from '../../interfaces/IPatient';
 import dayjs from 'dayjs';
 import MissingDocumentAlert from '../parts/MissingDocumentAlert';
 import AvailabilityDisplay from './AvailabilityDisplay';
-import IAvailability from '../../interfaces/IAvailability';
 
 interface PatientDisplayProps {
    patient?: IPatient;
 }
 
 function PatientDisplay({ patient }: PatientDisplayProps) {
-   const availabilities: IAvailability[] = [
-      {
-         id: 'cfasdfasdfaer23442te',
-         dayOfWeek: 'Segunda-feira',
-         time: '18:00',
-         professionals: [],
-         patients: []
-      },
-      {
-         id: 'cfasdfasddfgdfrergr23442te',
-         dayOfWeek: 'Terça-feira',
-         time: '14:00',
-         professionals: [],
-         patients: []
-      },
-      {
-         id: 'cfasdfasddfgdfrergr23442te',
-         dayOfWeek: 'Sexta-feira',
-         time: '10:00',
-         professionals: [],
-         patients: []
-      }
-   ];
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">

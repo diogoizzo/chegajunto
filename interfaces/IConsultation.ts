@@ -11,5 +11,5 @@ export default interface IConsultation {
    patient: IPatient;
    patientId: string;
    consultationLink: string;
-   consultationEditLink?: string;
+   consultationEditLink: string;
 }
