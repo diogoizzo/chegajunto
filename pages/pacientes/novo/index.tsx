@@ -3,7 +3,7 @@ import FormPageHeader from '../../../components/parts/FromPageHeader';
 import PatientForm from '../../../components/sections/PatientForm';
 import Menu from '../../../components/parts/Menu';
 
-export default function Index() {
+export default function PatientCreateView() {
    return (
       <Menu>
          <FormPageHeader
@@ -15,4 +15,4 @@ export default function Index() {
    );
 }
 
-Index.auth = true;
+PatientCreateView.auth = true;

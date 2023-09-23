@@ -41,7 +41,7 @@ export default async function handler(
             if (doc) {
                res.status(200).json(doc);
             } else {
-               res.status(503).send('Não foi possível atualizar o docuemento');
+               res.status(503).send('Não foi possível atualizar o documento');
             }
          } else {
             const googleFile = await prisma.document.findFirst({

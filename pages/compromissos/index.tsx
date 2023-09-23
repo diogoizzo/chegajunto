@@ -11,7 +11,7 @@ import LoadingWithTitle from '../../components/sections/LoadingWithTitle';
 import AppointmentPageHeader from '../../components/parts/AppointmentPageHeader';
 import IAppointment from '../../interfaces/IAppointment';
 
-export default function Compromissos<NextPage>() {
+export default function AppointmentListView<NextPage>() {
    const query = useQuery(['appointment'], () => AppointmentServices.getAll());
    const allAppointment = query.data && Appointment.createMany(query.data);
    const [search, setSearch] = useState<IAppointment[] | null>(null);
@@ -78,4 +78,4 @@ export default function Compromissos<NextPage>() {
    );
 }
 
-Compromissos.auth = true;
+AppointmentListView.auth = true;

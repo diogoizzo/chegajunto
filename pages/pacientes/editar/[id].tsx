@@ -6,7 +6,7 @@ import Patient from '../../../entities/Patient';
 import PatientServices from '../../../services/PatientServices';
 import PatientForm from '../../../components/sections/PatientForm';
 
-export default function EditPatient() {
+export default function PatientEditView() {
    const router = useRouter();
 
    const patientId = router.query.id;
@@ -28,4 +28,4 @@ export default function EditPatient() {
    );
 }
 
-EditPatient.auth = true;
+PatientEditView.auth = true;

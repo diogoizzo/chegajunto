@@ -2,7 +2,7 @@ import FormPageHeader from '../../../components/parts/FromPageHeader';
 import Menu from '../../../components/parts/Menu';
 import ConsultationForm from '../../../components/sections/ConsultationForm';
 
-export default function Atendimentos<NextPage>() {
+export default function ConsultationCreateView<NextPage>() {
    return (
       <Menu>
          <FormPageHeader
@@ -14,4 +14,4 @@ export default function Atendimentos<NextPage>() {
    );
 }
 
-Atendimentos.auth = true;
+ConsultationCreateView.auth = true;

@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import SuccessMsg from '../../components/parts/SuccessMsg';
 import Loading from '../../components/sections/loading';
 
-export default function Pacientes<NextPage>() {
+export default function PatientListView<NextPage>() {
    const router = useRouter();
 
    const urlQuery = router.query;
@@ -71,4 +71,4 @@ export default function Pacientes<NextPage>() {
    );
 }
 
-Pacientes.auth = true;
+PatientListView.auth = true;

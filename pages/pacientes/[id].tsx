@@ -9,7 +9,7 @@ import PatientServices from '../../services/PatientServices';
 import { useEffect } from 'react';
 import { useToast } from '../../components/ui/use-toast';
 
-export default function PatientView() {
+export default function PatientDisplayView() {
    const router = useRouter();
 
    const urlQuery = router.query;
@@ -62,4 +62,4 @@ export default function PatientView() {
    );
 }
 
-PatientView.auth = true;
+PatientDisplayView.auth = true;

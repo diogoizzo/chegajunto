@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import UserServices from '../../../services/UserServices';
 import User from '../../../entities/User';
 
-export default function EditUser() {
+export default function EditUserView() {
    const router = useRouter();
 
    const userId = router.query.id;
@@ -26,4 +26,4 @@ export default function EditUser() {
    );
 }
 
-EditUser.auth = true;
+EditUserView.auth = true;

@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import UserServices from '../../services/UserServices';
 import User from '../../entities/User';
 
-export default function EditarUsuario<NextPage>() {
+export default function UserDisplayView<NextPage>() {
    //TODO Aqui eu posso melhorar para reduzir o número de chamadas ao servidor, fazendo uma query de todos os usuários e depois recuperando esses usuários e filtrando o usuário que foi passado como parâmetro
    const router = useRouter();
 
@@ -30,4 +30,4 @@ export default function EditarUsuario<NextPage>() {
    );
 }
 
-EditarUsuario.auth = true;
+UserDisplayView.auth = true;

@@ -25,6 +25,7 @@ export default function SignIn() {
          redirect: true
       });
    }
+   //todo exibir erro de login.
 
    return (
       <main className="h-[100vh] flex justify-center items-center bg-[url('/img/fundo.svg')] bg-raisin-black-light relative overflow-hidden">

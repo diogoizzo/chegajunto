@@ -6,36 +6,26 @@ import ConsultationServices from '../../services/ConsultationServices';
 import Consultation from '../../entities/Consultation';
 import ConsultationDisplay from '../../components/sections/ConsultationDisplay';
 import PageHeader from '../../components/parts/PageHeader';
-import IConsultation from '../../interfaces/IConsultation';
+import useConsultationDisplayViewModel from '../../hooks/useConsultationDisplayViewModel';
 
-export default function VizualizarAtendimento() {
-   const router = useRouter();
-
-   const consultationId = String(router.query.id);
-
-   const consultationQuery = useQuery(['consultation', consultationId], () =>
-      ConsultationServices.getById(consultationId)
-   );
-
-   const consultation: IConsultation =
-      consultationQuery.data &&
-      Consultation.createFromObject(consultationQuery.data);
+export default function AppointmentDisplayView() {
+   const viewModel = useConsultationDisplayViewModel();
 
    return (
       <Menu>
          <PageHeader
             title={'Veja as Informações do Atendimento'}
-            btnHref={consultation?.consultationEditLink}
+            btnHref={viewModel.consultation?.consultationEditLink}
             btnText="Editar"
             search={false}
          />
-         {consultationQuery.isLoading ? (
+         {viewModel.consultationQuery.isLoading ? (
             <LoadingWithTitle title="Carregando atendimento..." />
          ) : (
-            <ConsultationDisplay consultation={consultation} />
+            <ConsultationDisplay consultation={viewModel.consultation} />
          )}
       </Menu>
    );
 }
 
-VizualizarAtendimento.auth = true;
+AppointmentDisplayView.auth = true;

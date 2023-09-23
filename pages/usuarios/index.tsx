@@ -9,7 +9,7 @@ import SuccessMsg from '../../components/parts/SuccessMsg';
 import { useQuery } from 'react-query';
 import Loading from '../../components/sections/loading';
 
-export default function Usuarios<NextPage>() {
+export default function UserListView<NextPage>() {
    const router = useRouter();
 
    const [search, setSearch] = useState(null);
@@ -73,4 +73,4 @@ export default function Usuarios<NextPage>() {
    );
 }
 
-Usuarios.auth = true;
+UserListView.auth = true;

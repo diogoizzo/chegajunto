@@ -3,7 +3,7 @@ import Menu from '../../../components/parts/Menu';
 import AppointmentForm from '../../../components/sections/AppointmentForm';
 import DocumentForm from '../../../components/sections/DocumentForm';
 
-export default function NewAppointment<NextPage>() {
+export default function AppointmentCreateView<NextPage>() {
    return (
       <Menu>
          <FormPageHeader
@@ -15,4 +15,4 @@ export default function NewAppointment<NextPage>() {
    );
 }
 
-NewAppointment.auth = true;
+AppointmentCreateView.auth = true;
