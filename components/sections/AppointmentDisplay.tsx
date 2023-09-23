@@ -8,6 +8,7 @@ import { useState } from 'react';
 import useErrorToast from '../../hooks/useErrorToast';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import SecundaryBtn from '../atoms/SecundaryBtn';
+import useAppointmentDeleteViewModel from '../../hooks/useAppointmentDeleteViewModel';
 
 interface AppointmentDisplayProps {
    appointment?: IAppointment;
@@ -15,39 +16,14 @@ interface AppointmentDisplayProps {
 
 function AppointmentDisplay({ appointment }: AppointmentDisplayProps) {
    const router = useRouter();
-   const [isOpen, setIsOpen] = useState(false);
-   const errorToast = useErrorToast();
-
-   const deleteAppointmentMutation = useMutation({
-      mutationFn: AppointmentServices.delete,
-      onSuccess: () => {
-         router.push('/compromissos?deleted=true');
-      },
-      onError: () => {
-         errorToast('Não foi possível atualizar o compromisso');
-      }
-   });
-
-   function deleteAction() {
-      closeModal();
-      deleteAppointmentMutation.mutate(appointment?.id);
-   }
-
-   function closeModal() {
-      setIsOpen(false);
-   }
-
-   function openConfirmationModal(e: any) {
-      e.preventDefault();
-      setIsOpen(true);
-   }
+   const viewModel = useAppointmentDeleteViewModel(appointment);
    return (
       <>
          <ConfirmationModal
             text={'Tem certeza que deseja apagar o compromisso'}
-            isOpen={isOpen}
-            closeModal={closeModal}
-            deleteAction={deleteAction}
+            isOpen={viewModel.isOpen}
+            closeModal={viewModel.closeModal}
+            deleteAction={viewModel.deleteAction}
          />
          <section className="py-3">
             <div className="container px-4 mx-auto">
@@ -77,7 +53,7 @@ function AppointmentDisplay({ appointment }: AppointmentDisplayProps) {
                   <div className="w-full text-right space-x-3">
                      <DangerBtn
                         text={'Apagar Compromisso'}
-                        openConfirmation={openConfirmationModal}
+                        openConfirmation={viewModel.openConfirmationModal}
                      />
                      <SecundaryBtn
                         text="Cancelar"

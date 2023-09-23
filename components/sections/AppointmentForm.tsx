@@ -14,6 +14,7 @@ import IAvailability from '../../interfaces/IAvailability';
 import AvailabilityServices from '../../services/AvailabilityServices';
 import DisplayLine from '../atoms/DisplayLine';
 import SecundaryBtn from '../atoms/SecundaryBtn';
+import useAppointmentCreateViewModel from '../../hooks/useAppointmentCreateViewModel';
 
 export interface IAppointmentForm {
    dayOfWeek?: string;
@@ -24,70 +25,7 @@ export interface IAppointmentForm {
 
 function AppointmentForm() {
    const router = useRouter();
-
-   const errorToast = useErrorToast();
-
-   const usersQuery = useQuery(['users'], () => UserServices.getAll());
-
-   const users = usersQuery.data && User.createMany(usersQuery.data);
-
-   const [compatiblePatients, setCompatiblePatients] = useState<
-      IPatient[] | []
-   >([]);
-
-   const [patientsLoading, setPatientsLoading] = useState(false);
-
-   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
-
-   const [selectedUserAvailability, setSelectedUserAvailability] =
-      useState<IAvailability | null>(null);
-
-   const [form, setForm] = useState<IAppointmentForm>({});
-
-   const createAppointmentMutation = useMutation({
-      mutationFn: AppointmentServices.create,
-      onSuccess: () => {
-         router.push('/compromissos?saved=true');
-      },
-      onError: () => {
-         errorToast('Não foi possível criar o novo compromisso');
-      }
-   });
-
-   function save() {
-      const activeAvailability = selectedUser?.availabilities?.filter(
-         (availability) => availability.id === String(selectedUserAvailability)
-      )[0];
-      const finalForm = {
-         ...form,
-         dayOfWeek: activeAvailability?.dayOfWeek,
-         time: activeAvailability?.time
-      };
-      createAppointmentMutation.mutate(finalForm);
-   }
-
-   useEffect(() => {
-      const selectedProfessional = users?.filter(
-         (user) => user.id === form.professionalUserId
-      )[0];
-      if (selectedProfessional?.id !== selectedUser?.id) {
-         setSelectedUser(selectedProfessional ? selectedProfessional : null);
-      }
-   }, [form.professionalUserId, users, selectedUser]);
-
-   useEffect(() => {
-      setPatientsLoading(true);
-      const activeAvailability = selectedUser?.availabilities?.filter(
-         (availability) => availability.id === String(selectedUserAvailability)
-      )[0];
-      AvailabilityServices.getCompatibleAvailabilities(
-         String(activeAvailability?.dayOfWeek),
-         String(activeAvailability?.time)
-      ).then((res: IAvailability) => {
-         res?.patients && setCompatiblePatients(res.patients);
-         setPatientsLoading(false);
-      });
-   }, [selectedUserAvailability, selectedUser?.availabilities]);
+   const viewModel = useAppointmentCreateViewModel();
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">
@@ -96,17 +34,17 @@ function AppointmentForm() {
                   <SelectInput
                      name="professionalUserId"
                      title="Profissional Responsável"
-                     setState={setForm}
-                     options={users}
+                     setState={viewModel.setForm}
+                     options={viewModel.users}
                      placeholder="Selecione o profissional responsável..."
-                     state={form.professionalUserId}
+                     state={viewModel.form.professionalUserId}
                   />
-                  {selectedUser ? (
+                  {viewModel.selectedUser ? (
                      <SelectAvailabilityInput
                         title="Disponibilidade"
-                        state={selectedUserAvailability}
-                        setState={setSelectedUserAvailability}
-                        options={selectedUser?.availabilities || []}
+                        state={viewModel.selectedUserAvailability}
+                        setState={viewModel.setSelectedUserAvailability}
+                        options={viewModel.selectedUser?.availabilities || []}
                         placeholder="Selecione a disponibilidade a ser utilizada..."
                      />
                   ) : (
@@ -115,15 +53,15 @@ function AppointmentForm() {
                         content="Selecione um responsável para ver suas disponibilidades. "
                      />
                   )}
-                  {selectedUserAvailability ? (
-                     compatiblePatients.length > 0 ? (
+                  {viewModel.selectedUserAvailability ? (
+                     viewModel.compatiblePatients.length > 0 ? (
                         <SelectInput
                            name="patientId"
                            title="Paciente"
-                           setState={setForm}
-                           options={compatiblePatients}
+                           setState={viewModel.setForm}
+                           options={viewModel.compatiblePatients}
                            placeholder="Selecione o paciente..."
-                           state={form.patientId}
+                           state={viewModel.form.patientId}
                         />
                      ) : (
                         <div className="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-cool-gray-900 border-opacity-10">
@@ -136,7 +74,7 @@ function AppointmentForm() {
                               <div className="max-w-xl">
                                  <div className="flex flex-wrap items-center -mx-3">
                                     <div className="w-full px-3 mb-3 sm:mb-0">
-                                       {patientsLoading ? (
+                                       {viewModel.patientsLoading ? (
                                           <p className="text-md text-cool-gray-200  font-medium ">
                                              Carregando pacientes compatíveis...
                                           </p>
@@ -160,7 +98,7 @@ function AppointmentForm() {
                   )}
 
                   <div className="text-right space-x-6">
-                     <PrimaryBtn text={'Salvar'} clickHandle={save} />
+                     <PrimaryBtn text={'Salvar'} clickHandle={viewModel.save} />
                      <SecundaryBtn
                         text="Cancelar"
                         clickHandle={() => router.push('/compromissos')}

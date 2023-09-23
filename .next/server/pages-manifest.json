@@ -2,9 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/atendimentos": "pages/atendimentos.js",
-  "/atendimentos/[id]": "pages/atendimentos/[id].js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/atendimentos/novo": "pages/atendimentos/novo.js",
-  "/api/atendimentos/[id]": "pages/api/atendimentos/[id].js"
+  "/": "pages/index.js",
+  "/compromissos": "pages/compromissos.js",
+  "/api/compromissos/[id]": "pages/api/compromissos/[id].js",
+  "/compromissos/[id]": "pages/compromissos/[id].js"
 }
