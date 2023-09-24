@@ -22,20 +22,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/pacientes": [
+    "/documentos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/pacientes.js"
+      "static/chunks/pages/documentos.js"
     ],
-    "/pacientes/[id]": [
+    "/documentos/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/pacientes/[id].js"
+      "static/chunks/pages/documentos/[id].js"
     ],
-    "/usuarios": [
+    "/documentos/editar/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/usuarios.js"
+      "static/chunks/pages/documentos/editar/[id].js"
     ]
   },
   "ampFirstPages": []

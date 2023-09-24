@@ -1,6 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import prisma from '../../../lib/prisma';
 import PatientController from '../../../controller/PatientController';
 
 export default async function handler(

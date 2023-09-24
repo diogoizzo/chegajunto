@@ -72,7 +72,6 @@ class GoogleDriveServices {
          const res = await googleService.drive.files.delete({
             fileId: id
          });
-         console.log(res.data);
          return res;
       } catch (error) {
          console.log(error);

@@ -1,3 +1,4 @@
+import prisma from '../lib/prisma';
 export default class PatientRepository {
    static async getAll() {
       try {

@@ -38,13 +38,18 @@ export default class DocumentCreateAndEditViewModel {
    ) {}
    async submitHandler(e: Event, document?: Document) {
       e.preventDefault();
-      console.log(document);
       if (document) {
          this.documentUpdateMutation.mutate({
             form: this.form,
             selectedFile: this.selectedFile
          });
       } else {
+         if (!this.form.belongsToPatientId) {
+            this.errorToast(
+               'É necessário selecionar um paciente ao qual pertence esse documento.'
+            );
+            return;
+         }
          try {
             if (!this.selectedFile) {
                this.errorToast('Nenhum arquivo selecionado');

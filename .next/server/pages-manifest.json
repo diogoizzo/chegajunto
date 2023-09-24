@@ -2,11 +2,13 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/pacientes/[id]": "pages/pacientes/[id].js",
-  "/pacientes/editar/[id]": "pages/pacientes/editar/[id].js",
-  "/pacientes": "pages/pacientes.js",
+  "/api/documentos": "pages/api/documentos.js",
+  "/documentos": "pages/documentos.js",
+  "/documentos/[id]": "pages/documentos/[id].js",
+  "/documentos/editar/[id]": "pages/documentos/editar/[id].js",
+  "/api/documentos/[id]": "pages/api/documentos/[id].js",
   "/api/pacientes": "pages/api/pacientes.js",
-  "/api/pacientes/[id]": "pages/api/pacientes/[id].js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/usuarios": "pages/usuarios.js"
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/api/documentos/update/[id]": "pages/api/documentos/update/[id].js",
+  "/api/usuarios": "pages/api/usuarios.js"
 }
