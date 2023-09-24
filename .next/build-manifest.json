@@ -22,20 +22,45 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/documentos": [
+    "/compromissos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/documentos.js"
+      "static/chunks/pages/compromissos.js"
     ],
-    "/documentos/[id]": [
+    "/compromissos/novo": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/documentos/[id].js"
+      "static/chunks/pages/compromissos/novo.js"
     ],
-    "/documentos/editar/[id]": [
+    "/pacientes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/documentos/editar/[id].js"
+      "static/chunks/pages/pacientes.js"
+    ],
+    "/pacientes/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pacientes/[id].js"
+    ],
+    "/pacientes/editar/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pacientes/editar/[id].js"
+    ],
+    "/usuarios": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios.js"
+    ],
+    "/usuarios/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios/[id].js"
+    ],
+    "/usuarios/editar/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios/editar/[id].js"
     ]
   },
   "ampFirstPages": []

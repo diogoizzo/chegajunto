@@ -1,45 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import prisma from '../../../../lib/prisma';
+import AvailabilityController from '../../../../controller/AvailabilityController';
 
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse
 ) {
    if (req.method === 'GET') {
-      const token = await getToken({ req });
-      const { dayOfWeek, time } = req.query;
-      if (token) {
-         try {
-            const availability = await prisma.availability.findUnique({
-               where: {
-                  dayOfWeek_time: {
-                     dayOfWeek: String(dayOfWeek),
-                     time: String(time)
-                  }
-               },
-               include: {
-                  patients: {
-                     where: {
-                        status: 'Espera'
-                     },
-                     orderBy: {
-                        createdAt: 'asc'
-                     }
-                  }
-               }
-            });
-            res.status(200).json(availability);
-         } catch (error) {
-            res.status(500).json({
-               message:
-                  'Não foi localizar nenhuma disponibilidade disponibilidade',
-               error: error
-            });
-         }
-      } else {
-         res.status(401).send({ message: 'Acesso negado' });
-      }
+      AvailabilityController.findCompatibility(req, res);
    } else {
       return res
          .status(405)
