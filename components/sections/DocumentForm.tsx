@@ -1,155 +1,33 @@
-import { useState } from 'react';
 import FormInputLine from '../atoms/FormInputLine';
-import UserServices from '../../services/UserServices';
 import Document from '../../entities/Document';
-import { useRouter } from 'next/router';
-import { useMutation, useQuery } from 'react-query';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import PrimaryBtn from '../atoms/PrimaryBtn';
 import DangerBtn from '../atoms/DangerBtn';
-import useErrorToast from '../../hooks/useErrorToast';
 import StringSelectInput from '../atoms/StringSelectInput';
-import IDocument from '../../interfaces/IDocument';
 import FormTextareaLine from '../atoms/FormTextareaLine';
-import User from '../../entities/User';
 import SelectInput from '../atoms/SelectInput';
-import { useSession } from 'next-auth/react';
-import PatientServices from '../../services/PatientServices';
-import Patient from '../../entities/Patient';
 import FileInput from '../atoms/FileInput';
-import DocumentServices from '../../services/DocumentServices';
 import LoadingWithTitle from './LoadingWithTitle';
+import useDocumentCreateAndEditViewModel from '../../hooks/useDocumentCreateAndEditViewModel';
 
 interface DocumentFormProps {
-   document?: Document;
+   doc?: Document;
 }
 
-function DocumentForm({ document }: DocumentFormProps) {
-   const router = useRouter();
-
-   const { data } = useSession();
-
-   const errorToast = useErrorToast();
-
-   const documentType = router.query?.documentType
-      ? String(router.query?.documentType)
-      : undefined;
-
-   const belongsToPatientId = router.query?.belongsToPatientId
-      ? String(router.query?.belongsToPatientId)
-      : undefined;
-   //@ts-ignore
-   const currentUserId = data?.id;
-
-   const [isOpen, setIsOpen] = useState(false);
-
-   const userQuery = useQuery(['user'], () => UserServices.getAll());
-
-   const users = userQuery.data && User.createMany(userQuery.data);
-
-   const patientQuery = useQuery(['patients'], () => PatientServices.getAll());
-
-   const allPatients =
-      patientQuery.data && Patient.createMany(patientQuery.data);
-
-   const documentCreateMutation = useMutation({
-      mutationFn: DocumentServices.createFromForm,
-      onSuccess: () => {
-         if (belongsToPatientId) {
-            router.push(`/pacientes/${belongsToPatientId}?documentSaved=true`);
-         } else {
-            router.push('/documentos?saved=true');
-         }
-      },
-      onError: () => {
-         errorToast(
-            'Não foi possível criar o novo documento. O tamanho do arquivo não pode ultrapassar 2mb'
-         );
-      }
-   });
-
-   const documentUpdateMutation = useMutation({
-      mutationFn: DocumentServices.update,
-      onSuccess: () => {
-         router.push(`/documentos?updated=true`);
-      },
-      onError: () => {
-         router.push(`/documentos/?updateError=true`);
-      }
-   });
-
-   const [form, setForm] = useState<IDocument>({
-      id: document?.id || '',
-      name: document?.name || '',
-      type: document?.type || documentType,
-      description: document?.description || '',
-      uploadedBy: document?.uploadedBy,
-      uploadedByUserId: document?.uploadedByUserId || currentUserId,
-      belongsTo: document?.belongsTo,
-      belongsToPatientId: document?.belongsToPatientId || belongsToPatientId
-   });
-
-   const [selectedFile, setSelectedFile] = useState<File>();
-
-   async function submitHandler(e: Event) {
-      e.preventDefault();
-
-      if (document) {
-         documentUpdateMutation.mutate({
-            form,
-            selectedFile
-         });
-      } else {
-         try {
-            if (!selectedFile) {
-               errorToast('Nenhum arquivo selecionado');
-               return;
-            }
-            documentCreateMutation.mutate({
-               form,
-               selectedFile
-            });
-         } catch (error: any) {
-            console.log(error.response?.data);
-         }
-      }
-   }
-
-   const userDeleteMutation = useMutation({
-      mutationFn: DocumentServices.delete,
-      onSuccess: () => {
-         router.push('/documentos?deleted=true');
-      },
-      onError: () => {
-         errorToast('Não foi posssível apagar o documento');
-      }
-   });
-
-   function deleteAction() {
-      closeModal();
-      userDeleteMutation.mutate(document?.id);
-   }
-
-   function closeModal() {
-      setIsOpen(false);
-   }
-
-   function openConfirmationModal(e: any) {
-      e.preventDefault();
-      setIsOpen(true);
-   }
+function DocumentForm({ doc }: DocumentFormProps) {
+   const viewModel = useDocumentCreateAndEditViewModel(doc);
 
    return (
       <>
          <ConfirmationModal
             text={'Tem certeza que deseja apagar o documento?'}
-            isOpen={isOpen}
-            closeModal={closeModal}
-            deleteAction={deleteAction}
+            isOpen={viewModel.isOpen}
+            closeModal={() => viewModel.closeModal(viewModel.setIsOpen)}
+            deleteAction={() => viewModel.deleteAction(viewModel.setIsOpen)}
          />
-         {documentCreateMutation.isLoading ? (
+         {viewModel.documentCreateMutation.isLoading ? (
             <LoadingWithTitle title="Salvando Novo Documento..." />
-         ) : documentUpdateMutation.isLoading ? (
+         ) : viewModel.documentUpdateMutation.isLoading ? (
             <LoadingWithTitle title="Atualizando Documento..." />
          ) : (
             <section className="py-3">
@@ -157,8 +35,8 @@ function DocumentForm({ document }: DocumentFormProps) {
                   <div className="p-10 bg-raisin-black rounded-lg border border-raisin-black-lighter">
                      <form>
                         <FormInputLine
-                           state={form.name}
-                           setState={setForm}
+                           state={viewModel.form.name}
+                           setState={viewModel.setForm}
                            name="name"
                            label="Nome"
                            type="text"
@@ -170,45 +48,58 @@ function DocumentForm({ document }: DocumentFormProps) {
                            placeholder="Selecione o tipo de documento"
                            title="Tipo de Documento"
                            options={['Triagem', 'Autorização', 'Outro']}
-                           state={form.type}
-                           setState={setForm}
+                           state={viewModel.form.type}
+                           setState={viewModel.setForm}
                         />
                         <SelectInput
                            name="uploadedByUserId"
                            title="Responsável pelo Upload"
-                           setState={setForm}
-                           options={users}
+                           setState={viewModel.setForm}
+                           options={viewModel.users}
                            placeholder="Selecione o responsável pelo upload"
-                           state={form.uploadedByUserId || currentUserId}
+                           state={
+                              viewModel.form.uploadedByUserId ||
+                              viewModel.currentUserId
+                           }
                         />
                         <SelectInput
                            name="belongsToPatientId"
                            title="A Quem Pertence"
-                           setState={setForm}
-                           options={allPatients}
+                           setState={viewModel.setForm}
+                           options={viewModel.allPatients}
                            placeholder="Selecione o paciente ao qual o documento pertence"
-                           state={form.belongsToPatientId || belongsToPatientId}
+                           state={
+                              viewModel.form.belongsToPatientId ||
+                              viewModel.belongsToPatientId
+                           }
                         />
                         <FormTextareaLine
-                           state={form.description}
-                           setState={setForm}
+                           state={viewModel.form.description}
+                           setState={viewModel.setForm}
                            name="description"
                            label="Descrição do Documento"
                            placeHolder="Digite a descrição do documento..."
                         />
                         <FileInput
-                           state={selectedFile}
-                           setState={setSelectedFile}
+                           state={viewModel.selectedFile}
+                           setState={viewModel.setSelectedFile}
                         />
                         <div className="text-right space-x-6">
                            <PrimaryBtn
                               text={'Salvar'}
-                              clickHandle={submitHandler}
+                              clickHandle={(e: any) =>
+                                 viewModel.submitHandler(e, doc)
+                              }
                            />
-                           {document ? (
+                           {doc ? (
                               <DangerBtn
                                  text={'Apagar Documento'}
-                                 openConfirmation={openConfirmationModal}
+                                 openConfirmation={(e: any) =>
+                                    viewModel.openConfirmationModal(
+                                       e,
+                                       viewModel.setIsOpen
+                                    )
+                                 }
                               />
                            ) : null}
                         </div>

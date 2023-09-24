@@ -52,7 +52,12 @@ function ConsultationForm() {
                      placeHolder="Digite os detalhes do atendimento..."
                   />
                   <div className="text-right space-x-6">
-                     <PrimaryBtn text={'Salvar'} clickHandle={viewModel.save} />
+                     <PrimaryBtn
+                        text={'Salvar'}
+                        clickHandle={() =>
+                           viewModel.save(viewModel.createConsultationMutation)
+                        }
+                     />
                      <SecundaryBtn
                         text="Cancelar"
                         clickHandle={() => router.push('/atendimentos')}

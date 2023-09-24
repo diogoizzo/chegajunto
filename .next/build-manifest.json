@@ -22,25 +22,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/auth/signup": [
+    "/pacientes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/auth/signup.js"
+      "static/chunks/pages/pacientes.js"
+    ],
+    "/pacientes/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pacientes/[id].js"
     ],
     "/usuarios": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/usuarios.js"
-    ],
-    "/usuarios/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/usuarios/[id].js"
-    ],
-    "/usuarios/editar/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/usuarios/editar/[id].js"
     ]
   },
   "ampFirstPages": []

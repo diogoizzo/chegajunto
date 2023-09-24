@@ -20,7 +20,14 @@ export default class ConsultationCreateViewModel {
       public users: User[],
       public patients: Patient[]
    ) {}
-   save() {
-      this.createConsultationMutation.mutate(this.form);
+   save(
+      createConsultationMutation: UseMutationResult<
+         any,
+         unknown,
+         IAppointmentForm,
+         unknown
+      >
+   ) {
+      createConsultationMutation.mutate(this.form);
    }
 }

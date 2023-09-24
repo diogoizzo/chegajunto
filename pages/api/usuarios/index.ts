@@ -1,27 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import prisma from '../../../lib/prisma';
+import UserController from '../../../controller/UserController';
 
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse
 ) {
    if (req.method === 'GET') {
-      const token = await getToken({ req });
-      if (token) {
-         const users = await prisma.user.findMany({
-            include: {
-               availabilities: true
-            }
-         });
-         if (users) {
-            res.status(200).json(users);
-         } else {
-            res.status(404).json({ error: 'Usuários não encontrados' });
-         }
-      } else {
-         res.status(401).send({ message: 'Acesso negado' });
-      }
+      UserController.getAll(req, res);
    } else {
       return res
          .status(405)
