@@ -5,7 +5,7 @@ import { useToast } from '../components/ui/use-toast';
 import { useQuery } from 'react-query';
 import ConsultationServices from '../services/ConsultationServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import AppointmentViewModel from '../viewmodels/consultationViewModel/ConsultationViewModel';
+import AppointmentViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
 
 export default function useAppointmentListViewModel() {
    const router = useRouter();

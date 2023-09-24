@@ -3,12 +3,12 @@ import IConsultation from '../../interfaces/IConsultation';
 import { Dispatch, SetStateAction } from 'react';
 import { UseMutationResult, UseQueryResult } from 'react-query';
 import Consultation from '../../entities/Consultation';
-import AppointmentListViewModel from './ConsultationListViewModel';
-import ConsultationDisplayViewModel from './ConsultationDisplayViewModel';
 import { IConsultationForm } from '../../components/sections/ConsultationForm';
 import User from '../../entities/User';
 import { IAppointmentForm } from '../../components/sections/AppointmentForm';
 import Patient from '../../entities/Patient';
+import AppointmentListViewModel from './ConsultationListViewModel';
+import ConsultationDisplayViewModel from './ConsultationDisplayViewModel';
 import ConsultationCreateViewModel from './ConsultationCreateViewModel';
 
 export default class ConsultationViewModel {

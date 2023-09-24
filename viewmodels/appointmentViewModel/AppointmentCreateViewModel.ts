@@ -27,8 +27,10 @@ export default class AppointmentCreateViewModel {
          unknown
       >,
       public users: IUser[]
-   ) {}
-   save() {
+   ) {
+      this.selectedUser = selectedUser;
+   }
+   save(selectedUser: IUser | null) {
       const activeAvailability = this.selectedUser?.availabilities?.filter(
          (availability) =>
             availability.id === String(this.selectedUserAvailability)

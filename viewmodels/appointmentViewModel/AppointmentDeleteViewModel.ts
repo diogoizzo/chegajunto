@@ -13,18 +13,19 @@ export default class AppointmentDeleteViewModel {
          unknown
       >,
       public appointment?: IAppointment
-   ) {}
-   deleteAction() {
-      this.closeModal();
+   ) {
+      console.log(setIsOpen);
+   }
+   deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {
+      setIsOpen(false);
       this.deleteAppointmentMutation.mutate(this.appointment?.id);
    }
 
-   closeModal() {
-      this.setIsOpen(false);
+   closeModal(setIsOpen: Dispatch<SetStateAction<boolean>>) {
+      setIsOpen(false);
    }
 
-   openConfirmationModal(e: any) {
-      e.preventDefault();
-      this.setIsOpen(true);
+   openConfirmationModal(e: any, setIsOpen: Dispatch<SetStateAction<boolean>>) {
+      this.setIsOpen && this.setIsOpen(true);
    }
 }

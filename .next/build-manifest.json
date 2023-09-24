@@ -22,15 +22,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/compromissos": [
+    "/auth/signup": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/compromissos.js"
+      "static/chunks/pages/auth/signup.js"
     ],
-    "/compromissos/[id]": [
+    "/usuarios": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/compromissos/[id].js"
+      "static/chunks/pages/usuarios.js"
+    ],
+    "/usuarios/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios/[id].js"
+    ],
+    "/usuarios/editar/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usuarios/editar/[id].js"
     ]
   },
   "ampFirstPages": []

@@ -1,14 +1,14 @@
 import { UseMutationResult, UseQueryResult } from 'react-query';
 import IAppointment from '../../interfaces/IAppointment';
 import Appointment from '../../entities/Appointment';
-import AppointmentListViewModel from './AppointmentLIstViewModel';
 import { Dispatch, SetStateAction } from 'react';
-import AppointmentDisplayViewModel from './AppointmentDisplayViewModel';
 import User from '../../entities/User';
 import IPatient from '../../interfaces/IPatient';
 import IUser from '../../interfaces/IUser';
 import IAvailability from '../../interfaces/IAvailability';
 import { IAppointmentForm } from '../../components/sections/AppointmentForm';
+import AppointmentListViewModel from './AppointmentLIstViewModel';
+import AppointmentDisplayViewModel from './AppointmentDisplayViewModel';
 import AppointmentCreateViewModel from './AppointmentCreateViewModel';
 import AppointmentDeleteViewModel from './AppointmentDeleteViewModel';
 

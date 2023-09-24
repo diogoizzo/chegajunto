@@ -6,6 +6,7 @@ import StringSelectInput from '../atoms/StringSelectInput';
 import { useMutation, useQueryClient } from 'react-query';
 import AvailabilityServices from '../../services/AvailabilityServices';
 import useErrorToast from '../../hooks/useErrorToast';
+import useUserAvailabilityViewModel from '../../hooks/useUserAvailabilityViewModel';
 
 export interface IAvailabilityForm {
    dayOfWeek?: string;
@@ -19,61 +20,7 @@ function UserAvailabilityForm({
    availabilities: IAvailability[];
    userId?: string;
 }) {
-   const [form, setForm] = useState<IAvailabilityForm>({
-      dayOfWeek: undefined,
-      time: ''
-   });
-
-   const errorToast = useErrorToast();
-
-   const queryClient = useQueryClient();
-
-   const createAvailabilitiyMutation = useMutation({
-      mutationFn: AvailabilityServices.createUserAvailability,
-      onSuccess: () => {
-         queryClient.invalidateQueries(['user', userId]);
-      },
-      onError: () => {
-         errorToast('Não foi possível criar a disponibilidade');
-      }
-   });
-   const deleteAvailabilitiyMutation = useMutation({
-      mutationFn: AvailabilityServices.deleteUserAvailability,
-      onSuccess: () => {
-         queryClient.invalidateQueries(['user', userId]);
-      },
-      onError: () => {
-         errorToast('Não foi possível apagar a disponibilidade');
-      }
-   });
-
-   async function addAvailability() {
-      if (form.dayOfWeek && form.time) {
-         const id = String(userId);
-         createAvailabilitiyMutation.mutate({
-            userId: id,
-            form
-         });
-         setForm({
-            dayOfWeek: '',
-            time: ''
-         });
-      } else {
-         errorToast(
-            'É necessário selecionar um dia e hora para cadastrar uma disponibilidade'
-         );
-      }
-   }
-
-   async function handleDelete(availabilityId?: string) {
-      if (availabilityId) {
-         const id = String(userId);
-         deleteAvailabilitiyMutation.mutate({
-            userId: id,
-            availabilityId
-         });
-      }
-   }
+   const viewModel = useUserAvailabilityViewModel(availabilities, userId);
    return (
       <div className="p-10 bg-raisin-black rounded-lg mt-4 border border-raisin-black-lighter">
          <div className="flex flex-wrap items-center justify-between -mx-4  pb-6 border-b border-gray-400 border-opacity-20">
@@ -94,8 +41,8 @@ function UserAvailabilityForm({
             <form className="w-full px-4 border-b border-gray-400 border-opacity-20">
                <StringSelectInput
                   title="Dia da Semana"
-                  state={form.dayOfWeek}
-                  setState={setForm}
+                  state={viewModel.form.dayOfWeek}
+                  setState={viewModel.setForm}
                   placeholder="Selecione o dia da semana..."
                   name="dayOfWeek"
                   options={[
@@ -112,11 +59,20 @@ function UserAvailabilityForm({
                <FormInputTimeWithStep
                   label="Horário"
                   name="time"
-                  state={form.time}
-                  setState={setForm}
+                  state={viewModel.form.time}
+                  setState={viewModel.setForm}
                />
                <div className="w-full text-right mb-6">
-                  <PrimaryBtn text="Adicionar" clickHandle={addAvailability} />
+                  <PrimaryBtn
+                     text="Adicionar"
+                     clickHandle={() =>
+                        viewModel.addAvailability(
+                           viewModel.form,
+                           viewModel.setForm,
+                           userId
+                        )
+                     }
+                  />
                </div>
             </form>
          </div>
@@ -132,7 +88,7 @@ function UserAvailabilityForm({
                      </p>
                   </div>
                   <button
-                     onClick={() => handleDelete(availability.id)}
+                     onClick={() => viewModel.handleDelete(availability.id)}
                      className="w-full sm:w-auto px-4 mb-6 sm:mb-0"
                   >
                      <svg

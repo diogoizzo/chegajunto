@@ -22,8 +22,8 @@ function AppointmentDisplay({ appointment }: AppointmentDisplayProps) {
          <ConfirmationModal
             text={'Tem certeza que deseja apagar o compromisso'}
             isOpen={viewModel.isOpen}
-            closeModal={viewModel.closeModal}
-            deleteAction={viewModel.deleteAction}
+            closeModal={() => viewModel.closeModal(viewModel.setIsOpen)}
+            deleteAction={() => viewModel.deleteAction(viewModel.setIsOpen)}
          />
          <section className="py-3">
             <div className="container px-4 mx-auto">
@@ -53,7 +53,12 @@ function AppointmentDisplay({ appointment }: AppointmentDisplayProps) {
                   <div className="w-full text-right space-x-3">
                      <DangerBtn
                         text={'Apagar Compromisso'}
-                        openConfirmation={viewModel.openConfirmationModal}
+                        openConfirmation={(e: any) =>
+                           viewModel.openConfirmationModal(
+                              e,
+                              viewModel.setIsOpen
+                           )
+                        }
                      />
                      <SecundaryBtn
                         text="Cancelar"

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useToast } from '../components/ui/use-toast';
 import { useEffect, useState } from 'react';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import AppointmentViewModel from '../viewmodels/appointmentViewModel/AppointmentViewModel';
+import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentViewModel';
 
 export default function useAppointmentListView() {
    const query = useQuery(['appointment'], () => AppointmentServices.getAll());

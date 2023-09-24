@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import ConsultationServices from '../services/ConsultationServices';
-import ConsultationViewModel from '../viewmodels/consultationViewModel/ConsultationViewModel';
+import ConsultationViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
 
 export default function useConsultationDisplayViewModel() {
    const router = useRouter();

@@ -28,11 +28,18 @@ export default async function handler(
          res.status(401).send({ message: 'Acesso negado' });
       }
    } else if (req.method === 'PATCH') {
+      console.log(req.body);
       const token = await getToken({ req });
       const id = req.query.id;
+      const interviewedByUserId = req.body.interviewedByUserId;
+      const underResponsibilityOfUserId = req.body.underResponsibilityOfUserId;
       delete req.body.getLink;
       delete req.body.id;
       delete req.body.patientEditLink;
+      delete req.body.underResponsibilityOfUserId;
+      delete req.body.underResponsibilityOf;
+      delete req.body.interviewedBy;
+      delete req.body.interviewedByUserId;
       delete req.body.status;
       const birth = req.body.birthday ? new Date(req.body.birthday) : null;
       delete req.body.birthday;
@@ -43,6 +50,16 @@ export default async function handler(
             },
             data: {
                birthday: birth,
+               interviewedBy: {
+                  connect: {
+                     id: String(interviewedByUserId)
+                  }
+               },
+               underResponsibilityOf: {
+                  connect: {
+                     id: String(underResponsibilityOfUserId)
+                  }
+               },
                ...req.body
             }
          });

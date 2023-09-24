@@ -10,7 +10,7 @@ import { IAppointmentForm } from '../components/sections/AppointmentForm';
 import AppointmentServices from '../services/AppointmentServices';
 import User from '../entities/User';
 import AvailabilityServices from '../services/AvailabilityServices';
-import AppointmentViewModel from '../viewmodels/appointmentViewModel/AppointmentViewModel';
+import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentViewModel';
 
 export default function useAppointmentCreateViewModel() {
    const router = useRouter();

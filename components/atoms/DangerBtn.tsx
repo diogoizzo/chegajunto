@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 interface DangerBtnProps {
    text: string;
-   openConfirmation: (e: any) => void;
+   openConfirmation: any;
 }
 
 function DangerBtn({ text, openConfirmation }: DangerBtnProps) {

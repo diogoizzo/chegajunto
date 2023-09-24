@@ -3,7 +3,7 @@ import React from 'react';
 interface PrimaryBtnProps {
    type?: 'button' | 'submit' | 'reset' | undefined;
    text: string;
-   clickHandle?: ((e: any) => Promise<void>) | (() => void);
+   clickHandle?: (e: any) => void;
 }
 
 function PrimaryBtn({ type, text, clickHandle }: PrimaryBtnProps) {

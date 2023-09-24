@@ -1,17 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import IUser from '../../interfaces/IUser';
-import UserServices from '../../services/UserServices';
-import User from '../../entities/User';
 import { useRouter } from 'next/router';
-import { useMutation, useQuery } from 'react-query';
 import PrimaryBtn from '../atoms/PrimaryBtn';
-import useErrorToast from '../../hooks/useErrorToast';
 import SelectInput from '../atoms/SelectInput';
-import IPatient from '../../interfaces/IPatient';
-import AppointmentServices from '../../services/AppointmentServices';
 import SelectAvailabilityInput from '../atoms/SelectAvailabilityInput';
-import IAvailability from '../../interfaces/IAvailability';
-import AvailabilityServices from '../../services/AvailabilityServices';
 import DisplayLine from '../atoms/DisplayLine';
 import SecundaryBtn from '../atoms/SecundaryBtn';
 import useAppointmentCreateViewModel from '../../hooks/useAppointmentCreateViewModel';
@@ -98,7 +88,12 @@ function AppointmentForm() {
                   )}
 
                   <div className="text-right space-x-6">
-                     <PrimaryBtn text={'Salvar'} clickHandle={viewModel.save} />
+                     <PrimaryBtn
+                        text={'Salvar'}
+                        clickHandle={() =>
+                           viewModel.save(viewModel.selectedUser)
+                        }
+                     />
                      <SecundaryBtn
                         text="Cancelar"
                         clickHandle={() => router.push('/compromissos')}

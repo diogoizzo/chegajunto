@@ -7,7 +7,7 @@ export default function SignUp() {
       <Menu>
          <FormPageHeader
             title="Novo Usuário"
-            subtitle="Preencha as infromaçõe abaixo para cadastrar um novo usuário no sistema."
+            subtitle="Preencha as informações abaixo para cadastrar um novo usuário no sistema."
          />
          <UserForm />
       </Menu>

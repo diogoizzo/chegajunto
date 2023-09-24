@@ -58,10 +58,13 @@ export default async function handler(
          const deletedAppointment = await prisma.appointment.delete({
             where: {
                id: id
+            },
+            include: {
+               patient: true
             }
          });
          if (deletedAppointment) {
-            const recreatedAvailability = await prisma.user.update({
+            const recreatedUserAvailability = await prisma.user.update({
                where: {
                   id: deletedAppointment.professionalUserId
                },
@@ -82,7 +85,18 @@ export default async function handler(
                   }
                }
             });
-            res.status(200).json({ deletedAppointment, recreatedAvailability });
+            const updatePatientStatus = await prisma.patient.update({
+               where: {
+                  id: deletedAppointment.patient.id
+               },
+               data: {
+                  status: 'Espera'
+               }
+            });
+            res.status(200).json({
+               deletedAppointment,
+               recreatedUserAvailability
+            });
          } else {
             res.status(404).json({
                error: 'Não foi possível apagar o compromisso.'
