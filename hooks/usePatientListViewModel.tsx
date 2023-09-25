@@ -5,13 +5,18 @@ import { useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
 import IPatient from '../interfaces/IPatient';
-import PatientListViewModel from '../viewModels/patientViewModel/PatientListViewModel';
 import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import { useSession } from 'next-auth/react';
 
 export default function usePatientListViewModel() {
    const router = useRouter();
 
    const urlQuery = router.query;
+   const { data: session } = useSession();
+   //@ts-ignore
+   const userType = String(session?.type);
+   //@ts-ignore
+   const activeUserId = String(session?.id);
 
    const [search, setSearch] = useState<IPatient[] | null>(null);
 
@@ -42,5 +47,11 @@ export default function usePatientListViewModel() {
          });
       }
    }, [toast, urlQuery]);
-   return PatientViewModel.listView(query, search, setSearch);
+   return PatientViewModel.listView(
+      query,
+      search,
+      setSearch,
+      userType,
+      activeUserId
+   );
 }

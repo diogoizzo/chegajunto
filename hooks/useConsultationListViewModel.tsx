@@ -6,11 +6,18 @@ import { useQuery } from 'react-query';
 import ConsultationServices from '../services/ConsultationServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
 import AppointmentViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
+import { useSession } from 'next-auth/react';
 
 export default function useAppointmentListViewModel() {
    const router = useRouter();
 
    const urlQuery = router.query;
+
+   const { data: session } = useSession();
+   //@ts-ignore
+   const userType = String(session?.type);
+   //@ts-ignore
+   const activeUserId = String(session?.id);
 
    const [search, setSearch] = useState<IConsultation[] | null>(null);
 
@@ -56,6 +63,8 @@ export default function useAppointmentListViewModel() {
       urlQuery,
       search,
       setSearch,
-      consultationQuery
+      consultationQuery,
+      userType,
+      activeUserId
    );
 }

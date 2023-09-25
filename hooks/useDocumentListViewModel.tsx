@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import DocumentServices from '../services/DocumentServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
 import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
+import { useSession } from 'next-auth/react';
 
 export default function useDocumentListViewModel() {
    const router = useRouter();
@@ -16,12 +17,15 @@ export default function useDocumentListViewModel() {
 
    const { toast } = useToast();
 
+   const { data: session } = useSession();
+   //@ts-ignore
+   const userType = String(session?.type);
+   //@ts-ignore
+   const activeUserId = String(session?.id);
+
    const queryDocument = useQuery(['documents'], () =>
       DocumentServices.getAll()
    );
-
-   // const allDocuments =
-   //    queryDocument.data && Document.createMany(queryDocument.data);
 
    useEffect(() => {
       if (urlQuery.saved) {
@@ -82,5 +86,11 @@ export default function useDocumentListViewModel() {
          });
       }
    }, [toast, urlQuery]);
-   return DocumentViewModel.listView(search, setSearch, queryDocument);
+   return DocumentViewModel.listView(
+      search,
+      setSearch,
+      queryDocument,
+      userType,
+      activeUserId
+   );
 }

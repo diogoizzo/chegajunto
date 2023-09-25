@@ -13,15 +13,29 @@ export default class DocumentViewModel {
    static listView(
       search: IDocument[] | null,
       setSearch: Dispatch<SetStateAction<IDocument[] | null>>,
-      queryDocument: UseQueryResult<any, unknown>
+      queryDocument: UseQueryResult<any, unknown>,
+      userType: string,
+      activeUserId: string
    ) {
       const allDocuments =
          queryDocument.data && Document.createMany(queryDocument.data);
+      console.log(allDocuments);
+      let permissionDocuments;
+      if (userType === 'Psicólogo') {
+         permissionDocuments = allDocuments;
+      } else {
+         permissionDocuments = allDocuments?.filter(
+            (document: any) =>
+               document?.belongsTo?.underResponsibilityOfUserId ===
+                  activeUserId ||
+               document?.belongsTo?.interviewedByUserId === activeUserId
+         );
+      }
       return new DocumentListViewModel(
          search,
          setSearch,
          queryDocument,
-         allDocuments
+         permissionDocuments
       );
    }
    static displayAndActions(

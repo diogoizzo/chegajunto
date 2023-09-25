@@ -4,7 +4,7 @@ import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 interface AppointmentPageHeaderProps {
    title?: string;
    subtitle?: string;
-   btnHref: string;
+   btnHref?: string;
    btnText?: string;
    data?: IAppointment[] | null;
    setData?: React.Dispatch<React.SetStateAction<IAppointment[] | null>>;
@@ -78,11 +78,12 @@ export default function AppointmentPageHeader({
                            />
                         </div>
                      ) : null}
-
-                     <PrimaryBtnLink
-                        text={btnText ? btnText : 'Novo'}
-                        href={btnHref}
-                     />
+                     {btnHref ? (
+                        <PrimaryBtnLink
+                           text={btnText ? btnText : 'Novo'}
+                           href={btnHref}
+                        />
+                     ) : null}
                   </div>
                </div>
             </div>

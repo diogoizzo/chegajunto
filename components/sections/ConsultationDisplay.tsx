@@ -7,7 +7,6 @@ interface ConsultationDisplayProps {
 }
 
 function ConsultationDisplay({ consultation }: ConsultationDisplayProps) {
-   console.log(consultation);
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">

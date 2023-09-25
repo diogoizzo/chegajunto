@@ -6,7 +6,9 @@ export default class DocumentRepository {
             include: {
                belongsTo: {
                   select: {
-                     name: true
+                     name: true,
+                     underResponsibilityOfUserId: true,
+                     interviewedByUserId: true
                   }
                }
             }

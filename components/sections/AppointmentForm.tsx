@@ -91,7 +91,6 @@ function AppointmentForm() {
                      <PrimaryBtn
                         text={'Salvar'}
                         clickHandle={() => {
-                           console.log('clicado');
                            viewModel.save(viewModel.selectedUser);
                         }}
                      />

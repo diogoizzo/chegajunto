@@ -7,6 +7,7 @@ export default class AppointmentListViewModel {
       public query: UseQueryResult<any, unknown>,
       public search: IAppointment[] | null,
       public setSearch: Dispatch<SetStateAction<IAppointment[] | null>>,
-      public allAppointment: IAppointment[] | null
+      public allAppointment: IAppointment[] | null,
+      public userType: string
    ) {}
 }

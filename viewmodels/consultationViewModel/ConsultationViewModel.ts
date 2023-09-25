@@ -18,7 +18,9 @@ export default class ConsultationViewModel {
       urlQuery: ParsedUrlQuery,
       search: IConsultation[] | null,
       setSearch: Dispatch<SetStateAction<IConsultation[] | null>>,
-      consultationQuery: UseQueryResult<IConsultation[], unknown>
+      consultationQuery: UseQueryResult<IConsultation[], unknown>,
+      userType: string,
+      activeUserId: string
    ) {
       const consultations =
          (consultationQuery.data &&
@@ -27,12 +29,22 @@ export default class ConsultationViewModel {
       const orderedConsultations = consultations.sort((a, b) =>
          dayjs(b.createdAt).diff(dayjs(a.createdAt))
       );
+      console.log(orderedConsultations);
+      let permissionConsultation;
+      if (userType === 'Psicólogo') {
+         permissionConsultation = orderedConsultations;
+      } else {
+         permissionConsultation = orderedConsultations?.filter(
+            (consultation: any) =>
+               consultation.professionalUserId === activeUserId
+         );
+      }
       return new AppointmentListViewModel(
          urlQuery,
          search,
          setSearch,
          consultationQuery,
-         orderedConsultations
+         permissionConsultation
       );
    }
    static displayView(

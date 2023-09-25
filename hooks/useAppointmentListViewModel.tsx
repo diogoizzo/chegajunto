@@ -6,11 +6,16 @@ import { useToast } from '../components/ui/use-toast';
 import { useEffect, useState } from 'react';
 import SuccessMsg from '../components/parts/SuccessMsg';
 import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentViewModel';
+import { useSession } from 'next-auth/react';
 
 export default function useAppointmentListView() {
    const query = useQuery(['appointment'], () => AppointmentServices.getAll());
-   // const allAppointment = query.data && Appointment.createMany(query.data);
    const [search, setSearch] = useState<IAppointment[] | null>(null);
+   const { data: session } = useSession();
+   //@ts-ignore
+   const userType = String(session?.type);
+   //@ts-ignore
+   const activeUserId = String(session?.id);
    const router = useRouter();
    const { toast } = useToast();
    const urlQuery = router.query;
@@ -47,5 +52,11 @@ export default function useAppointmentListView() {
          });
       }
    }, [toast, urlQuery]);
-   return AppointmentViewModel.listView(query, search, setSearch);
+   return AppointmentViewModel.listView(
+      query,
+      search,
+      setSearch,
+      userType,
+      activeUserId
+   );
 }

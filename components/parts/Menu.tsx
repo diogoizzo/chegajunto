@@ -7,7 +7,6 @@ import { signOut, useSession } from 'next-auth/react';
 export default function Menu({ children }: any) {
    const router = useRouter();
    const { data: session } = useSession();
-   console.log(session);
    return (
       <>
          <Toaster />

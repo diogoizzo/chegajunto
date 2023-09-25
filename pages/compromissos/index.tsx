@@ -8,13 +8,23 @@ export default function AppointmentListView<NextPage>() {
    const viewModel = useAppointmentListViewModel();
    return (
       <Menu>
-         <AppointmentPageHeader
-            title="Compromissos"
-            subtitle="Veja a lista completa de compromissos cadastrados no sistema."
-            btnHref="/compromissos/novo"
-            data={viewModel?.allAppointment}
-            setData={viewModel.setSearch}
-         />
+         {viewModel.userType === 'Psicólogo' ? (
+            <AppointmentPageHeader
+               title="Compromissos"
+               subtitle="Veja a lista completa de compromissos cadastrados no sistema."
+               btnHref="/compromissos/novo"
+               data={viewModel?.allAppointment}
+               setData={viewModel.setSearch}
+            />
+         ) : (
+            <AppointmentPageHeader
+               title="Compromissos"
+               subtitle="Veja a lista completa de compromissos cadastrados no sistema."
+               data={viewModel?.allAppointment}
+               setData={viewModel.setSearch}
+            />
+         )}
+
          {viewModel.query.isLoading ? (
             <LoadingWithTitle title="Carregando todos os compromissos..." />
          ) : null}

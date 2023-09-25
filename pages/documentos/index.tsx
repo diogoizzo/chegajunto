@@ -1,15 +1,7 @@
-import { useRouter } from 'next/router';
 import Menu from '../../components/parts/Menu';
 import DocumentsList from '../../components/sections/DocumentsList';
-import { useEffect, useState } from 'react';
-import { useToast } from '../../components/ui/use-toast';
-import { useQuery } from 'react-query';
-import Document from '../../entities/Document';
-import SuccessMsg from '../../components/parts/SuccessMsg';
-import DocumentServices from '../../services/DocumentServices';
 import LoadingWithTitle from '../../components/sections/LoadingWithTitle';
 import DocumentPageHeader from '../../components/parts/DocumentPageHeader';
-import IDocument from '../../interfaces/IDocument';
 import useDocumentListViewModel from '../../hooks/useDocumentListViewModel';
 
 export default function Documentos<NextPage>() {

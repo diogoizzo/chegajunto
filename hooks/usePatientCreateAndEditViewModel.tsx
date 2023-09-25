@@ -79,6 +79,7 @@ export default function usePatientCreateAndEditViewModel(patient?: IPatient) {
       patientUpdateMutation,
       patientDeleteMutation,
       patientCreateMutation,
+      errorToast,
       patient
    );
 }

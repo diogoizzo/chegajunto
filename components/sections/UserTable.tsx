@@ -7,7 +7,6 @@ interface UserTableProps {
 }
 
 function UserTable({ small, data }: UserTableProps) {
-   console.log(data);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">

@@ -29,12 +29,19 @@ export default class PatientCreateAndEditViewModel {
          unknown
       >,
       public users: User[],
+      public errorToast: (msg: string) => void,
       public patient?: IPatient
    ) {}
    async salvar(e: any) {
       e.preventDefault();
       if (!this?.patient) {
-         this.patientCreateMutation.mutate(this.form);
+         if (this.form.interviewedByUserId) {
+            this.patientCreateMutation.mutate(this.form);
+         } else {
+            this.errorToast(
+               'É necessário selecionar um usuário responsável pela entrevista'
+            );
+         }
       } else {
          this.patientUpdateMutation.mutate(this.form);
       }

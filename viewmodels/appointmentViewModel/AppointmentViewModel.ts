@@ -16,19 +16,35 @@ export default class AppointmentViewModel {
    static listView(
       query: UseQueryResult<any, unknown>,
       search: IAppointment[] | null,
-      setSearch: Dispatch<SetStateAction<IAppointment[] | null>>
+      setSearch: Dispatch<SetStateAction<IAppointment[] | null>>,
+      userType: string,
+      activeUserId: string
    ) {
-      const allAppointment = query.data && Appointment.createMany(query.data);
+      const allAppointments = query.data && Appointment.createMany(query.data);
+      console.log(allAppointments);
+
+      let permissionAppointments;
+      if (userType === 'Psicólogo') {
+         permissionAppointments = allAppointments;
+      } else {
+         permissionAppointments = allAppointments?.filter(
+            (appointment: any) =>
+               appointment.professionalUserId === activeUserId
+         );
+      }
+
       return new AppointmentListViewModel(
          query,
          search,
          setSearch,
-         allAppointment
+         permissionAppointments,
+         userType
       );
    }
    static displayView(query: UseQueryResult<any, unknown>) {
       const appointment =
          query.data && Appointment.createFromObject(query.data);
+
       return new AppointmentDisplayViewModel(query, appointment);
    }
    static createView(

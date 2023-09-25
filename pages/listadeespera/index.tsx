@@ -1,37 +1,26 @@
-import { useQuery } from 'react-query';
 import Menu from '../../components/parts/Menu';
 import PageHeader from '../../components/parts/PageHeader';
-import Patient from '../../entities/Patient';
-import PatientServices from '../../services/PatientServices';
-import IPatient from '../../interfaces/IPatient';
-import { useState } from 'react';
 import Loading from '../../components/sections/loading';
 import WaitingPatientesTable from '../../components/sections/WaitingPatientesTable';
-import dayjs from 'dayjs';
+import useWaitingListViewModel from '../../hooks/useWaitingListViewModel';
 
 export default function Espera<NextPage>() {
-   const [search, setSearch] = useState(null);
-
-   const query = useQuery(['patients'], () => PatientServices.getAll());
-
-   const allPatients = query.data && Patient.createMany(query.data);
-
-   const waitingPatients = allPatients?.filter(
-      (patient: IPatient) => patient.status === 'Espera'
-   );
+   const viewModel = useWaitingListViewModel();
 
    return (
       <Menu>
          <PageHeader
             title="Lista de Espera"
             subtitle="Veja a lista de pacientes em espera."
-            data={waitingPatients}
-            setData={setSearch}
+            data={viewModel.waitingPatients}
+            setData={viewModel.setSearch}
          />
-         {query.isLoading ? (
+         {viewModel.query.isLoading ? (
             <Loading />
          ) : (
-            <WaitingPatientesTable data={search ?? waitingPatients} />
+            <WaitingPatientesTable
+               data={viewModel.search ?? viewModel.waitingPatients}
+            />
          )}
       </Menu>
    );

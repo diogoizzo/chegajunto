@@ -19,8 +19,6 @@ export default class AppointmentController {
    static async create(req: NextApiRequest, res: NextApiResponse) {
       await withAutentication(req, res);
       const dayOfWeek = String(req.body.dayOfWeek);
-      console.log('Entrei no controller de criação');
-      console.log(req.body);
       const time = String(req.body.time);
       const professionalUserId = String(req.body.professionalUserId);
       const patientId = String(req.body.patientId);
