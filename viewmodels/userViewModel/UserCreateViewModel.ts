@@ -4,7 +4,6 @@ import { UseMutationResult } from 'react-query';
 import { UserFromData } from '../../components/sections/UserForm';
 import { Dispatch, SetStateAction } from 'react';
 import UserServices from '../../services/UserServices';
-import { flushSync } from 'react-dom';
 
 export default class UserCreateViewModel {
    constructor(
@@ -24,16 +23,40 @@ export default class UserCreateViewModel {
          string | undefined,
          unknown
       >,
+      public userProfileUpdate: UseMutationResult<any, unknown, any, unknown>,
       public errorToast: (msg: string) => void,
       public router: NextRouter,
       public user?: User
    ) {}
 
-   async register(e: any) {
+   async register(e: any, user?: User, activeUser?: User) {
       e.preventDefault();
-      if (!this?.user) {
+      if (user) {
+         delete this.form?.password;
+         delete this.form?.confirmPassword;
+         this.userUpdateMutation.mutate(this.form);
+      } else if (activeUser) {
          if (!this.form.name) {
-            this.errorToast('É preciso informar ao menos o nome do paciente');
+            this.errorToast('É preciso informar ao menos o nome do usuário');
+         } else if (!this.form.email) {
+            this.errorToast(
+               'É necessário informar o email para login do usuário'
+            );
+         } else if (!this.form.password) {
+            this.errorToast('É necessário informar uma senha');
+         } else if (this.form.password !== this.form.confirmPassword) {
+            this.errorToast('As senhas precisam ser iguais');
+         } else {
+            this.userProfileUpdate.mutate(this.form);
+         }
+      } else {
+         console.log('Entrei na criação de usuário');
+         if (!this.form.name) {
+            this.errorToast('É preciso informar ao menos o nome do usuário');
+         } else if (!this.form.email) {
+            this.errorToast(
+               'É necessário informar o email para login do usuário'
+            );
          } else if (!this.form.password) {
             this.errorToast('É necessário informar uma senha');
          } else if (this.form.password !== this.form.confirmPassword) {
@@ -44,10 +67,6 @@ export default class UserCreateViewModel {
                this.router.push('/usuarios?saved=true');
             }
          }
-      } else {
-         delete this.form?.password;
-         delete this.form?.confirmPassword;
-         this.userUpdateMutation.mutate(this.form);
       }
    }
    deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {

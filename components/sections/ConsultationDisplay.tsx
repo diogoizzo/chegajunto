@@ -7,6 +7,7 @@ interface ConsultationDisplayProps {
 }
 
 function ConsultationDisplay({ consultation }: ConsultationDisplayProps) {
+   console.log(consultation);
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">
@@ -20,8 +21,17 @@ function ConsultationDisplay({ consultation }: ConsultationDisplayProps) {
                   content={dayjs(consultation?.createdAt).format('HH:mm')}
                />
                <DisplayLine
+                  label="Paciente"
+                  content={consultation?.patient?.name}
+               />
+
+               <DisplayLine
                   label="Paciente Compareceu"
                   content={consultation?.patientAbsent ? 'Não' : 'Sim'}
+               />
+               <DisplayLine
+                  label="Responsável pelo atendimento"
+                  content={consultation?.professional?.name}
                />
                <DisplayLine
                   label="Anotações do Atendimento"

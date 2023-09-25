@@ -50,6 +50,8 @@ export default NextAuth({
          //esse Callback server para incluir o id do usuario no jwt, posso usar para incluir as informaçoes que eu desejar
          if (user) {
             token.id = user.id;
+            // @ts-ignore
+            token.type = user.type;
          }
 
          return token;
@@ -58,7 +60,10 @@ export default NextAuth({
          //essa callback inclui a informação desejada na seção do usuário e fica acessível pela useSession()
          if (token) {
             // @ts-ignore
-            session.id = token.id; // eslint-disable-line
+            session.id = token.id;
+            // @ts-ignore
+            session.type = token.type;
+            // eslint-disable-line
          }
          return session;
       }

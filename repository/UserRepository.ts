@@ -18,7 +18,7 @@ export default class UserRepository {
       id: string,
       body: any,
       hash: string,
-      period: string
+      period: number
    ) {
       const updatedUser = await prisma.user.update({
          where: {
@@ -27,7 +27,7 @@ export default class UserRepository {
          data: {
             ...body,
             password: hash,
-            period: Number(period)
+            period: period
          }
       });
       return updatedUser;

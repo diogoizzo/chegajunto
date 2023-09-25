@@ -1,11 +1,9 @@
 import { useQuery } from 'react-query';
 import Menu from '../../components/parts/Menu';
 import PageHeader from '../../components/parts/PageHeader';
-import PatientesTable from '../../components/sections/PatientesTable';
 import Patient from '../../entities/Patient';
 import PatientServices from '../../services/PatientServices';
 import IPatient from '../../interfaces/IPatient';
-import Loading from '../../components/sections/loading';
 import WaitingPatientesTable from '../../components/sections/WaitingPatientesTable';
 import { useState } from 'react';
 

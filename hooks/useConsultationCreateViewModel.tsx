@@ -7,29 +7,52 @@ import { useMutation, useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import ConsultationServices from '../services/ConsultationServices';
 import ConsultationViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
+import Consultation from '../entities/Consultation';
 
-export default function useConsultationCreateViewModel() {
+export default function useConsultationCreateViewModel(
+   consultation?: Consultation
+) {
    const router = useRouter();
 
    const errorToast = useErrorToast();
 
    const [form, setForm] = useState<IConsultationForm>({
-      patientAbsent: false,
-      observation: '',
-      professionalUserId: undefined,
-      patientId: undefined
+      patientAbsent: consultation?.patientAbsent || false,
+      observation: consultation?.observation || '',
+      professionalUserId: consultation?.professionalUserId || undefined,
+      patientId: consultation?.patientId || undefined
    });
    const userQuery = useQuery(['user'], () => UserServices.getAll());
 
    const patientQuery = useQuery(['patients'], () => PatientServices.getAll());
 
+   const [isOpen, setIsOpen] = useState(false);
+
    const createConsultationMutation = useMutation({
       mutationFn: ConsultationServices.create,
       onError: () => {
-         errorToast('Não foi possível criar o compromisso');
+         errorToast('Não foi possível criar o atendimento');
       },
       onSuccess: () => {
          router.push('/atendimentos?saved=true');
+      }
+   });
+   const updateConsultationMutation = useMutation({
+      mutationFn: ConsultationServices.update,
+      onError: () => {
+         errorToast('Não foi possível atualizar o atendimento');
+      },
+      onSuccess: () => {
+         router.push('/atendimentos?updated=true');
+      }
+   });
+   const deleteConsultationMutation = useMutation({
+      mutationFn: ConsultationServices.delete,
+      onError: () => {
+         errorToast('Não foi possível apagar o atendimento');
+      },
+      onSuccess: () => {
+         router.push('/atendimentos?deleted=true');
       }
    });
    return ConsultationViewModel.createView(
@@ -37,6 +60,10 @@ export default function useConsultationCreateViewModel() {
       setForm,
       userQuery,
       patientQuery,
-      createConsultationMutation
+      isOpen,
+      setIsOpen,
+      createConsultationMutation,
+      updateConsultationMutation,
+      deleteConsultationMutation
    );
 }

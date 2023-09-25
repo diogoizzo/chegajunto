@@ -7,9 +7,12 @@ import DangerBtn from '../atoms/DangerBtn';
 import StringSelectInput from '../atoms/StringSelectInput';
 import UserAvailabilityForm from './UserAvailabilityForm';
 import useUserCreateAndEditViewModel from '../../hooks/useUserCreateAndEditViewModel';
+import SecundaryBtn from '../atoms/SecundaryBtn';
+import { useRouter } from 'next/router';
 
 interface UserFormProps {
    user?: User;
+   activeUser?: User;
 }
 
 export interface UserFromData extends IUser {
@@ -17,9 +20,9 @@ export interface UserFromData extends IUser {
    password?: string;
 }
 
-function UserForm({ user }: UserFormProps) {
-   const viewModel = useUserCreateAndEditViewModel(user);
-
+function UserForm({ user, activeUser }: UserFormProps) {
+   const router = useRouter();
+   const viewModel = useUserCreateAndEditViewModel(user, activeUser);
    return (
       <>
          <ConfirmationModal
@@ -153,7 +156,7 @@ function UserForm({ user }: UserFormProps) {
                            />
                         </>
                      )}
-                     {!user ? (
+                     {!user || activeUser ? (
                         <>
                            <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 mt-12 border-b border-gray-400 border-opacity-20">
                               <div className="w-full sm:w-auto px-4 mb-6 sm:mb-0">
@@ -184,7 +187,9 @@ function UserForm({ user }: UserFormProps) {
                      <div className="text-right space-x-6">
                         <PrimaryBtn
                            text={'Salvar'}
-                           clickHandle={(e: any) => viewModel.register(e)}
+                           clickHandle={(e: any) =>
+                              viewModel.register(e, user, activeUser)
+                           }
                         />
                         {user ? (
                            <DangerBtn
@@ -197,6 +202,10 @@ function UserForm({ user }: UserFormProps) {
                               }
                            />
                         ) : null}
+                        <SecundaryBtn
+                           text="Cancelar"
+                           clickHandle={() => router.push('/usuarios')}
+                        />
                      </div>
                   </form>
                </div>

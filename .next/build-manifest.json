@@ -27,20 +27,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/atendimentos": [
+    "/arquivados": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/atendimentos.js"
+      "static/chunks/pages/arquivados.js"
     ],
-    "/atendimentos/[id]": [
+    "/auth/signin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/atendimentos/[id].js"
+      "static/chunks/pages/auth/signin.js"
     ],
-    "/atendimentos/novo": [
+    "/compromissos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/atendimentos/novo.js"
+      "static/chunks/pages/compromissos.js"
+    ],
+    "/pacientes": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pacientes.js"
     ]
   },
   "ampFirstPages": []

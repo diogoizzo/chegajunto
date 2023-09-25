@@ -11,6 +11,7 @@ import UserCreateViewModel from './UserCreateViewModel';
 import IAvailability from '../../interfaces/IAvailability';
 import { IAvailabilityForm } from '../../components/sections/AvailabilityForm';
 import UserAvailabilityViewModel from './UserAvailabilityViewModel';
+import UserProfileEditViewModel from './UserProfileEditViewModel';
 
 export default class UserViewModel {
    static listView(
@@ -49,7 +50,7 @@ export default class UserViewModel {
          string | undefined,
          unknown
       >,
-
+      userProfileUpdate: UseMutationResult<any, unknown, User, unknown>,
       errorToast: (msg: string) => void,
       router: NextRouter,
       user?: User
@@ -61,6 +62,7 @@ export default class UserViewModel {
          setForm,
          userUpdateMutation,
          userDeleteMutation,
+         userProfileUpdate,
          errorToast,
          router,
          user
@@ -97,5 +99,10 @@ export default class UserViewModel {
          errorToast,
          userId
       );
+   }
+   static ProfileEdit(activeUserQuery: UseQueryResult<any, unknown>) {
+      const activeUser =
+         activeUserQuery.data && User.createFormObject(activeUserQuery.data);
+      return new UserProfileEditViewModel(activeUserQuery, activeUser);
    }
 }

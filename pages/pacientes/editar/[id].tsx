@@ -1,29 +1,20 @@
-import { useRouter } from 'next/router';
 import FormPageHeader from '../../../components/parts/FromPageHeader';
 import Menu from '../../../components/parts/Menu';
-import { useQuery } from 'react-query';
-import Patient from '../../../entities/Patient';
-import PatientServices from '../../../services/PatientServices';
 import PatientForm from '../../../components/sections/PatientForm';
+import usePatientEditViewModel from '../../../hooks/usePatientEditViewModel';
 
 export default function PatientEditView() {
-   const router = useRouter();
-
-   const patientId = router.query.id;
-
-   const query = useQuery(['patient', patientId], () =>
-      PatientServices.getById(patientId)
-   );
-
-   const patient = query.data && Patient.createFromObject(query.data);
+   const viewModel = usePatientEditViewModel();
 
    return (
       <Menu>
          <FormPageHeader
-            title={patient?.name}
+            title={viewModel.patient?.name}
             subtitle="Edite as informações do paciente acima."
          />
-         {patient ? <PatientForm patient={patient} /> : null}
+         {viewModel.patient ? (
+            <PatientForm patient={viewModel.patient} />
+         ) : null}
       </Menu>
    );
 }

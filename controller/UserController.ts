@@ -22,13 +22,15 @@ export default class UserController {
    }
    static async updateProfile(req: NextApiRequest, res: NextApiResponse) {
       const password = req.body.password;
+      delete req.body.userLink;
+      delete req.body.confirmPassword;
       const hash = await bcrypt.hash(password, 0);
       try {
          await UserRepository.updateProfile(
             String(req.body.id),
             req.body,
             hash,
-            req.body.period
+            Number(req.body.period)
          );
       } catch (error) {
          console.log(error);

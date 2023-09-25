@@ -50,4 +50,12 @@ export default class UserServices {
          console.log(e);
       }
    }
+   static async updateProfile(form: any) {
+      try {
+         const res = await axios.patch('/api/register', form);
+         return res.data;
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }

@@ -9,12 +9,15 @@ import FormSwitchLine from '../atoms/FormSwitchLine';
 import FormInputDateLine from '../atoms/FormInputDateLine';
 import AvailabilityForm from './AvailabilityForm';
 import usePatientCreateAndEditViewModel from '../../hooks/usePatientCreateAndEditViewModel';
+import SecundaryBtn from '../atoms/SecundaryBtn';
+import { useRouter } from 'next/router';
 
 interface PatientFormProps {
    patient?: IPatient;
 }
 
 function PatientForm({ patient }: PatientFormProps) {
+   const router = useRouter();
    const viewModel = usePatientCreateAndEditViewModel(patient);
 
    return (
@@ -234,6 +237,10 @@ function PatientForm({ patient }: PatientFormProps) {
                               }
                            />
                         ) : null}
+                        <SecundaryBtn
+                           text="Cancelar"
+                           clickHandle={() => router.push('/pacientes')}
+                        />
                      </div>
                   </form>
                </div>

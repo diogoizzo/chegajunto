@@ -9,6 +9,7 @@ import User from '../../entities/User';
 import PatientCreateAndEditViewModel from './PatientCreateAndEditViewModel';
 import IAvailability from '../../interfaces/IAvailability';
 import PatientAvailabilityViewModel from './PatientAvailabilityViewModel';
+import PatientEditViewModel from './PatientEditViewModel';
 
 export default class PatientViewModel {
    static listView(
@@ -89,5 +90,9 @@ export default class PatientViewModel {
          errorToast,
          patientId
       );
+   }
+   static edit(query: UseQueryResult<any, unknown>) {
+      const patient = query.data && Patient.createFromObject(query.data);
+      return new PatientEditViewModel(query, patient);
    }
 }
