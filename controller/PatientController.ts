@@ -7,9 +7,9 @@ export default class PatientController {
       await withAutentication(req, res);
       const patients = await PatientRepository.getAll();
       if (patients) {
-         res.status(200).json(patients);
+         return res.status(200).json(patients);
       } else {
-         res.status(404).json({ error: 'Pacientes não encontrados' });
+         return res.status(404).json({ error: 'Pacientes não encontrados' });
       }
    }
    static async create(req: NextApiRequest, res: NextApiResponse) {
@@ -25,9 +25,9 @@ export default class PatientController {
          String(req.body.email)
       );
       if (patient) {
-         res.status(200).json(patient);
+         return res.status(200).json(patient);
       } else {
-         res.status(500).send({
+         return res.status(500).send({
             message: 'Não foi possível criar o novo paciente'
          });
       }
@@ -37,9 +37,9 @@ export default class PatientController {
       const id = String(req.query.id);
       const patient = await PatientRepository.findById(id);
       if (patient) {
-         res.status(200).json(patient);
+         return res.status(200).json(patient);
       } else {
-         res.status(404).json({ error: 'Paciente não encontrado' });
+         return res.status(404).json({ error: 'Paciente não encontrado' });
       }
    }
    static async update(req: NextApiRequest, res: NextApiResponse) {
@@ -67,9 +67,9 @@ export default class PatientController {
          req.body
       );
       if (patient) {
-         res.status(200).json(patient);
+         return res.status(200).json(patient);
       } else {
-         res.status(404).json({ error: 'Usuário não encontrado' });
+         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
    }
    static async archivePatient(req: NextApiRequest, res: NextApiResponse) {
@@ -77,9 +77,9 @@ export default class PatientController {
       const id = String(req.query.id);
       const updatedPatient = await PatientRepository.archivePatient(id);
       if (updatedPatient) {
-         res.status(200).json(updatedPatient);
+         return res.status(200).json(updatedPatient);
       } else {
-         res.status(404).json({ error: 'Paciente não encontrado' });
+         return res.status(404).json({ error: 'Paciente não encontrado' });
       }
    }
 }

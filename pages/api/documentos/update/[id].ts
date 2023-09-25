@@ -6,7 +6,8 @@ import isEmptyObject from '../../../../lib/isEmptyObject';
 
 export const config = {
    api: {
-      bodyParser: false
+      bodyParser: false,
+      externalResolver: true
    }
 };
 

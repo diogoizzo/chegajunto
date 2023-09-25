@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import readFile from '../../../lib/readFile';
-import GoogleDriveServices from '../../../services/GoogleDriveServices';
 import DocumentController from '../../../controller/DocumentController';
 
 export const config = {
    api: {
-      bodyParser: false
+      bodyParser: false,
+      externalResolver: true
    }
 };
 

@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import UserController from '../../../controller/UserController';
 
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
+
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse

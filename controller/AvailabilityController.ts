@@ -18,9 +18,9 @@ export default class AvailabilityController {
                dayOfWeek,
                time
             );
-         res.status(200).json(newAvailabiliy);
+         return res.status(200).json(newAvailabiliy);
       } catch (error) {
-         res.status(500).json({
+         return res.status(500).json({
             message: 'Não foi possível criar a nova disponibilidade',
             error: error
          });
@@ -39,9 +39,9 @@ export default class AvailabilityController {
                userId,
                availabilityId
             );
-         res.status(200).json(deletedAvailability);
+         return res.status(200).json(deletedAvailability);
       } catch (error) {
-         res.status(500).json({
+         return res.status(500).json({
             message: 'Não foi possível apagar a disponibilidade',
             error: error
          });
@@ -62,9 +62,9 @@ export default class AvailabilityController {
                dayOfWeek,
                time
             );
-         res.status(200).json(newAvailabiliy);
+         return res.status(200).json(newAvailabiliy);
       } catch (error) {
-         res.status(500).json({
+         return res.status(500).json({
             message: 'Não foi possível criar a nova disponibilidade',
             error: error
          });
@@ -83,9 +83,9 @@ export default class AvailabilityController {
                patientId,
                availabilityId
             );
-         res.status(200).json(deletedAvailability);
+         return res.status(200).json(deletedAvailability);
       } catch (error) {
-         res.status(500).json({
+         return res.status(500).json({
             message: 'Não foi possível apagar a disponibilidade',
             error: error
          });
@@ -100,9 +100,9 @@ export default class AvailabilityController {
             dayOfWeek,
             time
          );
-         res.status(200).json(availability);
+         return res.status(200).json(availability);
       } catch (error) {
-         res.status(500).json({
+         return res.status(500).json({
             message:
                'Não foi localizar nenhuma disponibilidade disponibilidade',
             error: error

@@ -109,4 +109,53 @@ export default class AvailabilityRepository {
       });
       return availability;
    }
+   static async moveUserAvailabilityToAppointment(
+      dayOfWeek: string,
+      time: string,
+      professionalUserId: string
+   ) {
+      try {
+         const availability = prisma.availability.update({
+            where: {
+               dayOfWeek_time: {
+                  dayOfWeek: dayOfWeek,
+                  time: time
+               }
+            },
+            data: {
+               professionals: {
+                  disconnect: {
+                     id: professionalUserId
+                  }
+               }
+            }
+         });
+         return availability;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async recreateUserAvailability(deletedAppointment: any) {
+      const recreatedUserAvailability = await prisma.user.update({
+         where: {
+            id: deletedAppointment.professionalUserId
+         },
+         data: {
+            availabilities: {
+               connectOrCreate: {
+                  where: {
+                     dayOfWeek_time: {
+                        dayOfWeek: deletedAppointment.dayOfWeek,
+                        time: deletedAppointment.time
+                     }
+                  },
+                  create: {
+                     dayOfWeek: deletedAppointment.dayOfWeek,
+                     time: deletedAppointment.time
+                  }
+               }
+            }
+         }
+      });
+   }
 }

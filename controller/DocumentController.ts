@@ -9,9 +9,9 @@ export default class DocumentController {
       await withAutentication(req, res);
       const documents = await DocumentRepository.getAll();
       if (documents) {
-         res.status(200).json(documents);
+         return res.status(200).json(documents);
       } else {
-         res.status(404).json({
+         return res.status(404).json({
             error: 'Não foi encontrado nenhum documento'
          });
       }
@@ -37,14 +37,14 @@ export default class DocumentController {
             mimeType
          );
          if (doc) {
-            res.status(200).json(doc);
+            return res.status(200).json(doc);
          } else {
-            res.status(500).send({
+            return res.status(500).send({
                message: 'Não foi possível salvar o documento no banco de dados'
             });
          }
       } else {
-         res.status(503).send({
+         return res.status(503).send({
             message: 'Não foi possível salvar o documento no google drive'
          });
       }
@@ -54,9 +54,9 @@ export default class DocumentController {
       const id = String(req.query.id);
       const document = await DocumentRepository.findById(id);
       if (document) {
-         res.status(200).json(document);
+         return res.status(200).json(document);
       } else {
-         res.status(404).json({ error: 'Usuário não encontrado' });
+         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
    }
    static async delete(req: NextApiRequest, res: NextApiResponse) {
@@ -66,9 +66,9 @@ export default class DocumentController {
       if (deletedDocument) {
          await GoogleDriveServices.deleteById(deletedDocument.googleDriveId);
 
-         res.status(200).json(deletedDocument);
+         return res.status(200).json(deletedDocument);
       } else {
-         res.status(404).json({ error: 'Documento não encontrado' });
+         return res.status(404).json({ error: 'Documento não encontrado' });
       }
    }
    static async update(req: NextApiRequest, res: NextApiResponse) {
@@ -92,9 +92,11 @@ export default class DocumentController {
             mimeType
          );
          if (doc) {
-            res.status(200).json(doc);
+            return res.status(200).json(doc);
          } else {
-            res.status(503).send('Não foi possível atualizar o documento');
+            return res
+               .status(503)
+               .send('Não foi possível atualizar o documento');
          }
       } else {
          const googleFile = await prisma.document.findFirst({
@@ -117,12 +119,12 @@ export default class DocumentController {
                   mimeType,
                   newFileGoogleId
                );
-               res.status(200).json(doc);
+               return res.status(200).json(doc);
             } catch (error) {
-               res.status(503).json(error);
+               return res.status(503).json(error);
             }
          } else {
-            res.status(503).send({
+            return res.status(503).send({
                message: 'Não foi possível atualizar o documento no google drive'
             });
          }

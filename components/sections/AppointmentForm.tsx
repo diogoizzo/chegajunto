@@ -90,9 +90,10 @@ function AppointmentForm() {
                   <div className="text-right space-x-6">
                      <PrimaryBtn
                         text={'Salvar'}
-                        clickHandle={() =>
-                           viewModel.save(viewModel.selectedUser)
-                        }
+                        clickHandle={() => {
+                           console.log('clicado');
+                           viewModel.save(viewModel.selectedUser);
+                        }}
                      />
                      <SecundaryBtn
                         text="Cancelar"

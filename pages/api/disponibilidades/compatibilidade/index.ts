@@ -1,7 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import prisma from '../../../../lib/prisma';
 import AvailabilityController from '../../../../controller/AvailabilityController';
+
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
 
 export default async function handler(
    req: NextApiRequest,

@@ -97,4 +97,39 @@ export default class PatientRepository {
          console.log(error);
       }
    }
+   static async updateToActive(patientId: string, professionalUserId: string) {
+      try {
+         const patient = await prisma.patient.update({
+            where: {
+               id: patientId
+            },
+            data: {
+               status: 'Ativo',
+               underResponsibilityOf: {
+                  connect: {
+                     id: professionalUserId
+                  }
+               }
+            }
+         });
+         return patient;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async changeStatusToWait(id: string) {
+      try {
+         const updatePatientStatus = await prisma.patient.update({
+            where: {
+               id: id
+            },
+            data: {
+               status: 'Espera'
+            }
+         });
+         return updatePatientStatus;
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }

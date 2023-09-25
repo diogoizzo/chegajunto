@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import AvailabilityController from '../../../../../../controller/AvailabilityController';
 
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
+
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse

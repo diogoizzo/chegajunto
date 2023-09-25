@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import PatientController from '../../../controller/PatientController';
 
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
+
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse

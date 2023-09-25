@@ -40,9 +40,9 @@ export default class UserController {
       await withAutentication(req, res);
       const users = await UserRepository.getAll();
       if (users) {
-         res.status(200).json(users);
+         return res.status(200).json(users);
       } else {
-         res.status(404).json({ error: 'Usuários não encontrados' });
+         return res.status(404).json({ error: 'Usuários não encontrados' });
       }
    }
    static async getById(req: NextApiRequest, res: NextApiResponse) {
@@ -50,9 +50,9 @@ export default class UserController {
       const id = String(req.query.id);
       const user = await UserRepository.findById(id);
       if (user) {
-         res.status(200).json(user);
+         return res.status(200).json(user);
       } else {
-         res.status(404).json({ error: 'Usuário não encontrado' });
+         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
    }
    static async updateById(req: NextApiRequest, res: NextApiResponse) {
@@ -61,9 +61,9 @@ export default class UserController {
       delete req.body.userLink;
       const user = await UserRepository.updateById(id, req.body);
       if (user) {
-         res.status(200).json(user);
+         return res.status(200).json(user);
       } else {
-         res.status(404).json({ error: 'Usuário não encontrado' });
+         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
    }
    static async delete(req: NextApiRequest, res: NextApiResponse) {
@@ -71,9 +71,9 @@ export default class UserController {
       const id = String(req.query.id);
       const deletedUser = await UserRepository.deleteById(id);
       if (deletedUser) {
-         res.status(200).json(deletedUser);
+         return res.status(200).json(deletedUser);
       } else {
-         res.status(404).json({ error: 'Usuário não encontrado' });
+         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
    }
 }

@@ -4,6 +4,12 @@ import prisma from '../../../lib/prisma';
 import GoogleDriveServices from '../../../services/GoogleDriveServices';
 import DocumentController from '../../../controller/DocumentController';
 
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
+
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse
