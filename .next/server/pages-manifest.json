@@ -2,14 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/atendimentos/[id]": "pages/atendimentos/[id].js",
   "/": "pages/index.js",
-  "/api/compromissos": "pages/api/compromissos.js",
+  "/api/atendimentos/[id]": "pages/api/atendimentos/[id].js",
+  "/api/atendimentos": "pages/api/atendimentos.js",
   "/api/pacientes": "pages/api/pacientes.js",
-  "/pacientes": "pages/pacientes.js",
-  "/api/pacientes/[id]": "pages/api/pacientes/[id].js",
-  "/pacientes/[id]": "pages/pacientes/[id].js",
-  "/pacientes/editar/[id]": "pages/pacientes/editar/[id].js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/api/documentos": "pages/api/documentos.js",
-  "/documentos": "pages/documentos.js"
+  "/atendimentos/novo": "pages/atendimentos/novo.js",
+  "/atendimentos": "pages/atendimentos.js",
+  "/api/usuarios": "pages/api/usuarios.js"
 }

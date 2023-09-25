@@ -1,46 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import prisma from '../../../lib/prisma';
+import ConsultationController from '../../../controller/ConsultationController';
+
+export const config = {
+   api: {
+      externalResolver: true
+   }
+};
 
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse
 ) {
    if (req.method === 'GET') {
-      const token = await getToken({ req });
-      if (token) {
-         const consultations = await prisma.consultation.findMany({
-            include: {
-               patient: true,
-               professional: true
-            }
-         });
-         if (consultations) {
-            res.status(200).json(consultations);
-         } else {
-            res.status(404).json({ error: 'Nenhum atendimento encontrado' });
-         }
-      } else {
-         res.status(401).send({ message: 'Acesso negado' });
-      }
+      ConsultationController.getAll(req, res);
    } else if (req.method === 'POST') {
-      const token = await getToken({ req });
-      if (token) {
-         const consultation = await prisma.consultation.create({
-            data: {
-               ...req.body
-            }
-         });
-         if (consultation) {
-            res.status(200).json(consultation);
-         } else {
-            res.status(500).json({
-               error: 'Não foi possível criar o atendimento'
-            });
-         }
-      } else {
-         res.status(401).send({ message: 'Acesso negado' });
-      }
+      ConsultationController.create(req, res);
    } else {
       return res
          .status(405)
