@@ -11,7 +11,6 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import IPatient from '../../interfaces/IPatient';
-import dayjs from 'dayjs';
 import generateDataSet from '../../lib/generateDataSet';
 import IConsultation from '../../interfaces/IConsultation';
 import IDocument from '../../interfaces/IDocument';

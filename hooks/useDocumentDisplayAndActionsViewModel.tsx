@@ -3,7 +3,6 @@ import useErrorToast from './useErrorToast';
 import { useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import DocumentServices from '../services/DocumentServices';
-import Document from '../entities/Document';
 import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
 
 export default function useDocumentDisplayAndActionsViewModel() {

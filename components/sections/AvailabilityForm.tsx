@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import IAvailability from '../../interfaces/IAvailability';
 import FormInputTimeWithStep from '../atoms/FomInputTimeWithStep';
 import PrimaryBtn from '../atoms/PrimaryBtn';
 import StringSelectInput from '../atoms/StringSelectInput';
-import { useMutation, useQueryClient } from 'react-query';
-import AvailabilityServices from '../../services/AvailabilityServices';
-import useErrorToast from '../../hooks/useErrorToast';
+
 import usePatientAvailablityViewModel from '../../hooks/usePatientAvailablityViewModel';
 
 export interface IAvailabilityForm {

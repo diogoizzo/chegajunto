@@ -1,4 +1,3 @@
-import IAppointment from '../../interfaces/IAppointment';
 import IConsultation from '../../interfaces/IConsultation';
 import consultationExportFormatter from '../../lib/formatters/consultationExportFormatter';
 import DownloadBtn from '../atoms/DownloadBtn';

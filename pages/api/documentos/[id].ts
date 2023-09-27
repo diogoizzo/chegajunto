@@ -1,7 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import prisma from '../../../lib/prisma';
-import GoogleDriveServices from '../../../services/GoogleDriveServices';
 import DocumentController from '../../../controller/DocumentController';
 
 export const config = {

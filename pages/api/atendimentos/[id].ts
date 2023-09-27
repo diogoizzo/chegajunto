@@ -1,6 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import prisma from '../../../lib/prisma';
 import ConsultationController from '../../../controller/ConsultationController';
 
 export const config = {

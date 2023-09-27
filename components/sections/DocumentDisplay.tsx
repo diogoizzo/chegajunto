@@ -1,6 +1,5 @@
 import DisplayLine from '../atoms/DisplayLine';
 import Document from '../../entities/Document';
-import Image from 'next/image';
 
 interface DocumentDisplayProps {
    document?: Document;

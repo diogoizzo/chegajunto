@@ -1,4 +1,3 @@
-import IUser from '../../interfaces/IUser';
 import {
    Select,
    SelectContent,
