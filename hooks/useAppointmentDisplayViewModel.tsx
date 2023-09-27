@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import AppointmentServices from '../services/AppointmentServices';
-import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentViewModel';
+import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentsViewModel';
 
 export default function useAppointmentDisplayViewModel() {
    const router = useRouter();

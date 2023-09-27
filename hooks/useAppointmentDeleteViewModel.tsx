@@ -4,7 +4,7 @@ import useErrorToast from './useErrorToast';
 import { useMutation } from 'react-query';
 import AppointmentServices from '../services/AppointmentServices';
 import IAppointment from '../interfaces/IAppointment';
-import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentViewModel';
+import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentsViewModel';
 
 export default function useAppointmentDeleteViewModel(
    appointment?: IAppointment
