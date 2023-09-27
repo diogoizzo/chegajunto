@@ -23,8 +23,8 @@ export default function PageHeaderWithMenu({
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
-            <div className="flex flex-wrap items-center justify-between -mx-4">
-               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-6 md:mb-0">
+            <div className="flex flex-wrap items-start justify-between -mx-4">
+               <div className="w-2/3 lg:w-auto px-4 mb-1 md:mb-0">
                   <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide leading-6 mb-1">
                      {title}
                   </h4>
@@ -32,8 +32,8 @@ export default function PageHeaderWithMenu({
                      {subtitle}
                   </p>
                </div>
-               <div className="w-full md:w-1/2 lg:w-auto px-4">
-                  <div className="md:flex items-center">
+               <div className="w-1/3 lg:w-auto px-4 text-right ">
+                  <div className="md:flex items-center  justify-end">
                      <DropdownMenu>
                         <DropdownMenuTrigger className="inline-flex py-2 px-10  items-center text-center shadow-sm shadow-black/40 border-2 border-yinmn-blue-900 text-lg font-bold text-cool-gray-200 bg-yinmn-blue-500 hover:bg-yinmn-blue-200 transition duration-200 rounded-lg">
                            <svg

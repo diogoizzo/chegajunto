@@ -5,7 +5,9 @@ export default class PatientRepository {
          const patients = await prisma.patient.findMany({
             include: {
                documents: true,
-               availabilities: true
+               availabilities: true,
+               underResponsibilityOf: true,
+               interviewedBy: true
             }
          });
          return patients;
@@ -128,6 +130,74 @@ export default class PatientRepository {
             }
          });
          return updatePatientStatus;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async getByUserID(id: string) {
+      try {
+         const userPatients = await prisma.patient.findMany({
+            where: {
+               OR: [
+                  {
+                     underResponsibilityOfUserId: id
+                  },
+                  {
+                     interviewedByUserId: id
+                  }
+               ]
+            }
+         });
+         return userPatients;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async createdInRange(initialDate: any, endDate: any) {
+      try {
+         const patientsCreatedInRange = await prisma.patient.findMany({
+            where: {
+               AND: [
+                  {
+                     createdAt: {
+                        gt: initialDate
+                     }
+                  },
+                  {
+                     createdAt: {
+                        lt: endDate
+                     }
+                  }
+               ]
+            }
+         });
+         return patientsCreatedInRange;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async patientsArchivedThisMonth(initialDate: any, endDate: any) {
+      try {
+         const patientsArchivedThisMonth = await prisma.patient.findMany({
+            where: {
+               AND: [
+                  {
+                     updatedAt: {
+                        gt: initialDate
+                     }
+                  },
+                  {
+                     updatedAt: {
+                        lt: endDate
+                     }
+                  },
+                  {
+                     status: 'Arquivado'
+                  }
+               ]
+            }
+         });
+         return patientsArchivedThisMonth;
       } catch (error) {
          console.log(error);
       }

@@ -81,16 +81,16 @@ function AvailabilityForm({
             availabilities?.map((availability) => (
                <div
                   key={availability.id}
-                  className="flex flex-wrap items-center justify-between -mx-4 last:border-none  pb-3 mt-5 border-b border-cool-gray-900 border-opacity-10"
+                  className="flex  items-center justify-between -mx-4 last:border-none  pb-5 mt-5 border-b border-cool-gray-900 border-opacity-10"
                >
-                  <div className="w-full sm:w-auto px-4  sm:mb-0">
+                  <div className="w-full px-4  sm:mb-0">
                      <p className="font-medium text-md  text-cool-gray-500 mb-1">
                         {`${availability.dayOfWeek} às ${availability.time}`}
                      </p>
                   </div>
                   <button
                      onClick={() => viewModel.handleDelete(availability.id)}
-                     className="w-full sm:w-auto px-4 mb-6 sm:mb-0"
+                     className="sm:w-auto  px-4   inline-flex items-center"
                   >
                      <svg
                         className="font-medium text-md cursor-pointer  text-cool-gray-500 hover:text-cool-gray-200 h-6"

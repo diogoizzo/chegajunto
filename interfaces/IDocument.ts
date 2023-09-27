@@ -5,6 +5,7 @@ export default interface IDocument {
    id: string;
    name: string;
    type?: string;
+   createdAt?: string;
    mimeType?: string;
    description?: string;
    uploadedBy?: IUser;

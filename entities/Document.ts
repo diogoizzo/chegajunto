@@ -13,7 +13,8 @@ export default class Document implements IDocument {
       public belongsTo?: IPatient,
       public belongsToPatientId?: string,
       public googleDriveId?: string,
-      public description?: string
+      public description?: string,
+      public createdAt?: string
    ) {}
 
    get downloadLink() {
@@ -38,7 +39,8 @@ export default class Document implements IDocument {
       belongsTo,
       belongsToPatientId,
       googleDriveId,
-      description
+      description,
+      createdAt
    }: IDocument): Document {
       return new Document(
          id,
@@ -50,7 +52,8 @@ export default class Document implements IDocument {
          belongsTo,
          belongsToPatientId,
          googleDriveId,
-         description
+         description,
+         createdAt
       );
    }
 
@@ -66,7 +69,8 @@ export default class Document implements IDocument {
             belongsTo,
             belongsToPatientId,
             googleDriveId,
-            description
+            description,
+            createdAt
          } = document;
          return new Document(
             id,
@@ -78,7 +82,8 @@ export default class Document implements IDocument {
             belongsTo,
             belongsToPatientId,
             googleDriveId,
-            description
+            description,
+            createdAt
          );
       });
    }

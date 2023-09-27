@@ -1,5 +1,7 @@
 import IAppointment from '../../interfaces/IAppointment';
 import IConsultation from '../../interfaces/IConsultation';
+import consultationExportFormatter from '../../lib/formatters/consultationExportFormatter';
+import DownloadBtn from '../atoms/DownloadBtn';
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 
 interface ConsultationPageHeaderProps {
@@ -21,11 +23,12 @@ export default function ConsultationPageHeader({
    data,
    setData
 }: ConsultationPageHeaderProps) {
+   console.log(data);
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
             <div className="flex flex-wrap items-center justify-between -mx-4">
-               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-6 md:mb-0">
+               <div className="w-full lg:w-auto px-4 mb-1 md:mb-0">
                   <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide leading-6 mb-1">
                      {title}
                   </h4>
@@ -33,7 +36,7 @@ export default function ConsultationPageHeader({
                      {subtitle}
                   </p>
                </div>
-               <div className="w-full md:w-1/2 lg:w-auto px-4">
+               <div className="w-full mt-3 lg:mt-0  lg:w-auto px-4">
                   <div className="md:flex items-center">
                      {search !== false ? (
                         <div className="realtive flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
@@ -79,11 +82,17 @@ export default function ConsultationPageHeader({
                            />
                         </div>
                      ) : null}
-
-                     <PrimaryBtnLink
-                        text={btnText ? btnText : 'Novo'}
-                        href={btnHref}
-                     />
+                     <div className="flex items-center">
+                        <DownloadBtn
+                           data={data}
+                           title={title}
+                           formatter={consultationExportFormatter}
+                        />
+                        <PrimaryBtnLink
+                           text={btnText ? btnText : 'Novo'}
+                           href={btnHref}
+                        />
+                     </div>
                   </div>
                </div>
             </div>

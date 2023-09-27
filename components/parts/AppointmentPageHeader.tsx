@@ -1,4 +1,6 @@
 import IAppointment from '../../interfaces/IAppointment';
+import appointmentExportFormatter from '../../lib/formatters/appointmentExportFormatter';
+import DownloadBtn from '../atoms/DownloadBtn';
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 
 interface AppointmentPageHeaderProps {
@@ -20,6 +22,7 @@ export default function AppointmentPageHeader({
    data,
    setData
 }: AppointmentPageHeaderProps) {
+   console.log(data);
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
@@ -32,10 +35,10 @@ export default function AppointmentPageHeader({
                      {subtitle}
                   </p>
                </div>
-               <div className="w-full md:w-1/2 lg:w-auto px-4">
-                  <div className="md:flex items-center">
+               <div className="w-full  lg:w-auto px-4 md:mt-4 xl:mt-0">
+                  <div className="md:flex  items-center">
                      {search !== false ? (
-                        <div className="realtive flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
+                        <div className="relative flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
                            <span className="flex-shrink-0">
                               <svg
                                  width="14"
@@ -78,12 +81,19 @@ export default function AppointmentPageHeader({
                            />
                         </div>
                      ) : null}
-                     {btnHref ? (
-                        <PrimaryBtnLink
-                           text={btnText ? btnText : 'Novo'}
-                           href={btnHref}
+                     <div className="flex items-center">
+                        <DownloadBtn
+                           data={data}
+                           title={title}
+                           formatter={appointmentExportFormatter}
                         />
-                     ) : null}
+                        {btnHref ? (
+                           <PrimaryBtnLink
+                              text={btnText ? btnText : 'Novo'}
+                              href={btnHref}
+                           />
+                        ) : null}
+                     </div>
                   </div>
                </div>
             </div>

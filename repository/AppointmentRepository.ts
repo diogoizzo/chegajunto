@@ -56,4 +56,20 @@ export default class AppointmentRepository {
          console.log(error);
       }
    }
+   static async getByUserID(id: string) {
+      try {
+         const userAppointments = await prisma.appointment.findMany({
+            where: {
+               professionalUserId: id
+            },
+            include: {
+               patient: true,
+               professional: true
+            }
+         });
+         return userAppointments;
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }

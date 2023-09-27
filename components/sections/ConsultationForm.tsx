@@ -67,7 +67,7 @@ function ConsultationForm({ consultation }: ConsultationFormProps) {
                         label="Anotações do Atendimento"
                         placeHolder="Digite os detalhes do atendimento..."
                      />
-                     <div className="text-right space-x-6">
+                     <div className="text-right space-y-3 md:space-x-6">
                         <PrimaryBtn
                            text={'Salvar'}
                            clickHandle={() =>

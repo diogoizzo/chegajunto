@@ -184,7 +184,7 @@ function UserForm({ user, activeUser }: UserFormProps) {
                         </>
                      ) : null}
 
-                     <div className="text-right space-x-6">
+                     <div className="text-right space-y-3 md:space-x-6">
                         <PrimaryBtn
                            text={'Salvar'}
                            clickHandle={(e: any) =>
@@ -209,10 +209,17 @@ function UserForm({ user, activeUser }: UserFormProps) {
                      </div>
                   </form>
                </div>
+
                {user ? (
                   <UserAvailabilityForm
                      availabilities={user?.availabilities || []}
                      userId={user?.id}
+                  />
+               ) : null}
+               {activeUser ? (
+                  <UserAvailabilityForm
+                     availabilities={activeUser?.availabilities || []}
+                     userId={activeUser?.id}
                   />
                ) : null}
             </div>

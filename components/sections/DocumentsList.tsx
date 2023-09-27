@@ -62,7 +62,7 @@ function DocumentsList({ small, documents }: DocumentsListProps) {
                                  </svg>
                               </div>
                               <div>
-                                 <h5 className="text-2xl leading-5 font-semibold text-cool-gray-200">
+                                 <h5 className="text-2xl leading-6 font-semibold text-cool-gray-200">
                                     {document.name}
                                  </h5>
                                  <span className="text-md mt-1 block  text-yinmn-blue-200 font-medium">

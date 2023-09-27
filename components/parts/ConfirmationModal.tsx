@@ -68,7 +68,7 @@ function ConfirmationModal({
                            </p>
                         </div>
 
-                        <div className="mt-6 space-x-5">
+                        <div className="mt-6 space-y-3 md:space-x-5">
                            <PrimaryBtn
                               text={'Sim'}
                               clickHandle={deleteAction}

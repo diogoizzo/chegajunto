@@ -13,7 +13,6 @@ import Document from '../entities/Document';
 import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
 
 export default function useDocumentCreateAndEditViewModel(doc?: Document) {
-   console.log(doc);
    const router = useRouter();
 
    const { data } = useSession();

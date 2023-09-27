@@ -1,11 +1,7 @@
 import DisplayLine from '../atoms/DisplayLine';
 import IAppointment from '../../interfaces/IAppointment';
 import DangerBtn from '../atoms/DangerBtn';
-import { useMutation } from 'react-query';
-import AppointmentServices from '../../services/AppointmentServices';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import useErrorToast from '../../hooks/useErrorToast';
 import ConfirmationModal from '../parts/ConfirmationModal';
 import SecundaryBtn from '../atoms/SecundaryBtn';
 import useAppointmentDeleteViewModel from '../../hooks/useAppointmentDeleteViewModel';
@@ -50,7 +46,7 @@ function AppointmentDisplay({ appointment }: AppointmentDisplayProps) {
                      label="Paciente"
                      content={appointment?.patient.name}
                   />
-                  <div className="w-full text-right space-x-3">
+                  <div className="w-full text-center md:text-right space-y-3 md:space-x-3">
                      <DangerBtn
                         text={'Apagar Compromisso'}
                         openConfirmation={(e: any) =>

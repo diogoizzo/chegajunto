@@ -10,6 +10,11 @@ export default class DocumentRepository {
                      underResponsibilityOfUserId: true,
                      interviewedByUserId: true
                   }
+               },
+               uploadedBy: {
+                  select: {
+                     name: true
+                  }
                }
             }
          });
@@ -134,6 +139,29 @@ export default class DocumentRepository {
             }
          });
          return doc;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async newThisMonth(initialDate: any, endDate: any) {
+      try {
+         const newThisMonth = await prisma.document.findMany({
+            where: {
+               AND: [
+                  {
+                     createdAt: {
+                        gt: initialDate
+                     }
+                  },
+                  {
+                     createdAt: {
+                        lt: endDate
+                     }
+                  }
+               ]
+            }
+         });
+         return newThisMonth;
       } catch (error) {
          console.log(error);
       }

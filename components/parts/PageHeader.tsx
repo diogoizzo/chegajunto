@@ -1,3 +1,6 @@
+import patientExportFormatter from '../../lib/formatters/patientExportFormatter';
+import userExportFormatter from '../../lib/formatters/userExportFormatter';
+import DownloadBtn from '../atoms/DownloadBtn';
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 
 interface PageHeaderProps {
@@ -19,19 +22,37 @@ export default function PageHeader({
    data,
    setData
 }: PageHeaderProps) {
+   let formatter;
+   switch (title) {
+      case 'Pacientes':
+         formatter = patientExportFormatter;
+         break;
+      case 'Usuários':
+         formatter = userExportFormatter;
+         break;
+      case 'Lista de Espera':
+         formatter = patientExportFormatter;
+         break;
+      case 'Pacientes Arquivados':
+         formatter = patientExportFormatter;
+         break;
+      default:
+         console.log('Opção não configurada');
+         break;
+   }
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
             <div className="flex flex-wrap items-center justify-between -mx-4">
-               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-6 md:mb-0">
-                  <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide leading-6 mb-1">
+               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-1 md:mb-0">
+                  <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide  mb-1">
                      {title}
                   </h4>
                   <p className="text-md mt-3 leading-5 text-cool-gray-500">
                      {subtitle}
                   </p>
                </div>
-               <div className="w-full md:w-1/2 lg:w-auto px-4">
+               <div className="w-full mt-3 xl:mt-0 lg:w-auto px-4">
                   <div className="md:flex items-center">
                      {search !== false ? (
                         <div className="realtive flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
@@ -69,12 +90,22 @@ export default function PageHeader({
                            />
                         </div>
                      ) : null}
-                     {btnHref ? (
-                        <PrimaryBtnLink
-                           text={btnText ? btnText : 'Novo'}
-                           href={btnHref}
-                        />
-                     ) : null}
+                     <div className="flex items-center">
+                        {search !== false ? (
+                           <DownloadBtn
+                              data={data}
+                              title={title}
+                              formatter={formatter}
+                           />
+                        ) : null}
+
+                        {btnHref ? (
+                           <PrimaryBtnLink
+                              text={btnText ? btnText : 'Novo'}
+                              href={btnHref}
+                           />
+                        ) : null}
+                     </div>
                   </div>
                </div>
             </div>

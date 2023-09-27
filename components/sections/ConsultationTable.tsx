@@ -39,7 +39,7 @@ function ConsultationTable({ small, data }: UserTableProps) {
                                  </div>
                               </th>
                               <th className="p-0">
-                                 <div className="py-3 px-6 bg-raisin-black-light">
+                                 <div className="py-3 px-6 rounded-r-xl bg-raisin-black-light">
                                     <span className="text-xs text-gray-300 font-semibold">
                                        PROFISSIONAL
                                     </span>
@@ -116,14 +116,14 @@ function ConsultationTable({ small, data }: UserTableProps) {
                                           passHref
                                        >
                                           <div
-                                             className={`flex items-center h-16 px-6 ${
+                                             className={`flex items-center rounded-r-xl h-16 px-6 ${
                                                 idx % 2 !== 0
                                                    ? 'bg-raisin-black-light'
                                                    : null
                                              }`}
                                           >
                                              <div className="flex h-full items-center">
-                                                <span className="text-sm font-medium text-cool-gray-200">
+                                                <span className="text-sm font-medium  text-cool-gray-200">
                                                    {
                                                       consultation.professional
                                                          ?.name

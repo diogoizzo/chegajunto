@@ -87,7 +87,7 @@ function DocumentForm({ doc }: DocumentFormProps) {
                            state={viewModel.selectedFile}
                            setState={viewModel.setSelectedFile}
                         />
-                        <div className="text-right w-full space-x-6">
+                        <div className="text-right w-full space-y-3 md:space-x-6">
                            <PrimaryBtn
                               text={'Salvar'}
                               clickHandle={(e: any) =>

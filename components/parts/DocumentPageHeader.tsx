@@ -1,4 +1,6 @@
 import IDocument from '../../interfaces/IDocument';
+import documentExportFormatter from '../../lib/formatters/documentExportFormatter';
+import DownloadBtn from '../atoms/DownloadBtn';
 import PrimaryBtnLink from '../atoms/PrimaryBtnLink';
 
 interface PageHeaderProps {
@@ -20,11 +22,12 @@ export default function DocumentPageHeader({
    data,
    setData
 }: PageHeaderProps) {
+   console.log(data);
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
             <div className="flex flex-wrap items-center justify-between -mx-4">
-               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-6 md:mb-0">
+               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-3 md:mb-0">
                   <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide leading-6 mb-1">
                      {title}
                   </h4>
@@ -32,7 +35,7 @@ export default function DocumentPageHeader({
                      {subtitle}
                   </p>
                </div>
-               <div className="w-full md:w-1/2 lg:w-auto px-4">
+               <div className="w-full mt-3 xl:mt-0 lg:w-auto px-4">
                   <div className="md:flex items-center">
                      {search !== false ? (
                         <div className="realtive flex px-4 h-10 mb-4 md:mb-0 md:mr-4 w-full lg:w-96 max-w-sm items-center border border-cool-gray-900 hover:border-cool-gray-200 focus-within:border-carolina-blue  rounded-lg">
@@ -78,11 +81,17 @@ export default function DocumentPageHeader({
                            />
                         </div>
                      ) : null}
-
-                     <PrimaryBtnLink
-                        text={btnText ? btnText : 'Novo'}
-                        href={btnHref}
-                     />
+                     <div className="flex items-center">
+                        <DownloadBtn
+                           data={data}
+                           title={title}
+                           formatter={documentExportFormatter}
+                        />
+                        <PrimaryBtnLink
+                           text={btnText ? btnText : 'Novo'}
+                           href={btnHref}
+                        />
+                     </div>
                   </div>
                </div>
             </div>

@@ -68,4 +68,53 @@ export default class ConsultationRepository {
          console.log(error);
       }
    }
+   static async consultationsThisMonth(initialDate: any, endDate: any) {
+      try {
+         const consultationsThisMonth = await prisma.consultation.findMany({
+            where: {
+               AND: [
+                  {
+                     createdAt: {
+                        gt: initialDate
+                     }
+                  },
+                  {
+                     createdAt: {
+                        lt: endDate
+                     }
+                  }
+               ]
+            }
+         });
+         return consultationsThisMonth;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+   static async absentsThisMonth(initialDate: any, endDate: any) {
+      try {
+         const absentsThisMonth = await prisma.consultation.findMany({
+            where: {
+               AND: [
+                  {
+                     createdAt: {
+                        gt: initialDate
+                     }
+                  },
+                  {
+                     createdAt: {
+                        lt: endDate
+                     }
+                  },
+                  {
+                     patientAbsent: true
+                  }
+               ]
+            }
+         });
+         return absentsThisMonth;
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }

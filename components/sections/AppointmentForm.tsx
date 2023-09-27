@@ -87,7 +87,7 @@ function AppointmentForm() {
                      />
                   )}
 
-                  <div className="text-right space-x-6">
+                  <div className="text-right space-y-3 md:space-x-6">
                      <PrimaryBtn
                         text={'Salvar'}
                         clickHandle={() => {

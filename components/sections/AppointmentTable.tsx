@@ -42,20 +42,6 @@ function AppointmentTable({ small, data }: AppointmentTableProps) {
                               <th className="p-0">
                                  <div className="py-3 px-6 rounded-l-xl bg-raisin-black-light">
                                     <span className="text-xs text-gray-300 font-semibold">
-                                       PACIENTE
-                                    </span>
-                                 </div>
-                              </th>
-                              <th className="p-0">
-                                 <div className="py-3 px-6 bg-raisin-black-light">
-                                    <span className="text-xs text-gray-300 font-semibold">
-                                       PROFISSIONAL
-                                    </span>
-                                 </div>
-                              </th>
-                              <th className="p-0">
-                                 <div className="py-3 px-6 bg-raisin-black-light">
-                                    <span className="text-xs text-gray-300 font-semibold">
                                        DIA
                                     </span>
                                  </div>
@@ -64,6 +50,20 @@ function AppointmentTable({ small, data }: AppointmentTableProps) {
                                  <div className="py-3 px-6 bg-raisin-black-light">
                                     <span className="text-xs text-gray-300 font-semibold">
                                        HORA
+                                    </span>
+                                 </div>
+                              </th>
+                              <th className="p-0">
+                                 <div className="py-3 px-6  bg-raisin-black-light">
+                                    <span className="text-xs text-gray-300 font-semibold">
+                                       PACIENTE
+                                    </span>
+                                 </div>
+                              </th>
+                              <th className="p-0">
+                                 <div className="py-3 px-6 rounded-r-xl bg-raisin-black-light">
+                                    <span className="text-xs text-gray-300 font-semibold">
+                                       PROFISSIONAL
                                     </span>
                                  </div>
                               </th>
@@ -82,42 +82,6 @@ function AppointmentTable({ small, data }: AppointmentTableProps) {
                                              className={`flex items-center h-16 px-6 ${
                                                 idx % 2 !== 0
                                                    ? 'bg-raisin-black-light rounded-l-xl'
-                                                   : null
-                                             }`}
-                                          >
-                                             <span className="text-sm text-cool-gray-200 font-medium">
-                                                {appointment.patient.name}
-                                             </span>
-                                          </div>
-                                       </Link>
-                                    </td>
-                                    <td className="p-0">
-                                       <Link
-                                          href={String(appointment.editLink)}
-                                          passHref
-                                       >
-                                          <div
-                                             className={`flex items-center h-16 px-6 ${
-                                                idx % 2 !== 0
-                                                   ? 'bg-raisin-black-light'
-                                                   : null
-                                             }`}
-                                          >
-                                             <span className="text-sm text-cool-gray-200 font-medium">
-                                                {appointment.professional.name}
-                                             </span>
-                                          </div>
-                                       </Link>
-                                    </td>
-                                    <td className="p-0">
-                                       <Link
-                                          href={String(appointment.editLink)}
-                                          passHref
-                                       >
-                                          <div
-                                             className={`flex items-center h-16 px-6 ${
-                                                idx % 2 !== 0
-                                                   ? 'bg-raisin-black-light'
                                                    : null
                                              }`}
                                           >
@@ -144,6 +108,42 @@ function AppointmentTable({ small, data }: AppointmentTableProps) {
                                                    {appointment.time}
                                                 </span>
                                              </div>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link
+                                          href={String(appointment.editLink)}
+                                          passHref
+                                       >
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light '
+                                                   : null
+                                             }`}
+                                          >
+                                             <span className="text-sm text-cool-gray-200 font-medium">
+                                                {appointment.patient.name}
+                                             </span>
+                                          </div>
+                                       </Link>
+                                    </td>
+                                    <td className="p-0">
+                                       <Link
+                                          href={String(appointment.editLink)}
+                                          passHref
+                                       >
+                                          <div
+                                             className={`flex items-center h-16 px-6 ${
+                                                idx % 2 !== 0
+                                                   ? 'bg-raisin-black-light rounded-r-xl'
+                                                   : null
+                                             }`}
+                                          >
+                                             <span className="text-sm text-cool-gray-200 font-medium">
+                                                {appointment.professional.name}
+                                             </span>
                                           </div>
                                        </Link>
                                     </td>

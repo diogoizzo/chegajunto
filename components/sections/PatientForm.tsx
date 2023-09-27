@@ -221,7 +221,7 @@ function PatientForm({ patient }: PatientFormProps) {
                         placeholder="Selecione o responsável pela entrevista"
                         state={viewModel.form.underResponsibilityOfUserId}
                      />
-                     <div className="text-right space-x-6">
+                     <div className="text-right space-y-3 md:space-x-6">
                         <PrimaryBtn
                            text={'Salvar'}
                            clickHandle={(e: any) => viewModel.salvar(e)}
