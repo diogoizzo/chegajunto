@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
 import IPatient from '../interfaces/IPatient';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 import { useSession } from 'next-auth/react';
 
 export default function usePatientListViewModel() {

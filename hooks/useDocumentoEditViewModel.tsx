@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import DocumentServices from '../services/DocumentServices';
-import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
+import DocumentViewModel from '../viewmodels/documentViewModel/DocumentViewModel';
 
 export default function useDocumentEditViewModel() {
    const router = useRouter();

@@ -4,7 +4,7 @@ import PatientServices from '../services/PatientServices';
 import { useToast } from '../components/ui/use-toast';
 import { useEffect } from 'react';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 
 export default function usePatientDisplayModel() {
    const router = useRouter();

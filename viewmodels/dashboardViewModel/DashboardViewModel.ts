@@ -1,9 +1,9 @@
 import { UseQueryResult } from 'react-query';
 import Patient from '../../entities/Patient';
 import Appointment from '../../entities/Appointment';
-import DashboardListViewModel from './DashboardListViewModel';
 import Consultation from '../../entities/Consultation';
 import Document from '../../entities/Document';
+import DashboardListViewModel from './DashboardListViewModel';
 
 export default class DashboardViewModel {
    static patientsAndAppointmentsList(

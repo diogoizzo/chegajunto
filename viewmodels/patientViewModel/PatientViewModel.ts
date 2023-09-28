@@ -1,17 +1,12 @@
-import { IAvailabilityForm } from './../../components/sections/UserAvailabilityForm';
+import { IAvailabilityForm } from '../../components/sections/UserAvailabilityForm';
 import { UseMutationResult, UseQueryResult } from 'react-query';
 import IPatient from '../../interfaces/IPatient';
 import { Dispatch, SetStateAction } from 'react';
 import Patient from '../../entities/Patient';
-import PatientListViewModel from './PatientListViewModel';
-import PatientDisplayModel from './PatientDisplayModel';
+
 import User from '../../entities/User';
-import PatientCreateAndEditViewModel from './PatientCreateAndEditViewModel';
+
 import IAvailability from '../../interfaces/IAvailability';
-import PatientAvailabilityViewModel from './PatientAvailabilityViewModel';
-import PatientEditViewModel from './PatientEditViewModel';
-import PatientWaitingListViewModel from './PatientWaitingListViewModel';
-import PatientArchiveViewModel from './PatientArchiveViewModel';
 
 export default class PatientViewModel {
    static listView(

@@ -4,7 +4,7 @@ import { IAvailabilityForm } from '../components/sections/AvailabilityForm';
 import useErrorToast from './useErrorToast';
 import { useMutation, useQueryClient } from 'react-query';
 import AvailabilityServices from '../services/AvailabilityServices';
-import UserViewModel from '../viewModels/userViewModel/UserViewModel';
+import UserViewModel from '../viewmodels/userViewModel/UserViewModel';
 
 export default function useUserAvailabilityViewModel(
    availabilities: IAvailability[],

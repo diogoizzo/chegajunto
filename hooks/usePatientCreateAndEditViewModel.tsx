@@ -5,7 +5,7 @@ import { useState } from 'react';
 import UserServices from '../services/UserServices';
 import { useMutation, useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 
 export default function usePatientCreateAndEditViewModel(patient?: IPatient) {
    const router = useRouter();

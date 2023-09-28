@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import { useSession } from 'next-auth/react';
 import Patient from '../entities/Patient';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 
 export default function useArchiveViewModel() {
    const [search, setSearch] = useState<Patient[] | null>(null);

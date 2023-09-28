@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import Patient from '../entities/Patient';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 import { useSession } from 'next-auth/react';
 
 export default function useWaitingListViewModel() {

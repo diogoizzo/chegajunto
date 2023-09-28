@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useQuery } from 'react-query';
 import DashboardServices from '../services/DashboardServices';
-import DashboardViewModel from '../viewModels/dashboardViewModel/DashboardViewModel';
+import DashboardViewModel from '../viewmodels/dashboardViewModel/DashboardViewModel';
 
 export default function useDashboardViewModel() {
    const { data: session } = useSession();

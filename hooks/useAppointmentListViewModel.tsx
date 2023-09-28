@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useToast } from '../components/ui/use-toast';
 import { useEffect, useState } from 'react';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import AppointmentViewModel from '../viewModels/appointmentViewModel/AppointmentsViewModel';
+import AppointmentViewModel from '../viewmodels/appointmentViewModel/AppointmentsViewModel';
 import { useSession } from 'next-auth/react';
 
 export default function useAppointmentListView() {

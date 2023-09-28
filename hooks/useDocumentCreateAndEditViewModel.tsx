@@ -8,7 +8,7 @@ import PatientServices from '../services/PatientServices';
 import DocumentServices from '../services/DocumentServices';
 import IDocument from '../interfaces/IDocument';
 import Document from '../entities/Document';
-import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
+import DocumentViewModel from '../viewmodels/documentViewModel/DocumentViewModel';
 
 export default function useDocumentCreateAndEditViewModel(doc?: Document) {
    const router = useRouter();

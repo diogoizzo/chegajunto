@@ -5,7 +5,7 @@ import { useToast } from '../components/ui/use-toast';
 import UserServices from '../services/UserServices';
 import IUser from '../interfaces/IUser';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import UserViewModel from '../viewModels/userViewModel/UserViewModel';
+import UserViewModel from '../viewmodels/userViewModel/UserViewModel';
 
 export default function useUserListViewModel() {
    const router = useRouter();

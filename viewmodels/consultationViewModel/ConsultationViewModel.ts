@@ -7,11 +7,12 @@ import { IConsultationForm } from '../../components/sections/ConsultationForm';
 import User from '../../entities/User';
 import { IAppointmentForm } from '../../components/sections/AppointmentForm';
 import Patient from '../../entities/Patient';
+
+import dayjs from 'dayjs';
 import AppointmentListViewModel from './ConsultationListViewModel';
 import ConsultationDisplayViewModel from './ConsultationDisplayViewModel';
 import ConsultationCreateViewModel from './ConsultationCreateViewModel';
 import ConsultationEditViewModel from './ConsultationEditViewModel';
-import dayjs from 'dayjs';
 
 export default class ConsultationViewModel {
    static listView(

@@ -3,7 +3,7 @@ import useErrorToast from './useErrorToast';
 import { useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import DocumentServices from '../services/DocumentServices';
-import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
+import DocumentViewModel from '../viewmodels/documentViewModel/DocumentViewModel';
 
 export default function useDocumentDisplayAndActionsViewModel() {
    const router = useRouter();

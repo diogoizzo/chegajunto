@@ -4,7 +4,7 @@ import IAvailability from '../interfaces/IAvailability';
 import useErrorToast from './useErrorToast';
 import { useMutation, useQueryClient } from 'react-query';
 import AvailabilityServices from '../services/AvailabilityServices';
-import PatientViewModel from '../viewModels/patientViewModel/PatientViewModel';
+import PatientViewModel from '../viewmodels/patientViewModel/PatientViewModel';
 
 export default function usePatientAvailablityViewModel(
    availabilities: IAvailability[],

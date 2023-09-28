@@ -5,7 +5,7 @@ import { useToast } from '../components/ui/use-toast';
 import { useQuery } from 'react-query';
 import DocumentServices from '../services/DocumentServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import DocumentViewModel from '../viewModels/documentViewModel/DocumentViewModel';
+import DocumentViewModel from '../viewmodels/documentViewModel/DocumentViewModel';
 import { useSession } from 'next-auth/react';
 
 export default function useDocumentListViewModel() {

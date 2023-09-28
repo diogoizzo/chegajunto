@@ -5,7 +5,7 @@ import { UserFromData } from '../components/sections/UserForm';
 import User from '../entities/User';
 import { useMutation, useQueryClient } from 'react-query';
 import UserServices from '../services/UserServices';
-import UserViewModel from '../viewModels/userViewModel/UserViewModel';
+import UserViewModel from '../viewmodels/userViewModel/UserViewModel';
 import { useToast } from '../components/ui/use-toast';
 import SuccessMsg from '../components/parts/SuccessMsg';
 

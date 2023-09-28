@@ -2,10 +2,10 @@ import { Dispatch, SetStateAction } from 'react';
 import IDocument from '../../interfaces/IDocument';
 import { UseMutationResult, UseQueryResult } from 'react-query';
 import Document from '../../entities/Document';
-import DocumentListViewModel from './DocumentListViewModel';
-import DocumentDisplayAndActionsViewModel from './DocumentDisplayAndActionsViewModel';
 import User from '../../entities/User';
 import Patient from '../../entities/Patient';
+import DocumentListViewModel from './DocumentListViewModel';
+import DocumentDisplayAndActionsViewModel from './DocumentDisplayAndActionsViewModel';
 import DocumentCreateAndEditViewModel from './DocumentCreateAndEditViewModel';
 import DocumentEditViewModel from './DocumentEditViewModel';
 

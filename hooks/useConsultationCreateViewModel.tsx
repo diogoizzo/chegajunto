@@ -6,7 +6,7 @@ import UserServices from '../services/UserServices';
 import { useMutation, useQuery } from 'react-query';
 import PatientServices from '../services/PatientServices';
 import ConsultationServices from '../services/ConsultationServices';
-import ConsultationViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
+import ConsultationViewModel from '../viewmodels/consultationViewModel/ConsultationViewModel';
 import Consultation from '../entities/Consultation';
 
 export default function useConsultationCreateViewModel(

@@ -5,7 +5,7 @@ import { useToast } from '../components/ui/use-toast';
 import { useQuery } from 'react-query';
 import ConsultationServices from '../services/ConsultationServices';
 import SuccessMsg from '../components/parts/SuccessMsg';
-import AppointmentViewModel from '../viewModels/consultationViewModel/ConsultationViewModel';
+import AppointmentViewModel from '../viewmodels/consultationViewModel/ConsultationViewModel';
 import { useSession } from 'next-auth/react';
 
 export default function useAppointmentListViewModel() {

@@ -5,11 +5,12 @@ import { UseMutationResult, UseQueryResult } from 'react-query';
 import User from '../../entities/User';
 import { UserFromData } from '../../components/sections/UserForm';
 import { NextRouter } from 'next/router';
+
+import IAvailability from '../../interfaces/IAvailability';
+import { IAvailabilityForm } from '../../components/sections/AvailabilityForm';
 import UserListViewModel from './UserListViewModel';
 import UserDisplayViewModel from './UserDisplayViewModel';
 import UserCreateViewModel from './UserCreateViewModel';
-import IAvailability from '../../interfaces/IAvailability';
-import { IAvailabilityForm } from '../../components/sections/AvailabilityForm';
 import UserAvailabilityViewModel from './UserAvailabilityViewModel';
 import UserProfileEditViewModel from './UserProfileEditViewModel';
 
