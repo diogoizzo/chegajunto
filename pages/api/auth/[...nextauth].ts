@@ -16,7 +16,7 @@ export default NextAuth({
                type: 'email',
                placeholder: 'john@example.com'
             },
-            password: { lable: 'Senha', type: 'password' }
+            password: { label: 'Senha', type: 'password' }
          },
          authorize: async (credentials: any) => {
             //função que verifica a existencia do usuário informado nas credenciais, se encontado, compara a senha passada em credencias com a senha do bd, atraves do bcrypt. Tal função deve retnorar o usuário, caso a senha esteja correta, ou null caso incorreta ou o usuário não encontrado.
@@ -50,8 +50,6 @@ export default NextAuth({
          //esse Callback server para incluir o id do usuario no jwt, posso usar para incluir as informaçoes que eu desejar
          if (user) {
             token.id = user.id;
-            // @ts-ignore
-            token.type = user.type;
          }
 
          return token;
@@ -59,11 +57,8 @@ export default NextAuth({
       session: ({ session, token }) => {
          //essa callback inclui a informação desejada na seção do usuário e fica acessível pela useSession()
          if (token) {
-            // @ts-ignore
-            session.id = token.id;
-            // @ts-ignore
-            session.type = token.type;
-            // eslint-disable-line
+            //@ts-ignore
+            session.id = token.id; // eslint-disable-line
          }
          return session;
       }

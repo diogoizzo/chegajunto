@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import withAutentication from '../pages/api/auth/withAutentication';
 import PatientRepository from '../repository/PatientRepository';
 import AppointmentRepository from '../repository/AppointmentRepository';
 import dayjs from 'dayjs';
 import ConsultationRepository from '../repository/ConsultationRepository';
 import DocumentRepository from '../repository/DocumentRepository';
+import withAutentication from '../pages/api/auth/withAutentication';
 
 export default class DashboardController {
    static async getUserInfo(req: NextApiRequest, res: NextApiResponse) {
