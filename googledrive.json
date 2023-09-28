@@ -1,0 +1,13 @@
+{
+   "type": "service_account",
+   "project_id": "favorable-beach-395514",
+   "private_key_id": "78f3f2db91ae407bcc3fbc2f77af83dfc835e48f",
+   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDOJ+i+PN+NxQfc\n2zICr84i7JPfkbSACN8piWNotoc0jx4kb5BPmssaTENenAy60ITT6m+02SkzEcSl\n07woA2JY8mUyV+ehB/JJjv7Usu5F+rY4yTr20vc7Ct276IIYlHkwvB8uFcPeK2Uu\ndgOpN0Da57NMV/MrPN+vU4jb32o5k80AHG9xpvNZoSmKAzrBW1fRbdfvQwPHBX+u\n0POJh748ecc4ILNaZV8MeR1JSgw8xzjRySe0LKcgn1eZviFkoDBb5t8zZMpsY3eW\nxM7ElqGJd/b2Ip6cNnOe9EW4kksZYEj11Q+Idru4JNJQisgW5poWqobxn69CxN8f\nH9u+jPbzAgMBAAECggEABMvKObLHg1Ape1U2IqMzE9OWf8WvV1My2I/eWi9KPJ91\nFLqWYY5jrzxFokvVwqWF5uWLV7+9mkyNhfYZEy07pSoZJJoFmiofKYruxBqtjxSN\nbLYcbbrsDtmVMwFDwDf5Yc2JRCney/+3yORB+DaAMcI2L6PUKmtYy4a7+7GE58tN\nHD8o9SQbm9rBKTMTjnat9NLB4VIRztriubE0w942T74SabfY2Q/NhXn3uWtrKQ2Z\nQJBhQMc8tAjUJJSGzpy71X82tVXe7hqO2GKUSQutRmZLOiXkPQW8u3jTjVW1IKTE\nQnM297TObsoJrPekE4NjL6mV1DbH2E8aoDpolIE18QKBgQDpHKjA3ZzNs45kAKl1\nvaUYIAXeuf2wW1QkgEUMS9LPaLfcEJZmLICaTGBX1MxuCTkq+X97o8H1WKOuGhhP\nW3i/tHIEuqplxXL4Cpzp8GABvYqNrSJhbPUmXCfUPEVkMDqWpWb6XVWvLAEC7P7h\nM7VH49NTh965DLO+hceo5iKpJQKBgQDiZbOB+g8rlnP8gV0AMcpTs4ZqBwybsE5A\nG6QBQQNCOlbhc4B3yWB5FwuyaqwWHmIfnZUl/jNfZ+hhEAvJObMsq2wWfVULqpt9\nmSAOwaNfiCp6yPsjD84MPxEc1YbOyQoCJRYyrVmNymjoveHrDyl64RvnVGIkJXPs\nNnE/rT4gNwKBgDZ/5sxAg5pr8kxbA0NttR1wzy6FWVRT5dYqzvnS+FRZbTLcBe2Z\nVe+9D4E5VRocuercLfvgC0arFIltvGVBQ3e+XjHQ2mm0we5PvOPMuQVvJOd+pN0W\nNjJjtUQfWzHTPL9fqDW8gH3V0d63Pde02RsXnp6W03F8EMHoUQeh1lSpAoGBAL0I\nj/7qDTqm0Ee4uC+OY1LKJmRnaGaiqmOq8KC/aPomfh6W82CRe4T/8htSKEf7rJCb\nYkqr2rdBqm1JGZ42GF4m8ARDN/yawmP3tCW+FyyQJHALWm4nJzNggWhi/cGxaTLr\nRoKf7ZOPu1MCIR3EtizMwyC/e4aU4xsLRjoV7Da3AoGBALmE660oJNswsyrWJScb\nLuy/uDGMXZHeupN8oz1nGE4TWGmEESdpMqtVuIPSQd7e9quCie+wukr82q8Q5Kyl\nhM44b+yIn+dRlFscWIyzIViEa+yAXINDbgUA5B8AlMnumhJr3JCTAzpWOpObmkRl\nO/oywA9HmPeaZCnoWO7YLVkZ\n-----END PRIVATE KEY-----\n",
+   "client_email": "googledrive@favorable-beach-395514.iam.gserviceaccount.com",
+   "client_id": "114902749426151885067",
+   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+   "token_uri": "https://oauth2.googleapis.com/token",
+   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googledrive%40favorable-beach-395514.iam.gserviceaccount.com",
+   "universe_domain": "googleapis.com"
+}
