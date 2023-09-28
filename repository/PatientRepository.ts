@@ -15,13 +15,35 @@ export default class PatientRepository {
          console.log(error);
       }
    }
-   static async create(body: any, birthday: Date | null, email: string) {
+   static async create(
+      body: any,
+      birthday: Date | null,
+      email: string,
+      underResponsibilityOfUserId?: string,
+      interviewedByUserId?: string
+   ) {
       try {
          const patient = await prisma.patient.create({
             data: {
                ...body,
                birthday: birthday,
-               email: email
+               email: email,
+               interviewedBy:
+                  interviewedByUserId !== 'undefined'
+                     ? {
+                          connect: {
+                             id: interviewedByUserId
+                          }
+                       }
+                     : undefined,
+               underResponsibilityOf:
+                  underResponsibilityOfUserId !== 'undefined'
+                     ? {
+                          connect: {
+                             id: underResponsibilityOfUserId
+                          }
+                       }
+                     : undefined
             }
          });
          return patient;

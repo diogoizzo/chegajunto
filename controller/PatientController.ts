@@ -19,10 +19,19 @@ export default class PatientController {
       delete req.body.id;
       delete req.body.patientEditLink;
       delete req.body.status;
+      const underResponsibilityOfUserId = String(
+         req.body.underResponsibilityOfUserId
+      );
+
+      const interviewedByUserId = String(req.body.interviewedByUserId);
+      delete req.body.underResponsibilityOfUserId;
+      delete req.body.interviewedByUserId;
       const patient = await PatientRepository.create(
          req.body,
          birth,
-         String(req.body.email)
+         String(req.body.email),
+         underResponsibilityOfUserId,
+         interviewedByUserId
       );
       if (patient) {
          return res.status(200).json(patient);

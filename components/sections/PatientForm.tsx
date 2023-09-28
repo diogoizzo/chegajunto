@@ -168,7 +168,7 @@ function PatientForm({ patient }: PatientFormProps) {
                         <FormInputLine
                            state={viewModel.form.medication}
                            setState={viewModel.setForm}
-                           name="medicamentos"
+                           name="medication"
                            label="Quais medicamentos"
                            type="text"
                            placeHolder="Digite o nome dos medicamentos utilizados pelo paciente..."
@@ -218,7 +218,7 @@ function PatientForm({ patient }: PatientFormProps) {
                         title="Responsável pelo Paciente"
                         setState={viewModel.setForm}
                         options={viewModel.users}
-                        placeholder="Selecione o responsável pela entrevista"
+                        placeholder="Selecione o responsável pelo paciente"
                         state={viewModel.form.underResponsibilityOfUserId}
                      />
                      <div className="text-right space-y-3 md:space-x-6">
