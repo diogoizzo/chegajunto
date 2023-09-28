@@ -60,11 +60,7 @@ export default class DocumentController {
       const { id, awsFileName } = req.query;
       const deleted = await AwsServices.delete(String(awsFileName));
       if (deleted) {
-         const deletedPhoto = await prisma.document.delete({
-            where: {
-               id: String(id)
-            }
-         });
+         const deletedPhoto = await DocumentRepository.delete(String(id));
          if (deletedPhoto) {
             return res.status(200).json(deletedPhoto);
          } else {
