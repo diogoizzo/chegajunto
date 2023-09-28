@@ -5,7 +5,7 @@ import ReactLoading from 'react-loading';
 function LoadingWithTitle({ title }: { title: string }) {
    return (
       <Menu>
-         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-raisin-black-light ">
+         <div className="absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-raisin-black-light ">
             <div className="relative  flex flex-col items-center justify-center">
                <ReactLoading
                   type={'spinningBubbles'}

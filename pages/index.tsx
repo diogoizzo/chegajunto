@@ -11,17 +11,20 @@ export default function Dashboard<NextPage>() {
    return (
       <Menu>
          <PageHeaderJustTitle title="Dashboard" />
-         <DashboardChart
-            patientsCreatedThisMonth={viewModel?.patientsCreatedThisMonth}
-            patientsArchivedThisMonth={viewModel?.patientsArchivedThisMonth}
-            consultationsThisMonth={viewModel?.consultationsThisMonth}
-            absentsThisMonth={viewModel?.absentsThisMonth}
-            newDocumentsThisMonth={viewModel?.newDocumentsThisMonth}
-         />
-         {viewModel.dashboardQuery?.isLoading ? (
-            <LoadingWithTitle title="Carregando Dashboard" />
+         {viewModel.dashboardQuery.isLoading ? (
+            <LoadingWithTitle title="Carregado Dashboard" />
          ) : (
             <>
+               <DashboardChart
+                  patientsCreatedThisMonth={viewModel?.patientsCreatedThisMonth}
+                  patientsArchivedThisMonth={
+                     viewModel?.patientsArchivedThisMonth
+                  }
+                  consultationsThisMonth={viewModel?.consultationsThisMonth}
+                  absentsThisMonth={viewModel?.absentsThisMonth}
+                  newDocumentsThisMonth={viewModel?.newDocumentsThisMonth}
+               />
+
                <PageHeaderJustTitle title="Compromissos" />
                {viewModel.userAppointments?.length > 0 ? (
                   <AppointmentTable data={viewModel.userAppointments} />

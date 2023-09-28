@@ -12,7 +12,7 @@ export default function Menu({ children }: any) {
    return (
       <>
          <Toaster />
-         <nav className="lg:hidden flex items-center justify-between   bg-raisin-black shadow-mh shadow-black">
+         <nav className="lg:hidden flex items-center justify-between z-50   bg-raisin-black shadow-mh shadow-black">
             <div className="w-full xl:w-auto  xl:mr-12 h-20">
                <div className="flex items-center px-8 pt-5  justify-between">
                   <Link
@@ -622,7 +622,7 @@ export default function Menu({ children }: any) {
                </div>
             </nav>
          </div>
-         <main className="mx-auto  bg-raisin-black-light min-h-[100vh]  w-full">
+         <main className="mx-auto relative  bg-raisin-black-light min-h-[100vh]  w-full">
             <div className="md:container lg:pl-24  xl:pl-24 mx-auto">
                {children}
             </div>
