@@ -61,7 +61,6 @@ export default NextAuth({
          if (token) {
             //@ts-ignore
             session.id = token.id; // eslint-disable-line
-
             //@ts-ignore
             session.type = token.type;
          }

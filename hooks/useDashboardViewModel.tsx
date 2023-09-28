@@ -5,6 +5,7 @@ import DashboardViewModel from '../viewmodels/dashboardViewModel/DashboardViewMo
 
 export default function useDashboardViewModel() {
    const { data: session } = useSession();
+   console.log(session);
    //@ts-ignore
    const activeUserId = String(session?.id);
    const dashboardQuery = useQuery(['dashboard', activeUserId], async () =>
