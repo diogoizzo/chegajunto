@@ -13,9 +13,7 @@ export default class AppointmentDeleteViewModel {
          unknown
       >,
       public appointment?: IAppointment
-   ) {
-      console.log(setIsOpen);
-   }
+   ) {}
    deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {
       setIsOpen(false);
       this.deleteAppointmentMutation.mutate(this.appointment?.id);

@@ -6,6 +6,7 @@ interface DocumentDisplayProps {
 }
 
 function DocumentDisplay({ document }: DocumentDisplayProps) {
+   console.log(document?.mimeType);
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">
@@ -26,7 +27,7 @@ function DocumentDisplay({ document }: DocumentDisplayProps) {
                />
                <DisplayLine
                   label="Formato do Arquivo"
-                  content={document?.mimeType?.split('/')[1]}
+                  content={document?.mimeType}
                />
             </div>
          </div>

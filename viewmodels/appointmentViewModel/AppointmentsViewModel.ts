@@ -21,7 +21,6 @@ export default class AppointmentViewModel {
       activeUserId: string
    ) {
       const allAppointments = query.data && Appointment.createMany(query.data);
-      console.log(allAppointments);
 
       let permissionAppointments;
       if (userType === 'Psicólogo') {

@@ -30,7 +30,6 @@ export default function SignIn() {
       if (result?.ok) {
          router.push('/');
       } else {
-         console.log('Credenciais invalidas');
          error.current?.classList.remove('hidden');
       }
       console.log(result);

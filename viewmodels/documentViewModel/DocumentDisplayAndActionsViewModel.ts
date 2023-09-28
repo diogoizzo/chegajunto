@@ -8,18 +8,13 @@ export default class DocumentDisplayAndActionsViewModel {
       public setIsOpen: Dispatch<SetStateAction<boolean>>,
       public queryDocument: UseQueryResult<any, unknown>,
 
-      public userDeleteMutation: UseMutationResult<
-         void,
-         unknown,
-         string | undefined,
-         unknown
-      >,
+      public userDeleteMutation: UseMutationResult<void, unknown, any, unknown>,
       public document: Document,
       public documentId?: string
    ) {}
    deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {
       setIsOpen(false);
-      this.userDeleteMutation.mutate(this.document?.id);
+      this.userDeleteMutation.mutate(this.document);
    }
 
    closeModal(setIsOpen: Dispatch<SetStateAction<boolean>>) {

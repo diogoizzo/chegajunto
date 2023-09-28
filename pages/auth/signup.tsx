@@ -13,4 +13,4 @@ export default function SignUp() {
       </Menu>
    );
 }
-SignUp.auth = false;
+SignUp.auth = true;

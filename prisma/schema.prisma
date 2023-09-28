@@ -58,19 +58,10 @@ model Patient {
   observation                 String?
   underResponsibilityOf       User?          @relation("responsibility", fields: [underResponsibilityOfUserId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   underResponsibilityOfUserId String?
-  tags                        Tag[]
   availabilities              Availability[]
   documents                   Document[]     @relation("belongs")
   appointments                Appointment[]  @relation("attended")
   consultations               Consultation[] @relation("consultationOf")
-}
-
-model Tag {
-  id            String         @id @default(cuid())
-  name          String
-  patients      Patient[]
-  consultations Consultation[]
-  documents     Document[]
 }
 
 model Availability {
@@ -95,8 +86,8 @@ model Document {
   belongsTo          Patient  @relation("belongs", fields: [belongsToPatientId], references: [id], onUpdate: Cascade)
   mimeType           String
   belongsToPatientId String
-  googleDriveId      String
-  tags               Tag[]
+  awsFileName        String
+  src                String
 }
 
 model Appointment {
@@ -119,7 +110,4 @@ model Consultation {
   professionalUserId String?
   patient            Patient  @relation("consultationOf", fields: [patientId], references: [id])
   patientId          String
-  tags               Tag[]
 }
-
-//todo verificar se não é melhor e como colocar o porfessional como obrigatório

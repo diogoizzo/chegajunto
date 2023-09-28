@@ -12,14 +12,14 @@ export default function Documentos<NextPage>() {
             title="Documentos"
             subtitle="Veja todos os documentos cadastrados no sistema."
             btnHref="/documentos/novo"
-            data={viewModel.allDocuments}
-            setData={viewModel.setSearch}
+            data={viewModel?.allDocuments}
+            setData={viewModel?.setSearch}
          />
          {viewModel.queryDocument.isLoading ? (
             <LoadingWithTitle title="Carregando todos os documentos..." />
          ) : null}
          {viewModel.queryDocument.isFetched ? (
-            viewModel.allDocuments.length > 0 ? (
+            viewModel.allDocuments?.length > 0 ? (
                <DocumentsList
                   documents={viewModel.search ?? viewModel.allDocuments}
                />

@@ -34,7 +34,7 @@ export default function useDocumentCreateAndEditViewModel(doc?: Document) {
    const patientQuery = useQuery(['patients'], () => PatientServices.getAll());
 
    const documentCreateMutation = useMutation({
-      mutationFn: DocumentServices.createFromForm,
+      mutationFn: DocumentServices.create,
       onSuccess: () => {
          if (belongsToPatientId) {
             router.push(`/pacientes/${belongsToPatientId}?documentSaved=true`);

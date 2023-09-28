@@ -12,8 +12,9 @@ export default interface IDocument {
    uploadedByUserId?: string;
    belongsTo?: IPatient;
    belongsToPatientId?: string;
-   googleDriveId?: string;
    downloadLink?: string;
    viewLink?: string;
    documentEditLink?: string;
+   src?: string;
+   awsFileName?: string;
 }

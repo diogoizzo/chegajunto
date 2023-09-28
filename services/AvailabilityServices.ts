@@ -28,7 +28,6 @@ export default class AvailabilityServices {
       patientId: string;
       availabilityId: string;
    }) {
-      console.log('entrei aqui');
       const res = await axios.delete(
          `/api/disponibilidades/pacientes/${patientId}/${availabilityId}`
       );

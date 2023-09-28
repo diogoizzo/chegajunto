@@ -19,7 +19,6 @@ export default class DocumentViewModel {
    ) {
       const allDocuments =
          queryDocument.data && Document.createMany(queryDocument.data);
-      console.log(allDocuments);
       let permissionDocuments;
       if (userType === 'Psicólogo') {
          permissionDocuments = allDocuments;

@@ -30,7 +30,6 @@ export default class ConsultationViewModel {
       const orderedConsultations = consultations.sort((a, b) =>
          dayjs(b.createdAt).diff(dayjs(a.createdAt))
       );
-      console.log(orderedConsultations);
       let permissionConsultation;
       if (userType === 'Psicólogo') {
          permissionConsultation = orderedConsultations;

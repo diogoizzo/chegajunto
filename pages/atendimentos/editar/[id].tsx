@@ -6,7 +6,6 @@ import useConsultationEditViewModel from '../../../hooks/useConsultationEditView
 
 export default function ConsultationEditView() {
    const viewModel = useConsultationEditViewModel();
-   console.log(viewModel.consultation);
    return (
       <Menu>
          <FormPageHeader

@@ -50,7 +50,6 @@ export default class UserCreateViewModel {
             this.userProfileUpdate.mutate(this.form);
          }
       } else {
-         console.log('Entrei na criação de usuário');
          if (!this.form.name) {
             this.errorToast('É preciso informar ao menos o nome do usuário');
          } else if (!this.form.email) {

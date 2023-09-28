@@ -2,8 +2,8 @@ import PageHeaderJustTitle from '../components/parts/DashboardPageHeader';
 import Menu from '../components/parts/Menu';
 import AppointmentTable from '../components/sections/AppointmentTable';
 import DashboardChart from '../components/sections/DashboardChart';
+import LoadingWithTitle from '../components/sections/LoadingWithTitle';
 import PatientesTable from '../components/sections/PatientesTable';
-import Loading from '../components/sections/loading';
 import useDashboardViewModel from '../hooks/useDashboardViewModel';
 
 export default function Dashboard<NextPage>() {
@@ -12,18 +12,18 @@ export default function Dashboard<NextPage>() {
       <Menu>
          <PageHeaderJustTitle title="Dashboard" />
          <DashboardChart
-            patientsCreatedThisMonth={viewModel.patientsCreatedThisMonth}
-            patientsArchivedThisMonth={viewModel.patientsArchivedThisMonth}
-            consultationsThisMonth={viewModel.consultationsThisMonth}
-            absentsThisMonth={viewModel.absentsThisMonth}
-            newDocumentsThisMonth={viewModel.newDocumentsThisMonth}
+            patientsCreatedThisMonth={viewModel?.patientsCreatedThisMonth}
+            patientsArchivedThisMonth={viewModel?.patientsArchivedThisMonth}
+            consultationsThisMonth={viewModel?.consultationsThisMonth}
+            absentsThisMonth={viewModel?.absentsThisMonth}
+            newDocumentsThisMonth={viewModel?.newDocumentsThisMonth}
          />
-         {viewModel.dashboardQuery.isLoading ? (
-            <Loading />
+         {viewModel.dashboardQuery?.isLoading ? (
+            <LoadingWithTitle title="Carregando Dashboard" />
          ) : (
             <>
                <PageHeaderJustTitle title="Compromissos" />
-               {viewModel.userAppointments.length > 0 ? (
+               {viewModel.userAppointments?.length > 0 ? (
                   <AppointmentTable data={viewModel.userAppointments} />
                ) : (
                   <div className="w-full text-lg text-center mt-10 text-cool-gray-900">
@@ -32,7 +32,7 @@ export default function Dashboard<NextPage>() {
                )}
                {/* <AppointmentTable data={viewModel.userAppointments} /> */}
                <PageHeaderJustTitle title="Pacientes" />
-               {viewModel.userPatients.length > 0 ? (
+               {viewModel.userPatients?.length > 0 ? (
                   <PatientesTable data={viewModel.userPatients} />
                ) : (
                   <div className="w-full text-lg text-center mt-10 pb-20 text-cool-gray-900">

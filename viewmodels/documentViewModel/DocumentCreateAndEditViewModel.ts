@@ -4,6 +4,7 @@ import User from '../../entities/User';
 import IDocument from '../../interfaces/IDocument';
 import Document from '../../entities/Document';
 import Patient from '../../entities/Patient';
+import axios from 'axios';
 
 export default class DocumentCreateAndEditViewModel {
    constructor(
@@ -39,10 +40,29 @@ export default class DocumentCreateAndEditViewModel {
    async submitHandler(e: Event, document?: Document) {
       e.preventDefault();
       if (document) {
-         this.documentUpdateMutation.mutate({
-            form: this.form,
-            selectedFile: this.selectedFile
-         });
+         if (this.selectedFile) {
+            const { data } = await axios.get('/api/documentos/upload/');
+            const { url, awsFileName } = data;
+            try {
+               await axios.put(url, this.selectedFile);
+            } catch (error) {
+               console.log(error);
+            }
+            const form = this.form;
+            form.mimeType = this.selectedFile.type.split('/')[1];
+            form.src = String(url).split('?')[0];
+            form.awsFileName = awsFileName;
+            const sendForm = { ...form, updatedFile: true };
+            this.documentUpdateMutation.mutate({
+               doc: document,
+               form: sendForm
+            });
+         } else {
+            this.documentUpdateMutation.mutate({
+               doc: document,
+               form: this.form
+            });
+         }
       } else {
          if (!this.form.belongsToPatientId) {
             this.errorToast(
@@ -55,10 +75,22 @@ export default class DocumentCreateAndEditViewModel {
                this.errorToast('Nenhum arquivo selecionado');
                return;
             }
+            const { data } = await axios.get('/api/documentos/upload/');
+            const { url, awsFileName } = data;
+            try {
+               await axios.put(url, this.selectedFile);
+            } catch (error) {
+               console.log(error);
+            }
+            const src = String(url).split('?')[0];
+            const form = this.form;
+            form.mimeType = this.selectedFile.type.split('/')[1];
             this.documentCreateMutation.mutate({
-               form: this.form,
-               selectedFile: this.selectedFile
+               form,
+               src,
+               awsFileName
             });
+            return src;
          } catch (error: any) {
             console.log(error.response?.data);
          }
@@ -67,7 +99,7 @@ export default class DocumentCreateAndEditViewModel {
 
    deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {
       setIsOpen(false);
-      this.userDeleteMutation.mutate(this.document?.id);
+      this.userDeleteMutation.mutate(this.document);
    }
 
    closeModal(setIsOpen: Dispatch<SetStateAction<boolean>>) {
