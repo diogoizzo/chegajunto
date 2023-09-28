@@ -3,10 +3,16 @@ import { UseMutationResult, UseQueryResult } from 'react-query';
 import IPatient from '../../interfaces/IPatient';
 import { Dispatch, SetStateAction } from 'react';
 import Patient from '../../entities/Patient';
-
 import User from '../../entities/User';
-
 import IAvailability from '../../interfaces/IAvailability';
+
+import PatientDisplayModel from './PatientDisplayModel';
+import PatientCreateAndEditViewModel from './PatientCreateAndEditViewModel';
+import PatientAvailabilityViewModel from './PatientAvailabilityViewModel';
+import PatientEditViewModel from './PatientEditViewModel';
+import PatientWaitingListViewModel from './PatientWaitingListViewModel';
+import PatientArchiveViewModel from './PatientArchiveViewModel';
+import PatientListViewModel from './PatientListViewModel';
 
 export default class PatientViewModel {
    static listView(
