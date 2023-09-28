@@ -13,7 +13,7 @@ export default class AwsServices {
          region,
          accessKeyId,
          secretAccessKey,
-         signatureVersion: 'v3'
+         signatureVersion: 'v4'
       });
       const params = {
          Bucket: bucketName,
