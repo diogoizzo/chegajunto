@@ -4,11 +4,9 @@ import AppointmentRepository from '../repository/AppointmentRepository';
 import dayjs from 'dayjs';
 import ConsultationRepository from '../repository/ConsultationRepository';
 import DocumentRepository from '../repository/DocumentRepository';
-import withAutentication from '../pages/api/auth/withAutentication';
 
 export default class DashboardController {
    static async getUserInfo(req: NextApiRequest, res: NextApiResponse) {
-      await withAutentication(req, res);
       const id = String(req.query.id);
       //@ts-ignore
       const initialDate = dayjs().startOf('M').$d;
