@@ -23,37 +23,37 @@ export default class DocumentRepository {
          console.log(error);
       }
    }
-   // static async create(
-   //    name: string,
-   //    type: string,
-   //    description: string,
-   //    uploadedByUserId: string,
-   //    belongsToPatientId: string,
-   //    mimeType: string
-   // ) {
-   //    try {
-   //       const doc = await prisma.document.create({
-   //          data: {
-   //             name,
-   //             type,
-   //             description,
-   //             uploadedByUserId,
-   //             belongsToPatientId,
-   //             mimeType,
-   //          }
-   //       });
-   //       return doc;
-   //    } catch (error) {
-   //       console.log(error);
-   //    }
-   // }
+   static async create(data: any) {
+      try {
+         const createdDocument = await prisma.document.create({
+            data: {
+               ...data
+            }
+         });
+         return createdDocument;
+      } catch (error) {
+         console.log(error);
+      }
+   }
    static async findById(id: string) {
       try {
          const document = await prisma.document.findUnique({
-            where: { id: id },
-            include: {
+            where: {
+               id: id
+            },
+            select: {
+               id: true,
+               name: true,
+               type: true,
+               mimeType: true,
                uploadedBy: true,
-               belongsTo: true
+               uploadedByUserId: true,
+               belongsTo: true,
+               belongsToPatientId: true,
+               description: true,
+               createdAt: true,
+               src: true,
+               awsFileName: true
             }
          });
          return document;
@@ -71,76 +71,21 @@ export default class DocumentRepository {
          console.log(error);
       }
    }
-   static async updateWithoutFile(
-      id: string,
-      name: string,
-      type: string,
-      description: string,
-      uploadedByUserId: string,
-      belongsToPatientId: string,
-      mimeType: string
-   ) {
+   static async update(id: string, data: any) {
       try {
-         const doc = await prisma.document.update({
+         const updatedDocument = await prisma.document.update({
             where: {
-               id: id
+               id: String(id)
             },
             data: {
-               name: name,
-               type: type,
-               description: description,
-               uploadedBy: {
-                  connect: { id: uploadedByUserId }
-               },
-               belongsTo: {
-                  connect: {
-                     id: belongsToPatientId
-                  }
-               },
-               mimeType: mimeType
+               ...data
             }
          });
-         return doc;
+         return updatedDocument;
       } catch (error) {
          console.log(error);
       }
    }
-   // static async updateWithFile(
-   //    id: string,
-   //    name: string,
-   //    type: string,
-   //    description: string,
-   //    uploadedByUserId: string,
-   //    belongsToPatientId: string,
-   //    mimeType: string,
-   //    googleDriveId: string
-   // ) {
-   //    try {
-   //       const doc = await prisma.document.update({
-   //          where: {
-   //             id: id
-   //          },
-   //          data: {
-   //             name: name,
-   //             type: type,
-   //             description: description,
-   //             uploadedBy: {
-   //                connect: { id: uploadedByUserId }
-   //             },
-   //             belongsTo: {
-   //                connect: {
-   //                   id: belongsToPatientId
-   //                }
-   //             },
-   //             googleDriveId: googleDriveId,
-   //             mimeType: mimeType
-   //          }
-   //       });
-   //       return doc;
-   //    } catch (error) {
-   //       console.log(error);
-   //    }
-   // }
    static async newThisMonth(initialDate: any, endDate: any) {
       try {
          const newThisMonth = await prisma.document.findMany({

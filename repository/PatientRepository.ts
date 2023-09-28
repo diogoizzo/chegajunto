@@ -146,6 +146,10 @@ export default class PatientRepository {
                      interviewedByUserId: id
                   }
                ]
+            },
+            include: {
+               documents: true,
+               appointments: true
             }
          });
          return userPatients;

@@ -2,9 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/compromissos": "pages/compromissos.js",
-  "/": "pages/index.js",
+  "/documentos": "pages/documentos.js",
+  "/api/documentos/[id]": "pages/api/documentos/[id].js",
+  "/documentos/[id]": "pages/documentos/[id].js",
+  "/documentos/editar/[id]": "pages/documentos/editar/[id].js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/api/dashboard/[id]": "pages/api/dashboard/[id].js",
-  "/pacientes": "pages/pacientes.js"
+  "/api/documentos": "pages/api/documentos.js",
+  "/api/documentos/[id]/[awsFileName]": "pages/api/documentos/[id]/[awsFileName].js"
 }

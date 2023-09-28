@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import withAutentication from '../pages/api/auth/withAutentication';
 import DocumentRepository from '../repository/DocumentRepository';
-import readFile from '../lib/readFile';
 
 import isEmptyObject from '../lib/isEmptyObject';
+import { randomUUID } from 'crypto';
+import AwsServices from '../services/AwsServices';
 export default class DocumentController {
    static async getAll(req: NextApiRequest, res: NextApiResponse) {
       await withAutentication(req, res);
@@ -16,118 +17,100 @@ export default class DocumentController {
          });
       }
    }
-   // static async create(req: NextApiRequest, res: NextApiResponse) {
-   //    await withAutentication(req, res);
-   //    const { fields, files } = await readFile(req);
-   //    const googleId = await GoogleDriveServices.uploadFile(files.file[0]);
-   //    const name = String(fields.name[0]);
-   //    const type = String(fields.type[0]);
-   //    const description = String(fields.description[0]);
-   //    const uploadedByUserId = String(fields.uploadedByUserId[0]);
-   //    const belongsToPatientId = String(fields.belongsToPatientId[0]);
-   //    const mimeType = String(files.file[0].mimetype);
-   //    if (googleId) {
-   //       const doc = await DocumentRepository.create(
-   //          name,
-   //          type,
-   //          description,
-   //          uploadedByUserId,
-   //          belongsToPatientId,
-   //          googleId,
-   //          mimeType
-   //       );
-   //       if (doc) {
-   //          return res.status(200).json(doc);
-   //       } else {
-   //          return res.status(500).send({
-   //             message: 'Não foi possível salvar o documento no banco de dados'
-   //          });
-   //       }
-   //    } else {
-   //       return res.status(503).send({
-   //          message: 'Não foi possível salvar o documento no google drive'
-   //       });
-   //    }
-   // }
-   // static async findById(req: NextApiRequest, res: NextApiResponse) {
-   //    await withAutentication(req, res);
-   //    const id = String(req.query.id);
-   //    const document = await DocumentRepository.findById(id);
-   //    if (document) {
-   //       return res.status(200).json(document);
-   //    } else {
-   //       return res.status(404).json({ error: 'Usuário não encontrado' });
-   //    }
-   // }
-   // static async delete(req: NextApiRequest, res: NextApiResponse) {
-   //    await withAutentication(req, res);
-   //    const id = String(req.query.id);
-   //    const deletedDocument = await DocumentRepository.delete(id);
-   //    if (deletedDocument) {
-   //       await GoogleDriveServices.deleteById(deletedDocument.googleDriveId);
-
-   //       return res.status(200).json(deletedDocument);
-   //    } else {
-   //       return res.status(404).json({ error: 'Documento não encontrado' });
-   //    }
-   // }
-   // static async update(req: NextApiRequest, res: NextApiResponse) {
-   //    await withAutentication(req, res);
-   //    const id = String(req.query.id);
-   //    const { fields, files } = await readFile(req);
-   //    const name = String(fields.name[0]);
-   //    const type = String(fields.type[0]);
-   //    const description = String(fields.description[0]);
-   //    const uploadedByUserId = String(fields.uploadedByUserId[0]);
-   //    const belongsToPatientId = String(fields.belongsToPatientId[0]);
-   //    const mimeType = String(files.file[0].mimetype);
-   //    if (isEmptyObject(files)) {
-   //       const doc = await DocumentRepository.updateWithoutFile(
-   //          id,
-   //          name,
-   //          type,
-   //          description,
-   //          uploadedByUserId,
-   //          belongsToPatientId,
-   //          mimeType
-   //       );
-   //       if (doc) {
-   //          return res.status(200).json(doc);
-   //       } else {
-   //          return res
-   //             .status(503)
-   //             .send('Não foi possível atualizar o documento');
-   //       }
-   //    } else {
-   //       const googleFile = await prisma.document.findFirst({
-   //          where: { id: id }
-   //       });
-   //       googleFile &&
-   //          (await GoogleDriveServices.deleteById(googleFile.googleDriveId));
-   //       const newFileGoogleId = await GoogleDriveServices.uploadFile(
-   //          files.file[0]
-   //       );
-   //       if (newFileGoogleId) {
-   //          try {
-   //             const doc = await DocumentRepository.updateWithFile(
-   //                id,
-   //                name,
-   //                type,
-   //                description,
-   //                uploadedByUserId,
-   //                belongsToPatientId,
-   //                mimeType,
-   //                newFileGoogleId
-   //             );
-   //             return res.status(200).json(doc);
-   //          } catch (error) {
-   //             return res.status(503).json(error);
-   //          }
-   //       } else {
-   //          return res.status(503).send({
-   //             message: 'Não foi possível atualizar o documento no google drive'
-   //          });
-   //       }
-   //    }
-   // }
+   static async create(req: NextApiRequest, res: NextApiResponse) {
+      await withAutentication(req, res);
+      const data = req.body;
+      delete data.id;
+      const createdDocument = await DocumentRepository.create(data);
+      if (createdDocument) {
+         return res.status(200).json(createdDocument);
+      } else {
+         return res
+            .status(200)
+            .send('Não foi possível salvar o novo documento');
+      }
+   }
+   static async getSignedUrl(req: NextApiRequest, res: NextApiResponse) {
+      await withAutentication(req, res);
+      const awsFileName = randomUUID();
+      const url = await AwsServices.generateUrl(awsFileName);
+      if (url) {
+         return res.status(200).json({
+            url,
+            awsFileName
+         });
+      } else {
+         return res.status(503).json({
+            error: 'Não foi possível criar a url'
+         });
+      }
+   }
+   static async findById(req: NextApiRequest, res: NextApiResponse) {
+      await withAutentication(req, res);
+      const id = String(req.query.id);
+      const document = await DocumentRepository.findById(id);
+      if (document) {
+         return res.status(200).json(document);
+      } else {
+         return res.status(404).json({ error: 'Usuário não encontrado' });
+      }
+   }
+   static async delete(req: NextApiRequest, res: NextApiResponse) {
+      await withAutentication(req, res);
+      const { id, awsFileName } = req.query;
+      const deleted = await AwsServices.delete(String(awsFileName));
+      if (deleted) {
+         const deletedPhoto = await prisma.document.delete({
+            where: {
+               id: String(id)
+            }
+         });
+         if (deletedPhoto) {
+            return res.status(200).json(deletedPhoto);
+         } else {
+            return res.status(400).send('Não foi possível apagar a foto');
+         }
+      } else {
+         res.status(500).send('Não foi possível apagar a foto na AWS');
+      }
+   }
+   static async update(req: NextApiRequest, res: NextApiResponse) {
+      await withAutentication(req, res);
+      const { id, awsFileName } = req.query;
+      if (req.body.updatedFile) {
+         const deleted = await AwsServices.delete(String(awsFileName));
+         delete req.body.uploadedBy;
+         delete req.body.belongsTo;
+         delete req.body.updatedFile;
+         if (deleted) {
+            const updatedDocument = await DocumentRepository.update(
+               String(id),
+               req.body
+            );
+            if (updatedDocument) {
+               res.status(200).json(updatedDocument);
+            } else {
+               res.status(400).send(
+                  'Não foi possível apagar o arquivo do banco de dados'
+               );
+            }
+         } else {
+            res.status(500).send('Não foi possível apagar o documento na AWS');
+         }
+      } else {
+         delete req.body.uploadedBy;
+         delete req.body.belongsTo;
+         const updatedDocument = await DocumentRepository.update(
+            String(id),
+            req.body
+         );
+         if (updatedDocument) {
+            res.status(200).json(updatedDocument);
+         } else {
+            res.status(400).send(
+               'Não foi possível apagar o arquivo do banco de dados'
+            );
+         }
+      }
+   }
 }
