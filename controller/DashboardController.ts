@@ -19,19 +19,19 @@ export default class DashboardController {
          userPatients,
          userAppointments,
          patientsCreatedThisMonth,
-         patientsArchivedThisMonth,
-         consultationsThisMonth,
-         absentsThisMonth,
-         newDocumentsThisMonth
+         patientsArchivedThisMonth
       ] = await Promise.all([
          PatientRepository.getByUserID(id),
          AppointmentRepository.getByUserID(id),
          PatientRepository.createdInRange(initialDate, endDate),
-         PatientRepository.patientsArchivedThisMonth(initialDate, endDate),
-         ConsultationRepository.consultationsThisMonth(initialDate, endDate),
-         ConsultationRepository.absentsThisMonth(initialDate, endDate),
-         DocumentRepository.newThisMonth(initialDate, endDate)
+         PatientRepository.patientsArchivedThisMonth(initialDate, endDate)
       ]);
+      const [consultationsThisMonth, absentsThisMonth, newDocumentsThisMonth] =
+         await Promise.all([
+            ConsultationRepository.consultationsThisMonth(initialDate, endDate),
+            ConsultationRepository.absentsThisMonth(initialDate, endDate),
+            DocumentRepository.newThisMonth(initialDate, endDate)
+         ]);
       if (userPatients && userAppointments) {
          return res.status(200).json({
             userPatients,
