@@ -23,13 +23,9 @@ export default function DocumentView() {
                viewModel.openConfirmationModal(e, viewModel.setIsOpen)
             }
          />
-         {viewModel.queryDocument.isLoading ? (
-            <LoadingWithTitle title="Carregando informações do documento..." />
-         ) : (
+         {viewModel.queryDocument.isLoading ? null : (
             <DocumentDisplay document={viewModel.document} />
          )}
-
-         {/* <PatientDisplay patient={document} /> */}
       </Menu>
    );
 }

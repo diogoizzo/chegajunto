@@ -16,9 +16,7 @@ export default function UserListView<NextPage>() {
             data={viewModel.users}
             setData={viewModel.setSearch}
          />
-         {viewModel.usersQuery?.isLoading ? (
-            <Loading />
-         ) : (
+         {viewModel.usersQuery?.isLoading ? null : (
             <UserTable data={viewModel?.search ?? viewModel?.users} />
          )}
       </Menu>

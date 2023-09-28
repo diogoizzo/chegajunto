@@ -15,9 +15,7 @@ export default function Espera<NextPage>() {
             data={viewModel.waitingPatients}
             setData={viewModel.setSearch}
          />
-         {viewModel.query.isLoading ? (
-            <Loading />
-         ) : (
+         {viewModel.query.isLoading ? null : (
             <WaitingPatientesTable
                data={viewModel.search ?? viewModel.waitingPatients}
             />

@@ -18,9 +18,7 @@ export default function AppointmentDisplayView() {
             btnText="Editar"
             search={false}
          />
-         {viewModel.consultationQuery.isLoading ? (
-            <LoadingWithTitle title="Carregando atendimento..." />
-         ) : (
+         {viewModel.consultationQuery.isLoading ? null : (
             <ConsultationDisplay consultation={viewModel.consultation} />
          )}
       </Menu>

@@ -16,9 +16,7 @@ export default function PatientListView<NextPage>() {
             data={viewModel.activePatients}
             setData={viewModel.setSearch}
          />
-         {viewModel.query.isLoading ? (
-            <Loading />
-         ) : (
+         {viewModel.query.isLoading ? null : (
             <PatientesTable
                data={viewModel.search ?? viewModel.activePatients}
             />

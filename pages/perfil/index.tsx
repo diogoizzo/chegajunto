@@ -12,9 +12,7 @@ export default function ProfileEditView() {
             title="Perfil"
             subtitle="Edit as informações do seu perfil de usuário"
          />
-         {viewModel.activeUserQuery.isLoading ? (
-            <LoadingWithTitle title="Carregando Perfil" />
-         ) : (
+         {viewModel.activeUserQuery.isLoading ? null : (
             <UserForm activeUser={viewModel?.activeUser} />
          )}
       </Menu>

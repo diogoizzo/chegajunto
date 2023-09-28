@@ -622,10 +622,8 @@ export default function Menu({ children }: any) {
                </div>
             </nav>
          </div>
-         <main className="mx-auto  bg-raisin-black-light min-h-[100vh]  w-full">
-            <div className="md:container lg:pl-24  xl:pl-24 mx-auto">
-               {children}
-            </div>
+         <main className=" bg-raisin-black-light min-h-[100vh]  w-full">
+            <div className="md:container lg:pl-24  mx-auto">{children}</div>
          </main>
       </>
    );

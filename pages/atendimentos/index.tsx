@@ -16,10 +16,8 @@ export default function ConsultationListView<NextPage>() {
             data={listViewModel.consultations}
             setData={listViewModel.setSearch}
          />
-         {listViewModel.consultationQuery.isLoading ? (
-            <LoadingWithTitle title="Carregando Atendimentos..." />
-         ) : listViewModel.search?.length === 0 ||
-           listViewModel.consultations?.length === 0 ? (
+         {listViewModel.search?.length === 0 ||
+         listViewModel.consultations?.length === 0 ? (
             <div className="flex w-full justify-center mt-20">
                <h2 className="text-4xl text-slate-700">
                   Nenhum atendimento encontrado

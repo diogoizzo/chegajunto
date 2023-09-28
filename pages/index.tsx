@@ -2,7 +2,6 @@ import PageHeaderJustTitle from '../components/parts/DashboardPageHeader';
 import Menu from '../components/parts/Menu';
 import AppointmentTable from '../components/sections/AppointmentTable';
 import DashboardChart from '../components/sections/DashboardChart';
-import LoadingWithTitle from '../components/sections/LoadingWithTitle';
 import PatientesTable from '../components/sections/PatientesTable';
 import useDashboardViewModel from '../hooks/useDashboardViewModel';
 
@@ -11,9 +10,7 @@ export default function Dashboard<NextPage>() {
    return (
       <Menu>
          <PageHeaderJustTitle title="Dashboard" />
-         {viewModel.dashboardQuery.isLoading ? (
-            <LoadingWithTitle title="Carregado Dashboard" />
-         ) : (
+         {viewModel.dashboardQuery.isLoading ? null : (
             <>
                <DashboardChart
                   patientsCreatedThisMonth={viewModel?.patientsCreatedThisMonth}

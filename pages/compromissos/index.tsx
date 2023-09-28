@@ -25,9 +25,6 @@ export default function AppointmentListView<NextPage>() {
             />
          )}
 
-         {viewModel.query.isLoading ? (
-            <LoadingWithTitle title="Carregando todos os compromissos..." />
-         ) : null}
          {viewModel.query.isFetched ? (
             viewModel.allAppointment && viewModel.allAppointment.length > 0 ? (
                <AppointmentTable

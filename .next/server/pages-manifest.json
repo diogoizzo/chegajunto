@@ -2,18 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/usuarios": "pages/usuarios.js",
+  "/compromissos": "pages/compromissos.js",
   "/documentos": "pages/documentos.js",
-  "/api/pacientes": "pages/api/pacientes.js",
-  "/api/documentos": "pages/api/documentos.js",
-  "/pacientes": "pages/pacientes.js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/pacientes/[id]": "pages/pacientes/[id].js",
-  "/": "pages/index.js",
-  "/api/dashboard/[id]": "pages/api/dashboard/[id].js",
-  "/documentos/novo": "pages/documentos/novo.js",
-  "/api/compromissos": "pages/api/compromissos.js",
-  "/api/usuarios/[id]": "pages/api/usuarios/[id].js",
-  "/api/pacientes/[id]": "pages/api/pacientes/[id].js",
-  "/api/documentos/upload": "pages/api/documentos/upload.js",
-  "/perfil": "pages/perfil.js"
+  "/api/documentos": "pages/api/documentos.js"
 }

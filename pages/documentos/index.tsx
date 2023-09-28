@@ -15,9 +15,6 @@ export default function Documentos<NextPage>() {
             data={viewModel?.allDocuments}
             setData={viewModel?.setSearch}
          />
-         {viewModel.queryDocument.isLoading ? (
-            <LoadingWithTitle title="Carregando todos os documentos..." />
-         ) : null}
          {viewModel.queryDocument.isFetched ? (
             viewModel.allDocuments?.length > 0 ? (
                <DocumentsList

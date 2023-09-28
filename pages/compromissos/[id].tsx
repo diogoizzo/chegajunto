@@ -10,9 +10,7 @@ export default function AppointmentDisplayView() {
    return (
       <Menu>
          <FormPageHeader title={'Veja as Informações do Compromisso'} />
-         {viewModel.query.isLoading ? (
-            <LoadingWithTitle title="Carregando compromisso..." />
-         ) : (
+         {viewModel.query.isLoading ? null : (
             <AppointmentDisplay appointment={viewModel.appointment} />
          )}
       </Menu>

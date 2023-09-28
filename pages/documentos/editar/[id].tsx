@@ -12,9 +12,7 @@ export default function EditDocument() {
             title={viewModel.document?.name}
             subtitle="Edite as informações do documento acima."
          />
-         {viewModel.query.isLoading ? (
-            <LoadingWithTitle title="Carregando documento..." />
-         ) : (
+         {viewModel.query.isLoading ? null : (
             <DocumentForm doc={viewModel.document} />
          )}
       </Menu>
