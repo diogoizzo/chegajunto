@@ -7,8 +7,6 @@ import {
    DropdownMenuTrigger
 } from '../ui/dropdown-menu';
 
-import FileSaver from 'file-saver';
-
 interface PageHeaderProps {
    title?: string;
    subtitle?: string;
@@ -25,8 +23,8 @@ export default function PageHeaderWithMenu({
    return (
       <div className="px-8 pt-8 pb-2">
          <div className="pb-6 border-b border-cool-gray-900">
-            <div className="flex flex-wrap items-start justify-between -mx-4">
-               <div className="w-2/3 lg:w-auto px-4 mb-1 md:mb-0">
+            <div className="flex flex-wrap items-center justify-between -mx-4">
+               <div className="w-full md:w-1/2 lg:w-auto px-4 mb-6 md:mb-0">
                   <h4 className="text-4xl font-bold text-cool-gray-200 tracking-wide leading-6 mb-1">
                      {title}
                   </h4>
@@ -34,8 +32,8 @@ export default function PageHeaderWithMenu({
                      {subtitle}
                   </p>
                </div>
-               <div className="w-1/3 lg:w-auto px-4 text-right ">
-                  <div className="md:flex items-center  justify-end">
+               <div className="w-full md:w-1/2 lg:w-auto px-4">
+                  <div className="md:flex items-center">
                      <DropdownMenu>
                         <DropdownMenuTrigger className="inline-flex py-2 px-10  items-center text-center shadow-sm shadow-black/40 border-2 border-yinmn-blue-900 text-lg font-bold text-cool-gray-200 bg-yinmn-blue-500 hover:bg-yinmn-blue-200 transition duration-200 rounded-lg">
                            <svg
@@ -68,16 +66,32 @@ export default function PageHeaderWithMenu({
                                  Editar
                               </Link>
                            </DropdownMenuItem>
-
                            <DropdownMenuItem className="text-cool-gray-500 relative">
-                              <button
+                              <a
                                  className="flex w-full h-full"
-                                 onClick={() =>
-                                    FileSaver.saveAs(
-                                       String(data.src),
-                                       `${data.name}.${data.mimeType}`
-                                    )
-                                 }
+                                 href={data?.viewLink}
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                              >
+                                 <svg
+                                    className="h-4 mr-2"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    data-name="Layer 1"
+                                    viewBox="0 0 24 24"
+                                    id="folder-open"
+                                 >
+                                    <path
+                                       fill="currentcolor"
+                                       d="M22.78 10.37A1 1 0 0 0 22 10h-2V9a3 3 0 0 0-3-3h-6.28l-.32-1a3 3 0 0 0-2.84-2H4a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14.4a3 3 0 0 0 2.92-2.35L23 11.22a1 1 0 0 0-.22-.85ZM5.37 18.22a1 1 0 0 1-1 .78H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h3.56a1 1 0 0 1 1 .68l.54 1.64A1 1 0 0 0 10 8h7a1 1 0 0 1 1 1v1H8a1 1 0 0 0-1 .78Zm14 0a1 1 0 0 1-1 .78H7.21a1.42 1.42 0 0 0 .11-.35L8.8 12h12Z"
+                                    ></path>
+                                 </svg>
+                                 Abrir
+                              </a>
+                           </DropdownMenuItem>
+                           <DropdownMenuItem className="text-cool-gray-500 relative">
+                              <a
+                                 className="flex w-full h-full"
+                                 href={data?.downloadLink}
                               >
                                  <svg
                                     className="h-4 mr-2"
@@ -91,10 +105,10 @@ export default function PageHeaderWithMenu({
                                     ></path>
                                  </svg>
                                  Download
-                              </button>
+                              </a>
                            </DropdownMenuItem>
                            <DropdownMenuItem
-                              className="text-red-300 w-full h-full"
+                              className="text-red-300"
                               onClick={openConfirmatioModal}
                            >
                               <svg

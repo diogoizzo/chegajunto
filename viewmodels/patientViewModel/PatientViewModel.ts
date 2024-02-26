@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction } from 'react';
 import Patient from '../../entities/Patient';
 import User from '../../entities/User';
 import IAvailability from '../../interfaces/IAvailability';
-
+import dayjs from 'dayjs';
 import PatientDisplayModel from './PatientDisplayModel';
 import PatientCreateAndEditViewModel from './PatientCreateAndEditViewModel';
 import PatientAvailabilityViewModel from './PatientAvailabilityViewModel';
@@ -125,9 +125,13 @@ export default class PatientViewModel {
       activeUserId: string
    ) {
       const allPatients = query.data && Patient.createMany(query.data);
-      const waitingPatients = allPatients?.filter(
-         (patient: IPatient) => patient.status === 'Espera'
-      );
+
+      const waitingPatients = allPatients
+         ?.filter((patient: IPatient) => patient.status === 'Espera')
+         .sort((a: IPatient, b: IPatient) =>
+            dayjs(a.createdAt).diff(dayjs(b.createdAt))
+         );
+      //todo ordenar por data de criação (createdAt)
       let permissionPatients;
       if (userType === 'Psicólogo') {
          permissionPatients = waitingPatients;

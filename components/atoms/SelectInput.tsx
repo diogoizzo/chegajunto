@@ -3,6 +3,7 @@ import IUser from '../../interfaces/IUser';
 import {
    Select,
    SelectContent,
+   SelectGroup,
    SelectItem,
    SelectTrigger,
    SelectValue
@@ -49,12 +50,19 @@ function SelectInput({
                      <SelectValue placeholder={placeholder} />
                   </SelectTrigger>
                   <SelectContent>
-                     {options &&
-                        options.map((user) => (
-                           <SelectItem key={user.id} value={user.id || ''}>
-                              {user.name}
-                           </SelectItem>
-                        ))}
+                     <SelectGroup>
+                        {options &&
+                           options
+                              .sort((a, b) => a.name.localeCompare(b.name))
+                              .map((user) => (
+                                 <SelectItem
+                                    key={user.id}
+                                    value={user.id || ''}
+                                 >
+                                    {user.name}
+                                 </SelectItem>
+                              ))}
+                     </SelectGroup>
                   </SelectContent>
                </Select>
             </div>

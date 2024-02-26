@@ -6,7 +6,6 @@ interface DocumentDisplayProps {
 }
 
 function DocumentDisplay({ document }: DocumentDisplayProps) {
-   console.log(document?.mimeType);
    return (
       <section className="py-3 ">
          <div className="container px-4 mx-auto">

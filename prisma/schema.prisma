@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider = "postgresql"
+  url      = env("POSTGRES_URL") // uses connection pooling// uses a direct connection
 }
 
 model User {
@@ -86,8 +85,7 @@ model Document {
   belongsTo          Patient  @relation("belongs", fields: [belongsToPatientId], references: [id], onUpdate: Cascade)
   mimeType           String
   belongsToPatientId String
-  awsFileName        String
-  src                String
+  googleDriveId      String
 }
 
 model Appointment {

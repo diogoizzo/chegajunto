@@ -9,8 +9,7 @@ export default function documentExportFormatter(docs: Document[]) {
          Formato: doc.type?.split('/')[1],
          'Responsável pelo Upload': doc.uploadedBy?.name,
          'Pertence ao Paciente': doc.belongsTo?.name,
-         Descrição: doc.description,
-         'Data do Upload': dayjs(doc.createdAt).format('DD/MM/YYYY')
+         Descrição: doc.description
       };
    });
 }

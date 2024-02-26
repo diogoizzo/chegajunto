@@ -95,14 +95,17 @@ function UserForm({ user, activeUser }: UserFormProps) {
                         type="text"
                         placeHolder="Digite o CPF do novo usuário..."
                      />
-                     <StringSelectInput
-                        name="type"
-                        placeholder="Selecione o tipo de usuário"
-                        title="Tipo de usuário"
-                        options={['Psicólogo', 'Estagiário']}
-                        state={viewModel.form.type}
-                        setState={viewModel.setForm}
-                     />
+                     {activeUser ? null : (
+                        <StringSelectInput
+                           name="type"
+                           placeholder="Selecione o tipo de usuário"
+                           title="Tipo de usuário"
+                           options={['Psicólogo', 'Estagiário']}
+                           state={viewModel.form.type}
+                           setState={viewModel.setForm}
+                        />
+                     )}
+
                      {viewModel.form.type === 'Psicólogo' ? (
                         <>
                            <div className="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 mt-12 border-b border-gray-400 border-opacity-20">

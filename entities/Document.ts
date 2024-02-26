@@ -12,18 +12,16 @@ export default class Document implements IDocument {
       public uploadedByUserId?: string,
       public belongsTo?: IPatient,
       public belongsToPatientId?: string,
-      public description?: string,
-      public createdAt?: string,
-      public src?: string,
-      public awsFileName?: string
+      public googleDriveId?: string,
+      public description?: string
    ) {}
 
-   // get downloadLink() {
-   //    return `https://drive.google.com/uc?id=${this.googleDriveId}&export=download`;
-   // }
-   // get viewLink() {
-   //    return `https://drive.google.com/file/d/${this.googleDriveId}/view?usp=drivesdk`;
-   // }
+   get downloadLink() {
+      return `https://drive.google.com/uc?id=${this.googleDriveId}&export=download`;
+   }
+   get viewLink() {
+      return `https://drive.google.com/file/d/${this.googleDriveId}/view?usp=drivesdk`;
+   }
    get documentDisplayLink() {
       return `/documentos/${this.id}`;
    }
@@ -39,10 +37,8 @@ export default class Document implements IDocument {
       uploadedByUserId,
       belongsTo,
       belongsToPatientId,
-      description,
-      createdAt,
-      src,
-      awsFileName
+      googleDriveId,
+      description
    }: IDocument): Document {
       return new Document(
          id,
@@ -53,10 +49,8 @@ export default class Document implements IDocument {
          uploadedByUserId,
          belongsTo,
          belongsToPatientId,
-         description,
-         createdAt,
-         src,
-         awsFileName
+         googleDriveId,
+         description
       );
    }
 
@@ -71,10 +65,8 @@ export default class Document implements IDocument {
             uploadedByUserId,
             belongsTo,
             belongsToPatientId,
-            description,
-            createdAt,
-            src,
-            awsFileName
+            googleDriveId,
+            description
          } = document;
          return new Document(
             id,
@@ -85,10 +77,8 @@ export default class Document implements IDocument {
             uploadedByUserId,
             belongsTo,
             belongsToPatientId,
-            description,
-            createdAt,
-            src,
-            awsFileName
+            googleDriveId,
+            description
          );
       });
    }

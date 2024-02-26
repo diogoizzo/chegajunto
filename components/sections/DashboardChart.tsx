@@ -144,8 +144,8 @@ export default function DashboardChart({
       ]
    };
    return (
-      <div className="px-8 pt-4 h-[250px] md:h-[350px] lg:h-[500px] w-full  ">
-         <Line className=" mx-auto" options={options} data={data} />
+      <div className="px-8 pt-4 h-[250px] md:h-[350px] lg:h-[500px] w-full relative ">
+         <Line className=" mx-auto w-full" options={options} data={data} />
       </div>
    );
 }

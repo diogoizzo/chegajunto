@@ -32,7 +32,6 @@ export default function SignIn() {
       } else {
          error.current?.classList.remove('hidden');
       }
-      console.log(result);
    }
 
    return (

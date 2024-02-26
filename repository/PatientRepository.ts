@@ -74,7 +74,6 @@ export default class PatientRepository {
       underResponsibilityOfUserId: string,
       body: any
    ) {
-      console.log(interviewedByUserId, underResponsibilityOfUserId);
       try {
          const patient = await prisma.patient.update({
             where: {
@@ -148,7 +147,10 @@ export default class PatientRepository {
                id: id
             },
             data: {
-               status: 'Espera'
+               status: 'Espera',
+               underResponsibilityOf: {
+                  disconnect: true
+               }
             }
          });
          return updatePatientStatus;

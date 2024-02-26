@@ -6,7 +6,6 @@ interface PatientesTableProps {
 }
 
 function PatientesTable({ small, data }: PatientesTableProps) {
-   console.log(data);
    return (
       <section className="py-3">
          <div className="container px-4 mx-auto">

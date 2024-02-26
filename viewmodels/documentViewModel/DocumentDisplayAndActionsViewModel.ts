@@ -14,7 +14,7 @@ export default class DocumentDisplayAndActionsViewModel {
    ) {}
    deleteAction(setIsOpen: Dispatch<SetStateAction<boolean>>) {
       setIsOpen(false);
-      this.userDeleteMutation.mutate(this.document);
+      this.userDeleteMutation.mutate(this.document.id);
    }
 
    closeModal(setIsOpen: Dispatch<SetStateAction<boolean>>) {

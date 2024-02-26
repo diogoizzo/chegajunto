@@ -11,6 +11,7 @@ import AvailabilityForm from './AvailabilityForm';
 import usePatientCreateAndEditViewModel from '../../hooks/usePatientCreateAndEditViewModel';
 import SecundaryBtn from '../atoms/SecundaryBtn';
 import { useRouter } from 'next/router';
+import DisplayLine from '../atoms/DisplayLine';
 
 interface PatientFormProps {
    patient?: IPatient;
@@ -213,14 +214,16 @@ function PatientForm({ patient }: PatientFormProps) {
                         placeholder="Selecione o responsável pela entrevista"
                         state={viewModel.form.interviewedByUserId}
                      />
-                     <SelectInput
-                        name="underResponsibilityOfUserId"
-                        title="Responsável pelo Paciente"
-                        setState={viewModel.setForm}
-                        options={viewModel.users}
-                        placeholder="Selecione o responsável pelo paciente"
-                        state={viewModel.form.underResponsibilityOfUserId}
-                     />
+                     {patient ? (
+                        <DisplayLine
+                           label="Responsável pelo Paciente"
+                           content={
+                              patient?.underResponsibilityOf?.name ||
+                              'O paciente está na lista de espera e ainda não possui um responsável.'
+                           }
+                        />
+                     ) : null}
+
                      <div className="text-right space-y-3 md:space-x-6">
                         <PrimaryBtn
                            text={'Salvar'}

@@ -1,6 +1,5 @@
 import Menu from '../../components/parts/Menu';
 import DocumentDisplay from '../../components/sections/DocumentDisplay';
-import LoadingWithTitle from '../../components/sections/LoadingWithTitle';
 import PageHeaderWithMenu from '../../components/parts/PageHeaderWithMenu';
 import ConfirmationModal from '../../components/parts/ConfirmationModal';
 import useDocumentDisplayAndActionsViewModel from '../../hooks/useDocumentDisplayAndActionsViewModel';
@@ -17,7 +16,7 @@ export default function DocumentView() {
          />
          <PageHeaderWithMenu
             title={viewModel.document?.name}
-            subtitle="Veja as informações do documento acima."
+            subtitle="Veja as informações do documento abaixo."
             data={viewModel.document}
             openConfirmatioModal={(e: any) =>
                viewModel.openConfirmationModal(e, viewModel.setIsOpen)

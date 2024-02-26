@@ -50,10 +50,7 @@ export default class DocumentRepository {
                uploadedByUserId: true,
                belongsTo: true,
                belongsToPatientId: true,
-               description: true,
-               createdAt: true,
-               src: true,
-               awsFileName: true
+               description: true
             }
          });
          return document;

@@ -9,15 +9,12 @@ import SelectInput from '../atoms/SelectInput';
 import FileInput from '../atoms/FileInput';
 import LoadingWithTitle from './LoadingWithTitle';
 import useDocumentCreateAndEditViewModel from '../../hooks/useDocumentCreateAndEditViewModel';
-import { useRouter } from 'next/router';
-import SecundaryBtn from '../atoms/SecundaryBtn';
 
 interface DocumentFormProps {
    doc?: Document;
 }
 
 function DocumentForm({ doc }: DocumentFormProps) {
-   const router = useRouter();
    const viewModel = useDocumentCreateAndEditViewModel(doc);
 
    return (
@@ -87,14 +84,13 @@ function DocumentForm({ doc }: DocumentFormProps) {
                            state={viewModel.selectedFile}
                            setState={viewModel.setSelectedFile}
                         />
-                        <div className="text-right w-full space-y-3 md:space-x-6">
+                        <div className="text-right space-x-6">
                            <PrimaryBtn
                               text={'Salvar'}
                               clickHandle={(e: any) =>
                                  viewModel.submitHandler(e, doc)
                               }
                            />
-
                            {doc ? (
                               <DangerBtn
                                  text={'Apagar Documento'}
@@ -106,10 +102,6 @@ function DocumentForm({ doc }: DocumentFormProps) {
                                  }
                               />
                            ) : null}
-                           <SecundaryBtn
-                              text="Cancelar"
-                              clickHandle={() => router.push('/documentos')}
-                           />
                         </div>
                      </form>
                   </div>

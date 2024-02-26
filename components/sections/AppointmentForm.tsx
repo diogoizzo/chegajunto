@@ -70,7 +70,7 @@ function AppointmentForm() {
                                           </p>
                                        ) : (
                                           <p className="text-md text-red-200  font-medium ">
-                                             Não existe nenhuma paciente
+                                             Não existe nenhum paciente
                                              compatível com esse horário.
                                           </p>
                                        )}
